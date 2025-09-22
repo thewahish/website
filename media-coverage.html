@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Coverage | أبي سكر - رائد الإعلام السوري الأمريكي ومهندس الصوت</title>
+    <style>
+        /* Import styles from main website */
+        @font-face {
+            font-family: 'Roboto';
+            src: url('./Fonts/Roboto-Light.ttf') format('truetype');
+            font-weight: 300;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Roboto';
+            src: url('./Fonts/Roboto-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Roboto';
+            src: url('./Fonts/Roboto-Medium.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Roboto';
+            src: url('./Fonts/Roboto-Black.ttf') format('truetype');
+            font-weight: 900;
+            font-style: normal;
+        }
+        
+        :root {
+            --deep-indigo: #292663;
+            --warm-gold: #FBB04C;
+            --sky-blue: #00AEEF;
+            --vivid-magenta: #EC008C;
+            --purple-plum: #92278F;
+            --white: #FFFFFF;
+            --light-gray: #F8F9FA;
+            --text-dark: #292663;
+            --text-light: #666666;
+            --border-light: #E8F4FD;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: var(--light-gray);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding-top: 100px;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 2000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 0.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-light);
+        }
+
+        .lang-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 40px;
+            background: transparent;
+            border: none;
+            border-radius: 20px;
+            color: var(--deep-indigo);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .lang-btn.active {
+            background: var(--deep-indigo);
+            color: var(--white);
+        }
+
+        .lang-btn:hover {
+            background: var(--sky-blue);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+        .globe-icon {
+            font-size: 1.2rem;
+            margin-right: 5px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-light);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px rgba(41, 38, 99, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--deep-indigo);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: var(--text-dark);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link:hover {
+            background: var(--deep-indigo);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            background: var(--white);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-title {
+            font-family: 'Roboto', Arial, sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--deep-indigo);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--warm-gold);
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Article Grid */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .article-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .article-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--sky-blue), var(--vivid-magenta));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .article-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .article-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 174, 239, 0.2);
+        }
+
+        .article-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--sky-blue), var(--deep-indigo));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .article-content {
+            padding: 2rem;
+        }
+
+        .article-source {
+            color: var(--sky-blue);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .article-title {
+            font-family: 'Roboto', Arial, sans-serif;
+            font-size: 1.4rem;
+            color: var(--deep-indigo);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .article-excerpt {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .article-date {
+            color: var(--warm-gold);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .article-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--sky-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .article-link:hover {
+            color: var(--deep-indigo);
+            transform: translateX(5px);
+        }
+
+        .article-link::after {
+            content: '→';
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .article-link:hover::after {
+            transform: translateX(3px);
+        }
+
+        /* Featured Article */
+        .featured-article {
+            background: linear-gradient(135deg, var(--deep-indigo), var(--sky-blue));
+            color: var(--white);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-article::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .featured-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .featured-badge {
+            background: var(--warm-gold);
+            color: var(--deep-indigo);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        /* RTL Support */
+        [dir="rtl"] .nav-container {
+            flex-direction: row-reverse;
+        }
+        
+        [dir="rtl"] .nav-menu {
+            flex-direction: row-reverse;
+        }
+        
+        [dir="rtl"] .language-switcher {
+            left: 20px;
+            right: auto;
+        }
+        
+        [dir="rtl"] .page-title::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        [dir="rtl"] .article-link::after {
+            content: '←';
+            margin-left: 0;
+            margin-right: 0.5rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                gap: 1rem;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                padding: 2rem;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+                display: none;
+            }
+            
+            .language-switcher {
+                top: 10px;
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="lang-btn" id="arabicBtn" onclick="switchLanguage('ar')">
+            <span class="globe-icon">🌍</span>ع
+        </button>
+        <button class="lang-btn active" id="englishBtn" onclick="switchLanguage('en')">
+            <span class="globe-icon">🌍</span>En
+        </button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="obai_sukar_website.html" class="logo" data-en="Obai Sukar" data-ar="أبي سكر">Obai Sukar</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="obai_sukar_website.html#home" class="nav-link" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                <li><a href="obai_sukar_website.html#about" class="nav-link" data-en="About" data-ar="حول">About</a></li>
+                <li><a href="obai_sukar_website.html#journey" class="nav-link" data-en="Journey" data-ar="المسيرة">Journey</a></li>
+                <li><a href="obai_sukar_website.html#projects" class="nav-link" data-en="Projects" data-ar="المشاريع">Projects</a></li>
+                <li><a href="obai_sukar_website.html#awards" class="nav-link" data-en="Awards" data-ar="الجوائز">Awards</a></li>
+                <li><a href="media-coverage.html" class="nav-link" data-en="Media Coverage" data-ar="التغطية الإعلامية">Media Coverage</a></li>
+                <li><a href="media-gallery.html" class="nav-link" data-en="Media Gallery" data-ar="معرض الوسائط">Media Gallery</a></li>
+                <li><a href="obai_sukar_website.html#contact" class="nav-link" data-en="Contact" data-ar="التواصل">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title" data-en="Media Coverage & Articles" data-ar="التغطية الإعلامية والمقالات">Media Coverage & Articles</h1>
+            <p class="page-subtitle" data-en="International recognition and media coverage highlighting innovative work in technology, media, and humanitarian broadcasting" data-ar="اعتراف دولي وتغطية إعلامية تسلط الضوء على الأعمال المبتكرة في التكنولوجيا والإعلام والبث الإنساني">
+                International recognition and media coverage highlighting innovative work in technology, media, and humanitarian broadcasting
+            </p>
+        </div>
+
+        <!-- Featured Article -->
+        <div class="featured-article">
+            <div class="featured-content">
+                <div class="featured-badge" data-en="FEATURED COVERAGE" data-ar="تغطية مميزة">FEATURED COVERAGE</div>
+                <h2 data-en="Washington Post Recognition" data-ar="اعتراف واشنطن بوست">Washington Post Recognition</h2>
+                <p data-en="Featured as Syrian celebrity for innovative media work and humanitarian broadcasting during crisis periods." data-ar="تم تسليط الضوء عليه كشخصية سورية مشهورة للعمل الإعلامي المبتكر والبث الإنساني خلال فترات الأزمات.">
+                    Featured as Syrian celebrity for innovative media work and humanitarian broadcasting during crisis periods.
+                </p>
+                <a href="https://www.washingtonpost.com/world/middle_east/syria-diaspora-clubhouse-middle-east/2021/03/09/90a2a55e-7c28-11eb-8c5e-32e47b42b51b_story.html" class="article-link" data-en="Read Full Article" data-ar="اقرأ المقال كاملاً">Read Full Article</a>
+            </div>
+        </div>
+
+        <!-- Articles Grid -->
+        <div class="articles-grid" id="articlesGrid">
+            <!-- NPR Coverage -->
+            <div class="article-card">
+                <div class="article-image">
+                    📻
+                </div>
+                <div class="article-content">
+                    <div class="article-source" data-en="NPR (NATIONAL PUBLIC RADIO)" data-ar="إذاعة NPR الوطنية العامة">NPR (NATIONAL PUBLIC RADIO)</div>
+                    <h3 class="article-title" data-en="Radio Pirates Risk Dangers Of War To Reach Syrian People" data-ar="قراصنة الراديو يخاطرون بمخاطر الحرب للوصول إلى الشعب السوري">Radio Pirates Risk Dangers Of War To Reach Syrian People</h3>
+                    <div class="article-date" data-en="March 16, 2014" data-ar="16 مارس 2014">March 16, 2014</div>
+                    <p class="article-excerpt" data-en="Featured coverage of Radio Al-Kul's innovative crisis broadcasting solutions during Syrian conflict, highlighting technical innovation and humanitarian impact." data-ar="تغطية مميزة لحلول البث المبتكرة لراديو الكل خلال الصراع السوري، مع تسليط الضوء على الابتكار التقني والتأثير الإنساني.">
+                        Featured coverage of Radio Al-Kul's innovative crisis broadcasting solutions during Syrian conflict, highlighting technical innovation and humanitarian impact.
+                    </p>
+                    <a href="https://www.npr.org/2014/03/16/290615013/radio-pirates-risk-dangers-of-war-to-reach-syrian-people" class="article-link" data-en="Read Article" data-ar="اقرأ المقال">Read Article</a>
+                </div>
+            </div>
+
+            <!-- Al Jazeera Coverage -->
+            <div class="article-card">
+                <div class="article-image">
+                    📺
+                </div>
+                <div class="article-content">
+                    <div class="article-source" data-en="AL JAZEERA" data-ar="الجزيرة">AL JAZEERA</div>
+                    <h3 class="article-title" data-en="Syria's Opposition Radio Makes Waves" data-ar="راديو المعارضة السوري يحدث موجات">Syria's Opposition Radio Makes Waves</h3>
+                    <div class="article-date" data-en="April 7, 2014" data-ar="7 أبريل 2014">April 7, 2014</div>
+                    <p class="article-excerpt" data-en="In-depth coverage of Radio Al-Kul's impact on Syrian communities and its role in providing uncensored news during critical periods." data-ar="تغطية متعمقة لتأثير راديو الكل على المجتمعات السورية ودوره في توفير الأخبار غير الخاضعة للرقابة خلال الفترات الحرجة.">
+                        In-depth coverage of Radio Al-Kul's impact on Syrian communities and its role in providing uncensored news during critical periods.
+                    </p>
+                    <a href="https://www.aljazeera.com/features/2014/4/7/syrias-opposition-radio-makes-waves" class="article-link" data-en="Read Article" data-ar="اقرأ المقال">Read Article</a>
+                </div>
+            </div>
+
+            <!-- Syria TV Documentary -->
+            <div class="article-card">
+                <div class="article-image">
+                    🎬
+                </div>
+                <div class="article-content">
+                    <div class="article-source" data-en="SYRIA TV" data-ar="تلفزيون سوريا">SYRIA TV</div>
+                    <h3 class="article-title" data-en="Biographical Documentary Feature" data-ar="فيلم وثائقي سيرة ذاتية">Biographical Documentary Feature</h3>
+                    <div class="article-date" data-en="Documentary Special" data-ar="برنامج وثائقي خاص">Documentary Special</div>
+                    <p class="article-excerpt" data-en="Comprehensive biographical episode covering professional journey, achievements, and impact on Syrian media landscape." data-ar="حلقة سيرة ذاتية شاملة تغطي الرحلة المهنية والإنجازات والتأثير على المشهد الإعلامي السوري.">
+                        Comprehensive biographical episode covering professional journey, achievements, and impact on Syrian media landscape.
+                    </p>
+                    <a href="https://www.youtube.com/watch?v=xbHSJqgyKkc" class="article-link" data-en="Watch Documentary" data-ar="شاهد الوثائقي">Watch Documentary</a>
+                </div>
+            </div>
+
+            <!-- MLive Coverage -->
+            <div class="article-card">
+                <div class="article-image">
+                    📰
+                </div>
+                <div class="article-content">
+                    <div class="article-source" data-en="MLIVE" data-ar="إم لايف">MLIVE</div>
+                    <h3 class="article-title" data-en="SS Media Productions Expansion Coverage" data-ar="تغطية توسع SS Media Productions">SS Media Productions Expansion Coverage</h3>
+                    <div class="article-date" data-en="Business Feature" data-ar="ميزة الأعمال">Business Feature</div>
+                    <p class="article-excerpt" data-en="Coverage of SS Media Productions' growth and expansion in Michigan, highlighting business development and local economic impact." data-ar="تغطية نمو وتوسع SS Media Productions في ميشيغان، مع تسليط الضوء على تطوير الأعمال والتأثير الاقتصادي المحلي.">
+                        Coverage of SS Media Productions' growth and expansion in Michigan, highlighting business development and local economic impact.
+                    </p>
+                    <a href="https://www.mlive.com/galleries/7L54EBJSWFHTJAEPAMSY3ZOVIA/" class="article-link" data-en="View Gallery" data-ar="شاهد المعرض">View Gallery</a>
+                </div>
+            </div>
+
+            <!-- War is Boring / Medium -->
+            <div class="article-card">
+                <div class="article-image">
+                    ✍️
+                </div>
+                <div class="article-content">
+                    <div class="article-source" data-en="MEDIUM / WAR IS BORING" data-ar="ميديوم / الحرب مملة">MEDIUM / WAR IS BORING</div>
+                    <h3 class="article-title" data-en="Radio Kul Broadcasts for a Free Syria" data-ar="راديو الكل يبث من أجل سوريا حرة">Radio Kul Broadcasts for a Free Syria</h3>
+                    <div class="article-date" data-en="Analysis Feature" data-ar="ميزة التحليل">Analysis Feature</div>
+                    <p class="article-excerpt" data-en="Analysis of Radio Al-Kul's technical innovations and broadcasting strategies during conflict, examining the intersection of technology and resistance." data-ar="تحليل الابتكارات التقنية واستراتيجيات البث لراديو الكل خلال النزاع، مع فحص تقاطع التكنولوجيا والمقاومة.">
+                        Analysis of Radio Al-Kul's technical innovations and broadcasting strategies during conflict, examining the intersection of technology and resistance.
+                    </p>
+                    <a href="https://medium.com/war-is-boring/radio-kul-broadcasts-for-a-free-syria-14ee9292b1ae" class="article-link" data-en="Read Analysis" data-ar="اقرأ التحليل">Read Analysis</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Language switching functionality
+        let currentLanguage = 'en';
+        
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Update button states
+            document.getElementById('arabicBtn').classList.toggle('active', lang === 'ar');
+            document.getElementById('englishBtn').classList.toggle('active', lang === 'en');
+            
+            // Update text content for all elements with data attributes
+            const elements = document.querySelectorAll('[data-en][data-ar]');
+            elements.forEach(element => {
+                const text = lang === 'ar' ? element.getAttribute('data-ar') : element.getAttribute('data-en');
+                element.textContent = text;
+            });
+            
+            // Update document direction and language
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = lang === 'ar' ? 'ar' : 'en';
+            
+            // Update globe icons
+            const arabicGlobe = document.querySelector('#arabicBtn .globe-icon');
+            const englishGlobe = document.querySelector('#englishBtn .globe-icon');
+            
+            if (lang === 'ar') {
+                arabicGlobe.textContent = 'ع';
+                englishGlobe.textContent = '🌍';
+            } else {
+                arabicGlobe.textContent = '🌍';
+                englishGlobe.textContent = 'En';
+            }
+        }
+        
+        // Initialize language switcher
+        document.addEventListener('DOMContentLoaded', function() {
+            switchLanguage('en');
+        });
+
+        // Smooth scrolling and animations
+        window.addEventListener('load', function() {
+            const cards = document.querySelectorAll('.article-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.6s ease';
+                
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>

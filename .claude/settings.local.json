@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(start obai_sukar_website.html)",
+      "Read(//d/Applications/**)",
+      "WebFetch(domain:www.obaisukar.com)",
+      "WebSearch",
+      "Bash(start obai_sukar_website_final.html)",
+      "Bash(copy \"obai_sukar_website_final.html\" \"obai_sukar_website_stable_backup.html\")",
+      "Bash(start obai_sukar_website_animated.html)",
+      "Bash(cp:*)",
+      "Bash(start obai_sukar_website_enhanced.html)",
+      "WebFetch(domain:www.politanskisound.com)",
+      "WebFetch(domain:colinpinksound.com)",
+      "WebFetch(domain:www.lucyalittle.com)",
+      "WebFetch(domain:www.journoportfolio.com)",
+      "WebFetch(domain:obaisukar.com)",
+      "Bash(start obai_meta_enhanced.html)",
+      "Bash(git init:*)",
+      "Bash(git add:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

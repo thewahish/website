@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Gallery | أبي سكر - رائد الإعلام السوري الأمريكي ومهندس الصوت</title>
+    <style>
+        /* Import styles from main website */
+        @font-face {
+            font-family: 'Roboto';
+            src: url('./Fonts/Roboto-Light.ttf') format('truetype');
+            font-weight: 300;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Roboto';
+            src: url('./Fonts/Roboto-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Roboto';
+            src: url('./Fonts/Roboto-Medium.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Roboto';
+            src: url('./Fonts/Roboto-Black.ttf') format('truetype');
+            font-weight: 900;
+            font-style: normal;
+        }
+        
+        :root {
+            --deep-indigo: #292663;
+            --warm-gold: #FBB04C;
+            --sky-blue: #00AEEF;
+            --vivid-magenta: #EC008C;
+            --purple-plum: #92278F;
+            --white: #FFFFFF;
+            --light-gray: #F8F9FA;
+            --text-dark: #292663;
+            --text-light: #666666;
+            --border-light: #E8F4FD;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: var(--light-gray);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding-top: 100px;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 2000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 0.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-light);
+        }
+
+        .lang-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 40px;
+            background: transparent;
+            border: none;
+            border-radius: 20px;
+            color: var(--deep-indigo);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .lang-btn.active {
+            background: var(--deep-indigo);
+            color: var(--white);
+        }
+
+        .lang-btn:hover {
+            background: var(--sky-blue);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+        .globe-icon {
+            font-size: 1.2rem;
+            margin-right: 5px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-light);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px rgba(41, 38, 99, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--deep-indigo);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: var(--text-dark);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link:hover {
+            background: var(--deep-indigo);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            background: var(--white);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-title {
+            font-family: 'Roboto', Arial, sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--deep-indigo);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--warm-gold);
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Media Grid */
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .media-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .media-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--sky-blue), var(--vivid-magenta));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .media-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .media-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 174, 239, 0.2);
+        }
+
+        .media-thumbnail {
+            height: 200px;
+            background: linear-gradient(135deg, var(--sky-blue), var(--deep-indigo));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .media-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .media-thumbnail:hover img {
+            transform: scale(1.1);
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .media-thumbnail:hover .play-overlay {
+            opacity: 1;
+        }
+
+        .media-content {
+            padding: 2rem;
+        }
+
+        .media-title {
+            font-family: 'Roboto', Arial, sans-serif;
+            font-size: 1.4rem;
+            color: var(--deep-indigo);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .media-description {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .media-date {
+            color: var(--warm-gold);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .media-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--sky-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .media-link:hover {
+            color: var(--deep-indigo);
+            transform: translateX(5px);
+        }
+
+        .media-link::after {
+            content: '▶';
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .media-link:hover::after {
+            transform: translateX(3px);
+        }
+
+        /* Media Modal */
+        .media-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            max-width: 90vw;
+            max-height: 90vh;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: var(--white);
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .modal-iframe {
+            width: 800px;
+            height: 450px;
+            border: none;
+            border-radius: 10px;
+        }
+
+        /* RTL Support */
+        [dir="rtl"] .nav-container {
+            flex-direction: row-reverse;
+        }
+        
+        [dir="rtl"] .nav-menu {
+            flex-direction: row-reverse;
+        }
+        
+        [dir="rtl"] .language-switcher {
+            left: 20px;
+            right: auto;
+        }
+        
+        [dir="rtl"] .page-title::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        [dir="rtl"] .media-link::after {
+            content: '◀';
+            margin-left: 0;
+            margin-right: 0.5rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .media-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .modal-iframe {
+                width: 100%;
+                height: 250px;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                gap: 1rem;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                padding: 2rem;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="lang-btn" id="arabicBtn" onclick="switchLanguage('ar')">
+            <span class="globe-icon">🌍</span>ع
+        </button>
+        <button class="lang-btn active" id="englishBtn" onclick="switchLanguage('en')">
+            <span class="globe-icon">🌍</span>En
+        </button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="obai_sukar_website.html" class="logo" data-en="Obai Sukar" data-ar="أبي سكر">Obai Sukar</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="obai_sukar_website.html#home" class="nav-link" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                <li><a href="obai_sukar_website.html#about" class="nav-link" data-en="About" data-ar="حول">About</a></li>
+                <li><a href="obai_sukar_website.html#journey" class="nav-link" data-en="Journey" data-ar="المسيرة">Journey</a></li>
+                <li><a href="obai_sukar_website.html#projects" class="nav-link" data-en="Projects" data-ar="المشاريع">Projects</a></li>
+                <li><a href="obai_sukar_website.html#awards" class="nav-link" data-en="Awards" data-ar="الجوائز">Awards</a></li>
+                <li><a href="media-coverage.html" class="nav-link" data-en="Media Coverage" data-ar="التغطية الإعلامية">Media Coverage</a></li>
+                <li><a href="media-gallery-simple.html" class="nav-link" data-en="Media Gallery" data-ar="معرض الوسائط">Media Gallery</a></li>
+                <li><a href="obai_sukar_website.html#contact" class="nav-link" data-en="Contact" data-ar="التواصل">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title" data-en="Media Gallery" data-ar="معرض الوسائط">Media Gallery</h1>
+            <p class="page-subtitle" data-en="Videos, audio projects, documentaries, and media content showcasing professional work across technology, education, and humanitarian broadcasting" data-ar="مقاطع فيديو ومشاريع صوتية ووثائقيات ومحتوى إعلامي يعرض العمل المهني عبر التكنولوجيا والتعليم والبث الإنساني">
+                Videos, audio projects, documentaries, and media content showcasing professional work across technology, education, and humanitarian broadcasting
+            </p>
+        </div>
+
+        <!-- Media Grid -->
+        <div class="media-grid" id="mediaGrid">
+            <!-- Sample Media Items -->
+            
+            <!-- Karazah Channel Featured -->
+            <div class="media-card">
+                <div class="media-thumbnail" onclick="openMedia('https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                    📚
+                    <div class="play-overlay">▶</div>
+                </div>
+                <div class="media-content">
+                    <h3 class="media-title" data-en="Karazah Channel - Arabic Learning Series" data-ar="قناة كرزة - سلسلة تعلم العربية">Karazah Channel - Arabic Learning Series</h3>
+                    <div class="media-date" data-en="Latest Content" data-ar="أحدث المحتوى">Latest Content</div>
+                    <p class="media-description" data-en="Educational content for children featuring innovative teaching methods and engaging storytelling to teach Arabic language fundamentals." data-ar="محتوى تعليمي للأطفال يتضمن طرق تدريس مبتكرة وحكايات جذابة لتعليم أساسيات اللغة العربية.">
+                        Educational content for children featuring innovative teaching methods and engaging storytelling to teach Arabic language fundamentals.
+                    </p>
+                    <a href="https://www.youtube.com/c/karazahchannel" class="media-link" data-en="Visit Channel" data-ar="زيارة القناة">Visit Channel</a>
+                </div>
+            </div>
+
+            <!-- Syria TV Documentary -->
+            <div class="media-card">
+                <div class="media-thumbnail" onclick="openMedia('https://www.youtube.com/embed/xbHSJqgyKkc')">
+                    🎬
+                    <div class="play-overlay">▶</div>
+                </div>
+                <div class="media-content">
+                    <h3 class="media-title" data-en="Syria TV Biographical Feature" data-ar="فيلم سيرة ذاتية على تلفزيون سوريا">Syria TV Biographical Feature</h3>
+                    <div class="media-date" data-en="Featured Documentary" data-ar="وثائقي مميز">Featured Documentary</div>
+                    <p class="media-description" data-en="Comprehensive biographical documentary covering professional journey, achievements, and contributions to Syrian and international media landscape." data-ar="فيلم وثائقي شامل عن السيرة الذاتية يغطي الرحلة المهنية والإنجازات والمساهمات في المشهد الإعلامي السوري والدولي.">
+                        Comprehensive biographical documentary covering professional journey, achievements, and contributions to Syrian and international media landscape.
+                    </p>
+                    <a href="https://www.youtube.com/watch?v=xbHSJqgyKkc" class="media-link" data-en="Watch Documentary" data-ar="شاهد الوثائقي">Watch Documentary</a>
+                </div>
+            </div>
+
+            <!-- Cloud Kumo Project -->
+            <div class="media-card">
+                <div class="media-thumbnail">
+                    🎭
+                    <div class="play-overlay">▶</div>
+                </div>
+                <div class="media-content">
+                    <h3 class="media-title" data-en="Cloud Kumo - Award-Winning Sound Design" data-ar="كلاود كومو - تصميم الصوت الحائز على جوائز">Cloud Kumo - Award-Winning Sound Design</h3>
+                    <div class="media-date" data-en="Student Academy Award Winner 2016" data-ar="فائز بجائزة أكاديمية الطلاب 2016">Student Academy Award Winner 2016</div>
+                    <p class="media-description" data-en="Silver Award-winning sound design project showcasing advanced audio engineering techniques and innovative storytelling through sound." data-ar="مشروع تصميم صوتي حائز على الجائزة الفضية يعرض تقنيات هندسة صوتية متقدمة وحكايات مبتكرة من خلال الصوت.">
+                        Silver Award-winning sound design project showcasing advanced audio engineering techniques and innovative storytelling through sound.
+                    </p>
+                    <a href="#" class="media-link" data-en="View Project Details" data-ar="عرض تفاصيل المشروع">View Project Details</a>
+                </div>
+            </div>
+
+            <!-- Radio Al-Kul Archive -->
+            <div class="media-card">
+                <div class="media-thumbnail">
+                    📻
+                    <div class="play-overlay">▶</div>
+                </div>
+                <div class="media-content">
+                    <h3 class="media-title" data-en="Radio Al-Kul - Crisis Broadcasting Archive" data-ar="راديو الكل - أرشيف البث في الأزمات">Radio Al-Kul - Crisis Broadcasting Archive</h3>
+                    <div class="media-date" data-en="Historical Coverage 2012-2016" data-ar="التغطية التاريخية 2012-2016">Historical Coverage 2012-2016</div>
+                    <p class="media-description" data-en="Archive of independent radio broadcasts providing critical news and information during Syrian conflict, reaching 500,000+ daily listeners." data-ar="أرشيف بث إذاعي مستقل قدم أخباراً ومعلومات حيوية خلال النزاع السوري، ووصل إلى 500,000+ مستمع يومياً.">
+                        Archive of independent radio broadcasts providing critical news and information during Syrian conflict, reaching 500,000+ daily listeners.
+                    </p>
+                    <a href="#" class="media-link" data-en="Listen to Archive" data-ar="استمع للأرشيف">Listen to Archive</a>
+                </div>
+            </div>
+
+            <!-- Professional Interviews -->
+            <div class="media-card">
+                <div class="media-thumbnail">
+                    🎤
+                    <div class="play-overlay">▶</div>
+                </div>
+                <div class="media-content">
+                    <h3 class="media-title" data-en="Professional Interviews & Discussions" data-ar="مقابلات ومناقشات مهنية">Professional Interviews & Discussions</h3>
+                    <div class="media-date" data-en="Various Media Appearances" data-ar="ظهور إعلامي متنوع">Various Media Appearances</div>
+                    <p class="media-description" data-en="Interviews discussing technology leadership, crisis management, and innovative solutions in media and IT infrastructure." data-ar="مقابلات تناقش القيادة التقنية وإدارة الأزمات والحلول المبتكرة في الإعلام والبنية التحتية لتكنولوجيا المعلومات.">
+                        Interviews discussing technology leadership, crisis management, and innovative solutions in media and IT infrastructure.
+                    </p>
+                    <a href="#" class="media-link" data-en="Watch Interviews" data-ar="شاهد المقابلات">Watch Interviews</a>
+                </div>
+            </div>
+
+            <!-- Client Work Showcase -->
+            <div class="media-card">
+                <div class="media-thumbnail">
+                    🏢
+                    <div class="play-overlay">▶</div>
+                </div>
+                <div class="media-content">
+                    <h3 class="media-title" data-en="Client Project Showcase" data-ar="عرض مشاريع العملاء">Client Project Showcase</h3>
+                    <div class="media-date" data-en="Professional Portfolio" data-ar="محفظة مهنية">Professional Portfolio</div>
+                    <p class="media-description" data-en="Showcase of professional work across multiple clients including sound design, media production, and technology solutions." data-ar="عرض للعمل المهني عبر عملاء متعددين بما في ذلك تصميم الصوت والإنتاج الإعلامي والحلول التقنية.">
+                        Showcase of professional work across multiple clients including sound design, media production, and technology solutions.
+                    </p>
+                    <a href="#" class="media-link" data-en="View Portfolio" data-ar="عرض المحفظة">View Portfolio</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Media Modal -->
+    <div class="media-modal" id="mediaModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeMedia()">×</span>
+            <iframe class="modal-iframe" id="modalIframe" src="" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script>
+        // Language switching functionality
+        let currentLanguage = 'en';
+        
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Update button states
+            document.getElementById('arabicBtn').classList.toggle('active', lang === 'ar');
+            document.getElementById('englishBtn').classList.toggle('active', lang === 'en');
+            
+            // Update text content for all elements with data attributes
+            const elements = document.querySelectorAll('[data-en][data-ar]');
+            elements.forEach(element => {
+                const text = lang === 'ar' ? element.getAttribute('data-ar') : element.getAttribute('data-en');
+                element.textContent = text;
+            });
+            
+            // Update document direction and language
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = lang === 'ar' ? 'ar' : 'en';
+            
+            // Update globe icons
+            const arabicGlobe = document.querySelector('#arabicBtn .globe-icon');
+            const englishGlobe = document.querySelector('#englishBtn .globe-icon');
+            
+            if (lang === 'ar') {
+                arabicGlobe.textContent = 'ع';
+                englishGlobe.textContent = '🌍';
+            } else {
+                arabicGlobe.textContent = '🌍';
+                englishGlobe.textContent = 'En';
+            }
+        }
+        
+        // Initialize language switcher
+        document.addEventListener('DOMContentLoaded', function() {
+            switchLanguage('en');
+        });
+
+        // Media modal functionality
+        function openMedia(src) {
+            const modal = document.getElementById('mediaModal');
+            const iframe = document.getElementById('modalIframe');
+            iframe.src = src;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMedia() {
+            const modal = document.getElementById('mediaModal');
+            const iframe = document.getElementById('modalIframe');
+            iframe.src = '';
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('mediaModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeMedia();
+            }
+        });
+
+        // Animations
+        window.addEventListener('load', function() {
+            const cards = document.querySelectorAll('.media-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.6s ease';
+                
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>

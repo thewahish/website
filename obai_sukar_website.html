@@ -1,0 +1,1956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obai Sukar | Syrian-American Media Pioneer & Sound Engineer</title>
+    <style>
+        /* Font Face Declarations */
+        @font-face {
+            font-family: 'Roboto';
+            src: url('./Fonts/Roboto-Light.ttf') format('truetype');
+            font-weight: 300;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Roboto';
+            src: url('./Fonts/Roboto-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Roboto';
+            src: url('./Fonts/Roboto-Medium.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Roboto';
+            src: url('./Fonts/Roboto-Black.ttf') format('truetype');
+            font-weight: 900;
+            font-style: normal;
+        }
+        
+        :root {
+            --deep-indigo: #292663;
+            --warm-gold: #FBB04C;
+            --sky-blue: #00AEEF;
+            --vivid-magenta: #EC008C;
+            --purple-plum: #92278F;
+            --white: #FFFFFF;
+            --light-gray: #F8F9FA;
+            --text-dark: #292663;
+            --text-light: #666666;
+            --border-light: #E8F4FD;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background Elements */
+        .bg-decoration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            background-image: url('./BG/Web/Obai-website_BG_2.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 1;
+            pointer-events: none;
+        }
+        
+        .bg-decoration::after {
+            content: '';
+            position: absolute;
+            top: 100vh;
+            left: 0;
+            width: 100%;
+            height: 300vh;
+            background: var(--white);
+            z-index: -1;
+        }
+
+        .floating-icon {
+            position: absolute;
+            color: var(--deep-indigo);
+            font-size: 2rem;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-light);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 2px 20px rgba(41, 38, 99, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--deep-indigo);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-dark);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(41, 38, 99, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .nav-link:hover::before {
+            left: 100%;
+        }
+
+        .nav-link:hover {
+            background: var(--deep-indigo);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            position: relative;
+            padding: 6rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-logo {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .main-logo {
+            height: 120px;
+            width: auto;
+            filter: drop-shadow(0 4px 8px rgba(255, 255, 255, 0.3));
+        }
+
+        .hero-title {
+            font-family: 'Roboto', Arial, sans-serif;
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 2px;
+        }
+
+        .hero-subtitle {
+            font-family: 'Roboto', Arial, sans-serif;
+            font-size: 2rem;
+            color: var(--white);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-description {
+            font-family: 'Roboto', Arial, sans-serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .cta-buttons a {
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .cta-buttons a:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.05);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--white);
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-family: 'Roboto', Arial, sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--deep-indigo);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--warm-gold);
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--sky-blue), var(--vivid-magenta));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 174, 239, 0.2);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            color: var(--sky-blue);
+            margin-bottom: 1rem;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80px;
+        }
+
+        .card-title {
+            font-family: 'Roboto', Arial, sans-serif;
+            font-size: 1.5rem;
+            color: var(--deep-indigo);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .card-text {
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            margin: 3rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--sky-blue), var(--purple-plum));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 3rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .timeline-content {
+            margin-left: 3rem;
+            text-align: left;
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-light);
+            position: relative;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -30px;
+            width: 0;
+            height: 0;
+            border: 15px solid transparent;
+            border-right-color: var(--white);
+            transform: translateY(-50%);
+        }
+
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--warm-gold);
+            position: absolute;
+            left: 20px;
+            transform: translateX(-50%);
+            z-index: 1;
+            box-shadow: 0 0 0 4px var(--white), 0 0 20px rgba(251, 176, 76, 0.5);
+        }
+
+        .timeline-year {
+            font-size: 1.2rem;
+            color: var(--warm-gold);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-family: 'Roboto', Arial, sans-serif;
+            font-size: 1.3rem;
+            color: var(--deep-indigo);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .timeline-company {
+            font-weight: bold;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .stat-item {
+            padding: 2rem;
+            border-radius: 15px;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            background-image: url('./Squares_/Asset_1.png');
+            background-size: 25% auto;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        
+        .stat-item:nth-child(1) {
+            background-position: 0% center;
+        }
+        
+        .stat-item:nth-child(2) {
+            background-position: 33.33% center;
+        }
+        
+        .stat-item:nth-child(3) {
+            background-position: 66.66% center;
+        }
+        
+        .stat-item:nth-child(4) {
+            background-position: 100% center;
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Projects Showcase */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(46, 134, 193, 0.2);
+        }
+
+        .project-image {
+            height: 200px;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--deep-indigo);
+            font-size: 3rem;
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-title {
+            font-family: 'Roboto', Arial, sans-serif;
+            font-size: 1.4rem;
+            color: var(--deep-indigo);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .project-role {
+            color: var(--warm-gold);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-achievement {
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        /* Awards Section */
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .award-card {
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(251, 176, 76, 0.3);
+        }
+        
+        .award-card:nth-child(1) {
+            background: linear-gradient(135deg, var(--warm-gold), var(--vivid-magenta));
+        }
+        
+        .award-card:nth-child(2) {
+            background: linear-gradient(135deg, var(--sky-blue), var(--purple-plum));
+        }
+        
+        .award-card:nth-child(3) {
+            background: linear-gradient(135deg, var(--deep-indigo), var(--sky-blue));
+        }
+        
+        .award-card:nth-child(4) {
+            background: linear-gradient(135deg, var(--vivid-magenta), var(--warm-gold));
+        }
+
+        .award-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: bounce 2s infinite;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-15px); }
+            60% { transform: translateY(-7px); }
+        }
+
+        .award-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .award-year {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .award-category {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--white);
+            border-radius: 30px;
+            padding: 4rem 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 174, 239, 0.2);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--sky-blue);
+            margin-bottom: 1rem;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60px;
+        }
+
+        .contact-title {
+            font-size: 1.2rem;
+            color: var(--deep-indigo);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .footer {
+            background-image: url('./Footer/Footer@4x.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: var(--white);
+            text-align: center;
+            padding: 3rem 2rem;
+            position: relative;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 0;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--warm-gold);
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Bottom Navigation for Mobile */
+        .mobile-bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            border-top: 1px solid var(--border-light);
+            display: none;
+            justify-content: space-around;
+            padding: 8px 0;
+            z-index: 1000;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px 12px;
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .mobile-nav-item.active {
+            color: var(--sky-blue);
+            background: rgba(0, 174, 239, 0.1);
+        }
+
+        .mobile-nav-icon {
+            font-size: 1.2rem;
+            margin-bottom: 2px;
+        }
+
+        /* Collapsible Sections for Mobile */
+        .mobile-collapsible {
+            display: none;
+        }
+
+        .mobile-section-toggle {
+            background: var(--sky-blue);
+            color: var(--white);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin: 1rem auto;
+            display: block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 174, 239, 0.3);
+        }
+
+        .mobile-section-toggle:hover {
+            background: var(--deep-indigo);
+            transform: translateY(-2px);
+        }
+
+        .mobile-section-toggle.expanded::after {
+            content: " ▲";
+        }
+
+        .mobile-section-toggle:not(.expanded)::after {
+            content: " ▼";
+        }
+
+        /* Accordion Styles */
+        .accordion-item {
+            margin-bottom: 1rem;
+        }
+
+        .accordion-header {
+            background: var(--light-gray);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background: var(--border-light);
+        }
+
+        .accordion-header.active {
+            background: var(--sky-blue);
+            color: var(--white);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            border: 0 solid var(--border-light);
+            border-radius: 0 0 8px 8px;
+        }
+
+        .accordion-content.active {
+            max-height: 1000px;
+            border-width: 0 1px 1px 1px;
+            padding: 1rem;
+        }
+
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-header.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Tab System for Mobile */
+        .mobile-tabs {
+            display: none;
+            border-bottom: 1px solid var(--border-light);
+            margin-bottom: 2rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .mobile-tab {
+            display: inline-block;
+            padding: 12px 20px;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .mobile-tab.active {
+            color: var(--sky-blue);
+            border-bottom-color: var(--sky-blue);
+        }
+
+        .mobile-tab-content {
+            display: none;
+        }
+
+        .mobile-tab-content.active {
+            display: block;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 6rem 1rem 8rem;
+                min-height: 100vh;
+            }
+
+            .main-logo {
+                height: 80px;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+                letter-spacing: 1px;
+            }
+
+            .hero-subtitle {
+                font-size: 1.4rem;
+            }
+
+            .hero-description {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .nav-menu {
+                flex-direction: column;
+                gap: 1rem;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                padding: 2rem;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+                display: none;
+            }
+
+            .nav-menu.active { display: flex; }
+
+            .timeline::before { left: 20px; }
+            .timeline-item { flex-direction: column !important; }
+            .timeline-content {
+                margin: 0 0 0 3rem !important;
+                text-align: left !important;
+            }
+            .timeline-content::before { display: none; }
+            .timeline-dot { left: 20px; }
+
+            .section-title { font-size: 2rem; }
+            .cards-grid, .projects-grid, .awards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Enable mobile-specific components */
+            .mobile-bottom-nav {
+                display: flex;
+            }
+
+            .mobile-collapsible {
+                display: block;
+            }
+
+            .mobile-tabs {
+                display: block;
+            }
+
+            /* Hide sections by default on mobile */
+            body.mobile-optimized .section:not(.always-visible) {
+                display: none;
+            }
+
+            body.mobile-optimized .section.active {
+                display: block;
+            }
+
+            /* Compact mobile sections */
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            /* Reduce card grid to single column with spacing */
+            .cards-grid {
+                gap: 1rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+
+            /* Limit visible items initially */
+            .mobile-limited .card:nth-child(n+3) {
+                display: none;
+            }
+
+            .mobile-limited .timeline-item:nth-child(n+3) {
+                display: none;
+            }
+
+            .mobile-limited .project-card:nth-child(n+3) {
+                display: none;
+            }
+        }
+
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--sky-blue);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+        }
+
+        /* Company Logos/Icons */
+        .company-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--sky-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Background Decoration -->
+    <div class="bg-decoration"></div>
+
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">Obai Sukar</a>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#journey" class="nav-link">Journey</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#awards" class="nav-link">Awards</a></li>
+                <li><a href="#companies" class="nav-link">Companies</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="media-coverage.html" class="nav-link">Media Coverage</a></li>
+                <li><a href="media-gallery.html" class="nav-link">Media Gallery</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-logo">
+                <img src="./Logo White/Logo_White.png" alt="Obai Sukar" class="main-logo">
+            </div>
+            <h1 class="hero-title">Obai Sukar</h1>
+            <h2 class="hero-subtitle">Syrian-American Media Pioneer & Sound Engineer</h2>
+            <p class="hero-description">
+                Over two decades of excellence in sound engineering, animation, and humanitarian media. 
+                From award-winning films to educational platforms reaching millions globally.
+            </p>
+            <div class="cta-buttons">
+                <a href="#projects"><img src="./Buttons_/Explore Projects.png" alt="Explore Projects" style="height: 50px; margin-right: 1rem;"></a>
+                <a href="#contact"><img src="./Buttons_/Get In Touch.png" alt="Get In Touch" style="height: 50px;"></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section always-visible">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">25+</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">715K+</div>
+                <div class="stat-label">Karazah Subscribers</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">301M+</div>
+                <div class="stat-label">Video Views</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">500K+</div>
+                <div class="stat-label">Radio Listeners</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section fade-in mobile-section-content">
+        <div class="section-header">
+            <h2 class="section-title" data-en="Executive Summary" data-ar="الملخص التنفيذي">Executive Summary</h2>
+            <p class="section-subtitle" data-en="A distinguished Syrian-American professional whose multifaceted career spans over two decades in media, technology, and humanitarian sectors." data-ar="مهني سوري أمريكي متميز، تمتد مسيرته المهنية متعددة الأوجه لأكثر من عقدين في قطاعات الإعلام والتكنولوجيا والعمل الإنساني.">
+                A distinguished Syrian-American professional whose multifaceted career spans over two decades
+                in media, technology, and humanitarian sectors.
+            </p>
+        </div>
+
+        <!-- Mobile Tab Navigation -->
+        <div class="mobile-tabs">
+            <button class="mobile-tab active" onclick="showMobileTab('about-expertise')">Expertise</button>
+            <button class="mobile-tab" onclick="showMobileTab('about-innovation')">Innovation</button>
+        </div>
+
+        <div id="about-expertise" class="mobile-tab-content active">
+            <div class="cards-grid mobile-limited">
+                <div class="card">
+                    <div class="card-icon"><img src="./Icons/Executive Summary/Sound Engineering Excellence@4x.png" alt="Sound Engineering" style="width: 60px; height: 60px;"></div>
+                    <h3 class="card-title" data-en="Sound Engineering Excellence" data-ar="التميز في هندسة الصوت">Sound Engineering Excellence</h3>
+                    <p class="card-text" data-en="Silver Award winner at Student Academy Awards for 'Cloud Kumo'. Over 25 years of experience in animation and film audio production with hundreds of credited works." data-ar="الفائز بالجائزة الفضية في جوائز أكاديمية الطلاب عن فيلم 'كلاود كومو'. أكثر من 25 عاماً من الخبرة في إنتاج الصوت للرسوم المتحركة والأفلام مع مئات الأعمال المعتمدة.">
+                        Silver Award winner at Student Academy Awards for "Cloud Kumo". Over 25 years of experience
+                        in animation and film audio production with hundreds of credited works.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><img src="./Icons/Executive Summary/Media Entrepreneurship@4x.png" alt="Media Entrepreneurship" style="width: 60px; height: 60px;"></div>
+                    <h3 class="card-title" data-en="Media Entrepreneurship" data-ar="ريادة الأعمال الإعلامية">Media Entrepreneurship</h3>
+                    <p class="card-text" data-en="Founder of SS Media Productions - full-service media company specializing in 3D animation, visual effects, and bilingual voiceovers serving international clients." data-ar="مؤسس شركة SS Media Productions - شركة إعلامية متكاملة متخصصة في الرسوم المتحركة ثلاثية الأبعاد والمؤثرات البصرية والتعليق الصوتي ثنائي اللغة لخدمة العملاء الدوليين.">
+                        Founder of SS Media Productions - full-service media company specializing in 3D animation,
+                        visual effects, and bilingual voiceovers serving international clients.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mobile-collapsible">
+                <button class="mobile-section-toggle" onclick="toggleMobileSection('about-more-cards')">Show All Areas of Expertise</button>
+                <div id="about-more-cards" style="display: none;">
+                    <div class="cards-grid">
+                        <div class="card">
+                            <div class="card-icon"><img src="./Icons/Executive Summary/Humanitarian Broadcasting@4x.png" alt="Humanitarian Broadcasting" style="width: 60px; height: 60px;"></div>
+                            <h3 class="card-title" data-en="Humanitarian Broadcasting" data-ar="البث الإنساني">Humanitarian Broadcasting</h3>
+                            <p class="card-text" data-en="Co-founded Radio Alkul during Syrian civil war, reaching 500,000 listeners across seven provinces. Continues operations serving Syrian diaspora globally." data-ar="شارك في تأسيس راديو الكل خلال الحرب الأهلية السورية، ووصل إلى 500,000 مستمع عبر سبع محافظات. يستمر في العمل لخدمة الشتات السوري عالمياً.">
+                                Co-founded Radio Alkul during Syrian civil war, reaching 500,000 listeners across seven provinces.
+                                Continues operations serving Syrian diaspora globally.
+                            </p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon"><img src="./Icons/Executive Summary/Educational Innovation@4x.png" alt="Educational Innovation" style="width: 60px; height: 60px;"></div>
+                            <h3 class="card-title" data-en="Educational Innovation" data-ar="الابتكار التعليمي">Educational Innovation</h3>
+                            <p class="card-text" data-en="Co-creator of Karazah Channel - educational platform with 400K+ subscribers and 160M+ views, teaching Arabic to children worldwide." data-ar="شارك في إنشاء قناة كرزة - منصة تعليمية تضم أكثر من 400 ألف مشترك و160 مليون مشاهدة، تعلم اللغة العربية للأطفال حول العالم.">
+                                Co-creator of Karazah Channel - educational platform with 400K+ subscribers and 160M+ views,
+                                teaching Arabic to children worldwide.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="about-innovation" class="mobile-tab-content" style="display: none;">
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🎬 Media Innovation</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Pioneering media solutions that bridge cultural gaps and serve humanitarian causes. From independent radio broadcasting to global educational platforms.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🎵 Audio Excellence</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Award-winning sound engineering with Academy recognition. Specialized in animation audio, film production, and multilingual voice-over work.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Journey -->
+    <section id="journey" class="section fade-in">
+        <div class="section-header">
+            <h2 class="section-title" data-en="Professional Journey" data-ar="الرحلة المهنية">Professional Journey</h2>
+            <p class="section-subtitle" data-en="From Damascus to Hollywood to Michigan - A career spanning continents and touching millions of lives" data-ar="من دمشق إلى هوليوود إلى ميشيغان - مسيرة مهنية تمتد عبر القارات وتلمس حياة الملايين">
+                From Damascus to Hollywood to Michigan - A career spanning continents and touching millions of lives
+            </p>
+        </div>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">1999-2000</div>
+                    <h3 class="timeline-title" data-en="Early Beginnings" data-ar="البدايات المبكرة">Early Beginnings</h3>
+                    <div class="timeline-company" data-en="Spacetoon & Venus Center" data-ar="سبيستون ومركز فينوس">Spacetoon & Venus Center</div>
+                    <p data-en="Started at age 17 as sound engineer and vocalist. Built first computer in 8th grade, recorded first album in 11th grade. Early exposure to animation industry." data-ar="بدأ في سن 17 كمهندس صوت ومطرب. بنى أول حاسوب في الصف الثامن، وسجل أول ألبوم في الصف الحادي عشر. التعرض المبكر لصناعة الرسوم المتحركة.">Started at age 17 as sound engineer and vocalist. Built first computer in 8th grade, 
+                    recorded first album in 11th grade. Early exposure to animation industry.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2003-2005</div>
+                    <h3 class="timeline-title" data-en="Educational Foundation" data-ar="الأساس التعليمي">Educational Foundation</h3>
+                    <div class="timeline-company" data-en="Damascus Institute & Los Angeles Recording School" data-ar="معهد دمشق ومدرسة لوس أنجلوس للتسجيل">Damascus Institute & Los Angeles Recording School</div>
+                    <p data-en="Graduated from Intermediate Institute for Printing and Publishing (2003). Earned diploma in sound engineering from LARS Hollywood (2005)." data-ar="تخرج من المعهد المتوسط للطباعة والنشر (2003). حصل على دبلوم في هندسة الصوت من LARS هوليوود (2005).">Graduated from Intermediate Institute for Printing and Publishing (2003). 
+                    Earned diploma in sound engineering from LARS Hollywood (2005).</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2004-2010</div>
+                    <h3 class="timeline-title" data-en="Entrepreneurial Launch & Spacetoon Leadership" data-ar="إطلاق ريادة الأعمال وقيادة سبيستون">Entrepreneurial Launch & Spacetoon Leadership</h3>
+                    <div class="timeline-company" data-en="Audio-Blast & Spacetoon Head of Sound" data-ar="أوديو بلاست ورئيس قسم الصوت في سبيستون">Audio-Blast & Spacetoon Head of Sound</div>
+                    <p data-en="Founded Audio-Blast company (2004). Served as Head of Sound Department at Spacetoon (2006-2010), creating audio identity for hundreds of Arabic-dubbed cartoons including Gundam Wing, Detective Conan, Beyblade." data-ar="أسس شركة أوديو بلاست (2004). عمل كرئيس قسم الصوت في سبيستون (2006-2010)، وأنشأ الهوية الصوتية لمئات من الرسوم المتحركة المدبلجة بالعربية بما في ذلك جاندام وينغ والمحقق كونان وبيبليد.">Founded Audio-Blast company (2004). Served as Head of Sound Department at Spacetoon (2006-2010), 
+                    creating audio identity for hundreds of Arabic-dubbed cartoons including Gundam Wing, Detective Conan, Beyblade.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2012-2014</div>
+                    <h3 class="timeline-title" data-en="Humanitarian Media" data-ar="الإعلام الإنساني">Humanitarian Media</h3>
+                    <div class="timeline-company" data-en="Radio Alkul - Istanbul" data-ar="راديو الكل - إسطنبول">Radio Alkul - Istanbul</div>
+                    <p data-en="Co-founded independent Syrian news station during civil war. Served as Program Director and Sound Engineer, reaching 500,000 daily listeners across seven Syrian provinces through innovative mobile FM transmission." data-ar="شارك في تأسيس محطة إخبارية سورية مستقلة خلال الحرب الأهلية. عمل كمدير برامج ومهندس صوت، ووصل إلى 500,000 مستمع يومياً عبر سبع محافظات سورية من خلال بث إذاعي متنقل مبتكر.">Co-founded independent Syrian news station during civil war. Served as Program Director and Sound Engineer, 
+                    reaching 500,000 daily listeners across seven Syrian provinces through innovative mobile FM transmission.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2016-Present</div>
+                    <h3 class="timeline-title" data-en="Media Empire & Educational Impact" data-ar="إمبراطورية إعلامية وتأثير تعليمي">Media Empire & Educational Impact</h3>
+                    <div class="timeline-company" data-en="SS Media Productions & Karazah Channel" data-ar="SS Media Productions وقناة كرزة">SS Media Productions & Karazah Channel</div>
+                    <p data-en="Founded full-service media company in Flint, Michigan. Co-created Karazah Channel reaching 400K+ subscribers and 160M+ views, teaching Arabic to children globally with international production team." data-ar="أسس شركة إعلامية متكاملة في فلينت، ميشيغان. شارك في إنشاء قناة كرزة التي وصلت إلى أكثر من 400 ألف مشترك و160 مليون مشاهدة، وتعلم اللغة العربية للأطفال عالمياً بفريق إنتاج دولي.">Founded full-service media company in Flint, Michigan. Co-created Karazah Channel reaching 400K+ subscribers 
+                    and 160M+ views, teaching Arabic to children globally with international production team.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2020-Present</div>
+                    <h3 class="timeline-title" data-en="Technology Leadership & Continued Innovation" data-ar="قيادة تقنية وابتكار مستمر">Technology Leadership & Continued Innovation</h3>
+                    <div class="timeline-company" data-en="Synergy Senior Management & AYA Animations" data-ar="Synergy Senior Management وAYA Animations">Synergy Senior Management & AYA Animations</div>
+                    <p data-en="IT Director overseeing technology for $75M+ senior living operations. Voice Over Supervisor for 'Aya and Yusuf' series. Continues humanitarian work and educational content creation." data-ar="مدير تقنية المعلومات يشرف على التقنية لعمليات رعاية كبار السن بقيمة 75+ مليون دولار. مشرف التعليق الصوتي لمسلسل 'آية ويوسف'. يواصل العمل الإنساني وإنشاء المحتوى التعليمي.">IT Director overseeing technology for $75M+ senior living operations. Voice Over Supervisor for "Aya and Yusuf" series. 
+                    Continues humanitarian work and educational content creation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notable Projects -->
+    <section id="projects" class="section fade-in">
+        <div class="section-header">
+            <h2 class="section-title" data-en="Notable Projects & Achievements" data-ar="المشاريع والإنجازات البارزة">Notable Projects & Achievements</h2>
+            <p class="section-subtitle" data-en="From award-winning films to global educational platforms - Projects that have made a lasting impact" data-ar="من الأفلام الحائزة على جوائز إلى المنصات التعليمية العالمية - مشاريع تركت أثراً دائماً">
+                From award-winning films to global educational platforms - Projects that have made a lasting impact
+            </p>
+        </div>
+        
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image"><img src="./Logos/Cloud-Kumo.png" alt="Cloud Kumo" style="width: 120px; height: auto; border-radius: 10px;"></div>
+                <div class="project-content">
+                    <h3 class="project-title" data-en="Cloud Kumo (2016)" data-ar="كلاود كومو (2016)">Cloud Kumo (2016)</h3>
+                    <div class="project-role" data-en="Sound Designer & Mixer" data-ar="مصمم ومهندس الصوت">Sound Designer & Mixer</div>
+                    <div class="project-achievement" data-en="Silver Award - Student Academy Awards (Alternative Category)" data-ar="جائزة فضية - جوائز أكاديمية الطلاب (فئة بديلة)">Silver Award - Student Academy Awards (Alternative Category)</div>
+                    <p data-en="Breakthrough cinematic project showcasing advanced audio engineering in storytelling. International recognition for technical excellence in sound design." data-ar="مشروع سينمائي رائد يظهر هندسة صوتية متقدمة في سرد القصص. اعتراف دولي بالتميز التقني في تصميم الصوت.">Breakthrough cinematic project showcasing advanced audio engineering in storytelling. 
+                    International recognition for technical excellence in sound design.</p>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image"><img src="./Logos/Karazah-logo.png" alt="Karazah" style="width: 120px; height: auto; border-radius: 10px;"></div>
+                <div class="project-content">
+                    <h3 class="project-title" data-en="Karazah Channel" data-ar="قناة كرزة">Karazah Channel</h3>
+                    <div class="project-role" data-en="Co-founder & Director" data-ar="شريك مؤسس ومخرج">Co-founder & Director</div>
+                    <div class="project-achievement" data-en="715K+ Subscribers | 301M+ Views" data-ar="715+ ألف مشترك | 301+ مليون مشاهدة">715K+ Subscribers | 301M+ Views</div>
+                    <p data-en="Educational YouTube platform teaching Arabic fundamentals through engaging content. International production team from nine countries creating culturally sensitive content." data-ar="منصة يوتيوب تعليمية تعلم أساسيات اللغة العربية من خلال محتوى جذاب. فريق إنتاج دولي من تسعة بلدان ينشئ محتوى حساس ثقافياً.">Educational YouTube platform teaching Arabic fundamentals through engaging content. 
+                    International production team from nine countries creating culturally sensitive content.</p>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image"><img src="./Logos/راديو الكل.png" alt="Radio Alkul" style="width: 120px; height: auto; border-radius: 10px;"></div>
+                <div class="project-content">
+                    <h3 class="project-title">Radio Alkul</h3>
+                    <div class="project-role">Co-founder, Program Director & Sound Engineer</div>
+                    <div class="project-achievement">500K Daily Listeners | 7 Syrian Provinces</div>
+                    <p>Independent Syrian radio station broadcasting uncensored news during civil war. 
+                    Innovative mobile FM transmission reaching conflict zones with critical information.</p>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image"><img src="./Logos/Spacetoon_logo.png" alt="Spacetoon" style="width: 120px; height: auto; border-radius: 10px;"></div>
+                <div class="project-content">
+                    <h3 class="project-title">Spacetoon Audio Legacy</h3>
+                    <div class="project-role">Head of Sound Department (2006-2010)</div>
+                    <div class="project-achievement">Hundreds of Animated Series</div>
+                    <p>Created audio identity for major Arabic-dubbed series including Gundam Wing, Detective Conan, 
+                    Beyblade, Samurai Jack. Established channel's distinctive sound brand.</p>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image"><img src="./Logos/Logo (Horizontal).png" alt="Documentary" style="width: 120px; height: auto; border-radius: 10px;"></div>
+                <div class="project-content">
+                    <h3 class="project-title">Documentary Series</h3>
+                    <div class="project-role">Audio Engineer & Mixer</div>
+                    <div class="project-achievement">"Beyond Survival" & "Her Road to Justice"</div>
+                    <p>Audio engineering for documentaries highlighting Syrian women's resilience and activism. 
+                    Technical expertise supporting humanitarian storytelling and advocacy.</p>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image"><img src="./Logos/SS Media Productions.png" alt="SS Media" style="width: 120px; height: auto; border-radius: 10px;"></div>
+                <div class="project-content">
+                    <h3 class="project-title">SS Media Productions</h3>
+                    <div class="project-role">Founder & Managing Director</div>
+                    <div class="project-achievement">Full-Service Media Company</div>
+                    <p>Michigan-based studio offering 3D animation, VFX, sound design, and bilingual voiceovers. 
+                    International client base spanning Middle East, Europe, and North America.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section id="awards" class="section fade-in">
+        <div class="section-header">
+            <h2 class="section-title" data-en="Awards & Recognition" data-ar="الجوائز والتقدير">Awards & Recognition</h2>
+            <p class="section-subtitle" data-en="International recognition for technical excellence and creative innovation" data-ar="تقدير دولي للتميز التقني والإبداع الإبداعي">
+                International recognition for technical excellence and creative innovation
+            </p>
+        </div>
+        
+        <div class="awards-grid">
+            <div class="award-card">
+                <div class="award-icon"><img src="./Icons/Awards & Recognition/Student Academy Award@4x.png" alt="Academy Award" style="width: 80px; height: 80px;"></div>
+                <div class="award-title" data-en="Student Academy Award" data-ar="جائزة أكاديمية الطلاب">Student Academy Award</div>
+                <div class="award-year" data-en="2016 - Silver Award" data-ar="2016 - جائزة فضية">2016 - Silver Award</div>
+                <div class="award-category" data-en="Alternative Category - 'Cloud Kumo'" data-ar="فئة بديلة - 'كلاود كومو'">Alternative Category - "Cloud Kumo"</div>
+            </div>
+            
+            <div class="award-card">
+                <div class="award-icon"><img src="./Icons/Awards & Recognition/Gulf Film Festival@4x.png" alt="Gulf Film Festival" style="width: 80px; height: 80px;"></div>
+                <div class="award-title" data-en="Mohammed Bin Rashid Arabic Language Award" data-ar="جائزة محمد بن راشد للغة العربية">Mohammed Bin Rashid Arabic Language Award</div>
+                <div class="award-year" data-en="2019 - Cultural Innovation" data-ar="2019 - الابتكار الثقافي">2019 - Cultural Innovation</div>
+                <div class="award-category" data-en="Educational Excellence - Karazah Channel" data-ar="التميز التعليمي - قناة كرزة">Educational Excellence - Karazah Channel</div>
+            </div>
+            
+            <div class="award-card">
+                <div class="award-icon"><img src="./Icons/Awards & Recognition/Industry Excellence@4x.png" alt="Industry Excellence" style="width: 80px; height: 80px;"></div>
+                <div class="award-title" data-en="Industry Excellence" data-ar="تميز في الصناعة">Industry Excellence</div>
+                <div class="award-year" data-en="25+ Years Recognition" data-ar="اعتراف 25+ عاماً">25+ Years Recognition</div>
+                <div class="award-category" data-en="Animation & Sound Engineering Leadership" data-ar="قيادة في الرسوم المتحركة وهندسة الصوت">Animation & Sound Engineering Leadership</div>
+            </div>
+            
+            <div class="award-card">
+                <div class="award-icon"><img src="./Icons/Awards & Recognition/Media Innovation@4x.png" alt="Media Innovation" style="width: 80px; height: 80px;"></div>
+                <div class="award-title" data-en="Media Innovation" data-ar="ابتكار إعلامي">Media Innovation</div>
+                <div class="award-year" data-en="2024 - Current" data-ar="2024 - حالياً">2024 - Current</div>
+                <div class="award-category" data-en="Educational Content & Humanitarian Broadcasting" data-ar="محتوى تعليمي وبث إنساني">Educational Content & Humanitarian Broadcasting</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Companies Section -->
+    <section id="companies" class="section fade-in">
+        <div class="section-header">
+            <h2 class="section-title" data-en="Current Professional Roles" data-ar="الأدوار المهنية الحالية">Current Professional Roles</h2>
+            <p class="section-subtitle" data-en="Leading multiple organizations across media, technology, and humanitarian sectors" data-ar="قيادة منظمات متعددة عبر قطاعات الإعلام والتكنولوجيا والعمل الإنساني">
+                Leading multiple organizations across media, technology, and humanitarian sectors
+            </p>
+        </div>
+        
+        <div class="cards-grid">
+            <div class="card">
+                <div class="company-icon">SS</div>
+                <h3 class="card-title" data-en="SS Media Productions" data-ar="SS Media Productions">شركة إس إس للإنتاج الإعلامي</h3>
+                <p class="card-text" data-en="Founder & Managing Director - Full-service media production company in Flint, Michigan. 3D animation, visual effects, sound design, and bilingual voiceovers for international clients." data-ar="مؤسس ومدير تنفيذي - شركة إنتاج إعلامي متكاملة في فلينت، ميشيغان. رسوم متحركة ثلاثية الأبعاد، مؤثرات بصرية، تصميم صوتي، وتعليق صوتي ثنائي اللغة لعملاء دوليين.">
+                    <strong>Founder & Managing Director</strong><br>
+                    Full-service media production company in Flint, Michigan. 3D animation, visual effects, 
+                    sound design, and bilingual voiceovers for international clients.
+                </p>
+            </div>
+            
+            <div class="card">
+                <div class="company-icon">SY</div>
+                <h3 class="card-title" data-en="Synergy Senior Management" data-ar="Synergy Senior Management">Synergy Senior Management</h3>
+                <p class="card-text" data-en="IT Director - Technology leadership for $75M+ senior living operations. IT security, networking, web development, and digital transformation across Michigan communities." data-ar="مدير تقنية المعلومات - قيادة تقنية لعمليات رعاية كبار السن بقيمة 75+ مليون دولار. أمن تقنية المعلومات، شبكات، تطوير المواقع، والتحول الرقمي عبر مجتمعات ميشيغان.">
+                    <strong>IT Director</strong><br>
+                    Technology leadership for $75M+ senior living operations. IT security, networking, 
+                    web development, and digital transformation across Michigan communities.
+                </p>
+            </div>
+            
+            <div class="card">
+                <div class="company-icon">AY</div>
+                <h3 class="card-title">AYA Animations</h3>
+                <p class="card-text">
+                    <strong>Voice Over Supervisor</strong><br>
+                    Sound design and voice direction for "Aya and Yusuf" educational series. 
+                    Values-based edutainment content for children aged 2-8.
+                </p>
+            </div>
+            
+            <div class="card">
+                <div class="company-icon">KZ</div>
+                <h3 class="card-title">Karazah Channel</h3>
+                <p class="card-text">
+                    <strong>Co-founder & Director</strong><br>
+                    Educational platform with 400K+ subscribers teaching Arabic to children globally. 
+                    International production team creating culturally sensitive content.
+                </p>
+            </div>
+            
+            <div class="card">
+                <div class="company-icon">RA</div>
+                <h3 class="card-title">Radio Alkul</h3>
+                <p class="card-text">
+                    <strong>Co-founder (Continuing Operations)</strong><br>
+                    Independent Syrian radio station serving diaspora communities. Multi-platform 
+                    distribution with news, analysis, and cultural programming.
+                </p>
+            </div>
+            
+            <div class="card">
+                <div class="company-icon">AB</div>
+                <h3 class="card-title">Audio-Blast Legacy</h3>
+                <p class="card-text">
+                    <strong>Founder (2004)</strong><br>
+                    Original audio production company specializing in sound engineering, music production, 
+                    and professional training. Foundation for current media ventures.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Humanitarian Work -->
+    <section class="section fade-in">
+        <div class="section-header">
+            <h2 class="section-title" data-en="Humanitarian & Civil Rights Impact" data-ar="التأثير الإنساني وحقوق الإنسان">Humanitarian & Civil Rights Impact</h2>
+            <p class="section-subtitle" data-en="Leveraging media and technology for social good and community support" data-ar="الاستفادة من الإعلام والتكنولوجيا للخير العام ودعم المجتمع">
+                Leveraging media and technology for social good and community support
+            </p>
+        </div>
+        
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon"><img src="./Icons/Humanitarian & Civil Rights Impact/Independent Media Pioneer@4x.png" alt="Independent Media Pioneer" style="width: 60px; height: 60px;"></div>
+                <h3 class="card-title">Independent Media Pioneer</h3>
+                <p class="card-text">
+                    Radio Alkul provided critical uncensored news during Syrian civil war, reaching 500,000 daily listeners. 
+                    Innovative mobile FM transmission technology for conflict zones with limited internet connectivity.
+                </p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon"><img src="./Icons/Humanitarian & Civil Rights Impact/Documentary Advocacy@4x.png" alt="Documentary Advocacy" style="width: 60px; height: 60px;"></div>
+                <h3 class="card-title">Documentary Advocacy</h3>
+                <p class="card-text">
+                    Audio engineering for "Beyond Survival" (Syrian women's earthquake response) and "Her Road to Justice" 
+                    (women activists). Amplifying marginalized voices through technical expertise.
+                </p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon"><img src="./Icons/Humanitarian & Civil Rights Impact/Refugee Community Support@4x.png" alt="Refugee Community Support" style="width: 60px; height: 60px;"></div>
+                <h3 class="card-title">Refugee Community Support</h3>
+                <p class="card-text">
+                    Recognized civil rights activist supporting refugee communities globally. Media as powerful instrument 
+                    for advocacy, information access, and cultural preservation.
+                </p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon"><img src="./Icons/Humanitarian & Civil Rights Impact/Cultural Preservation@4x.png" alt="Cultural Preservation" style="width: 60px; height: 60px;"></div>
+                <h3 class="card-title">Cultural Preservation</h3>
+                <p class="card-text">
+                    Karazah Channel serves Arabic-speaking diaspora globally, preserving language and cultural identity 
+                    among younger generations. Educational content addressing parental concerns about digital safety.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="contact-section">
+            <h2 class="section-title" data-en="Professional Contact" data-ar="التواصل المهني">Professional Contact</h2>
+            <p class="section-subtitle" data-en="Based in Michigan, USA | Serving Global Markets | Available for Media Production, Sound Engineering, and Humanitarian Projects" data-ar="مقره في ميشيغان، الولايات المتحدة | يخدم الأسواق العالمية | متاح للإنتاج الإعلامي وهندسة الصوت والمشاريع الإنسانية">
+                Based in Michigan, USA | Serving Global Markets | Available for Media Production, 
+                Sound Engineering, and Humanitarian Projects
+            </p>
+            
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-icon">🏢</div>
+                    <h3 class="contact-title" data-en="SS Media Productions" data-ar="SS Media Productions">SS Media Productions</h3>
+                    <p data-en="Managing Director & Lead Sound Engineer - Flint, Michigan, USA - info@ss-prod.com - +1 810 512 7737" data-ar="مدير تنفيذي ومهندس صوت رئيسي - فلينت، ميشيغان، الولايات المتحدة - info@ss-prod.com - +1 810 512 7737">Managing Director & Lead Sound Engineer<br>
+                    Flint, Michigan, USA<br>
+                    <strong>obai@obaisukar.com</strong></p>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">💻</div>
+                    <h3 class="contact-title" data-en="Technology Solutions" data-ar="حلول تقنية">Technology Solutions</h3>
+                    <p data-en="IT Director - Synergy Senior Management - Senior Living Technology - Web Development & AI Solutions" data-ar="مدير تقنية المعلومات - Synergy Senior Management - تقنية رعاية كبار السن - تطوير المواقع وحلول الذكاء الاصطناعي">IT Director - Synergy Senior Management<br>
+                    Senior Living Technology<br>
+                    Web Development & AI Solutions</p>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">🎭</div>
+                    <h3 class="contact-title">Animation & Voice Work</h3>
+                    <p>Voice Over Supervisor - AYA Animations<br>
+                    Sound Effects & Production<br>
+                    Children's Educational Content</p>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📚</div>
+                    <h3 class="contact-title">Educational Platform</h3>
+                    <p>Karazah Channel Director<br>
+                    Arabic Language Learning<br>
+                    Cultural Content Creation</p>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📡</div>
+                    <h3 class="contact-title">Broadcasting & Media</h3>
+                    <p>Radio Alkul Co-founder<br>
+                    Humanitarian Broadcasting<br>
+                    Independent Media Advocacy</p>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">🌟</div>
+                    <h3 class="contact-title">Services</h3>
+                    <p>Sound Design & Engineering<br>
+                    3D Animation & Visual Effects<br>
+                    Bilingual Voice-over Production<br>
+                    Media Consultation</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 3rem;">
+                <p style="font-size: 1.2rem; color: var(--deep-indigo); font-weight: 600;" data-en="Bridging technical excellence with social impact through innovative media solutions" data-ar="ربط التميز التقني بالتأثير الاجتماعي من خلال حلول إعلامية مبتكرة">
+                    "Bridging technical excellence with social impact through innovative media solutions"
+                </p>
+                <p style="margin-top: 1rem; color: var(--text-light);" data-en="Available for consulting, collaboration, and media production projects worldwide" data-ar="متاح للاستشارة والتعاون ومشاريع الإنتاج الإعلامي عالمياً">
+                    Available for consulting, collaboration, and media production projects worldwide
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Bottom Navigation -->
+    <div class="mobile-bottom-nav">
+        <a href="#home" class="mobile-nav-item active" onclick="setActiveNav(this, 'home')">
+            <div class="mobile-nav-icon">🏠</div>
+            <span>Home</span>
+        </a>
+        <a href="#about" class="mobile-nav-item" onclick="setActiveNav(this, 'about')">
+            <div class="mobile-nav-icon">👤</div>
+            <span>About</span>
+        </a>
+        <a href="#projects" class="mobile-nav-item" onclick="setActiveNav(this, 'projects')">
+            <div class="mobile-nav-icon">🎯</div>
+            <span>Projects</span>
+        </a>
+        <a href="#journey" class="mobile-nav-item" onclick="setActiveNav(this, 'journey')">
+            <div class="mobile-nav-icon">🚀</div>
+            <span>Journey</span>
+        </a>
+        <a href="#contact" class="mobile-nav-item" onclick="setActiveNav(this, 'contact')">
+            <div class="mobile-nav-icon">📧</div>
+            <span>Contact</span>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" style="margin-bottom: 70px;">
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#" class="social-link">📘</a>
+                <a href="#" class="social-link">🐦</a>
+                <a href="#" class="social-link">💼</a>
+                <a href="#" class="social-link">🎵</a>
+                <a href="#" class="social-link">📺</a>
+            </div>
+            <p data-en="&copy; 2025 Obai Sukar. All rights reserved. Syrian-American Media Professional." data-ar="&copy; 2025 أبي سكر. جميع الحقوق محفوظة. مهني إعلامي سوري أمريكي.">&copy; 2025 Obai Sukar. All rights reserved. Syrian-American Media Professional.</p>
+            <p style="margin-top: 1rem; opacity: 0.8;" data-en="Sound Engineer | Animation Producer | Humanitarian Broadcaster | Educational Content Creator" data-ar="مهندس صوت | منتج رسوم متحركة | مذيع إنساني | منشئ محتوى تعليمي">
+                Sound Engineer | Animation Producer | Humanitarian Broadcaster | Educational Content Creator
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+                
+                // Close mobile menu if open
+                const navMenu = document.getElementById('navMenu');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Counter animation for stats
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.innerText.replace(/\D/g, ''));
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    
+                    if (counter.innerText.includes('K')) {
+                        counter.innerText = Math.floor(current) + 'K+';
+                    } else if (counter.innerText.includes('M')) {
+                        counter.innerText = Math.floor(current) + 'M+';
+                    } else {
+                        counter.innerText = Math.floor(current) + '+';
+                    }
+                }, 16);
+            });
+        }
+
+        // Trigger counter animation when stats section is visible
+        const statsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats-grid');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Add interactive hover effects
+        document.querySelectorAll('.card, .project-card, .award-card, .contact-item').forEach(element => {
+            element.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            element.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Timeline animation
+        const timelineObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateX(0)';
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('.timeline-item').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = index % 2 === 0 ? 'translateX(-50px)' : 'translateX(50px)';
+            item.style.transition = 'all 0.6s ease';
+            timelineObserver.observe(item);
+        });
+
+        // Language switching functionality
+        let currentLanguage = 'en';
+        
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Update button states
+            document.getElementById('arabicBtn').classList.toggle('active', lang === 'ar');
+            document.getElementById('englishBtn').classList.toggle('active', lang === 'en');
+            
+            // Update text content for all elements with data attributes
+            const elements = document.querySelectorAll('[data-en][data-ar]');
+            elements.forEach(element => {
+                const text = lang === 'ar' ? element.getAttribute('data-ar') : element.getAttribute('data-en');
+                element.textContent = text;
+            });
+            
+            // Update document direction and language
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = lang === 'ar' ? 'ar' : 'en';
+            
+            // Update globe icons
+            const arabicGlobe = document.querySelector('#arabicBtn .globe-icon');
+            const englishGlobe = document.querySelector('#englishBtn .globe-icon');
+            
+            if (lang === 'ar') {
+                arabicGlobe.textContent = 'ع';
+                englishGlobe.textContent = '🌍';
+            } else {
+                arabicGlobe.textContent = '🌍';
+                englishGlobe.textContent = 'En';
+            }
+        }
+        
+        // Initialize language switcher
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set initial state
+            switchLanguage('en');
+        });
+
+        // Add loading animation
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+
+            // Initialize mobile optimizations
+            initializeMobileUX();
+        });
+
+        // Mobile UX Functions
+        function initializeMobileUX() {
+            if (window.innerWidth <= 768) {
+                document.body.classList.add('mobile-optimized');
+                // Show home section by default
+                showMobileSection('home');
+            }
+        }
+
+        function setActiveNav(element, sectionId) {
+            // Remove active class from all nav items
+            document.querySelectorAll('.mobile-nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // Add active class to clicked item
+            element.classList.add('active');
+
+            // Show corresponding section
+            showMobileSection(sectionId);
+        }
+
+        function showMobileSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Always show stats and hero
+            const heroSection = document.querySelector('.hero');
+            const statsSection = document.querySelector('.always-visible');
+
+            if (sectionId === 'home') {
+                if (heroSection) heroSection.style.display = 'flex';
+                if (statsSection) statsSection.style.display = 'block';
+            } else {
+                if (heroSection) heroSection.style.display = 'none';
+
+                // Show target section
+                const targetSection = document.getElementById(sectionId);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                    targetSection.style.display = 'block';
+                }
+            }
+        }
+
+        function toggleMobileSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            const button = event.target;
+
+            if (section.style.display === 'none' || !section.style.display) {
+                section.style.display = 'block';
+                button.textContent = button.textContent.replace('Show', 'Hide').replace('▼', '▲');
+                button.classList.add('expanded');
+            } else {
+                section.style.display = 'none';
+                button.textContent = button.textContent.replace('Hide', 'Show').replace('▲', '▼');
+                button.classList.remove('expanded');
+            }
+        }
+
+        function showMobileTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.mobile-tab-content').forEach(content => {
+                content.classList.remove('active');
+                content.style.display = 'none';
+            });
+
+            // Remove active class from all tabs
+            document.querySelectorAll('.mobile-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Show target tab content
+            const targetContent = document.getElementById(tabId);
+            if (targetContent) {
+                targetContent.classList.add('active');
+                targetContent.style.display = 'block';
+            }
+
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+
+        function toggleAccordion(header) {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('.accordion-icon');
+
+            // Toggle active class
+            header.classList.toggle('active');
+            content.classList.toggle('active');
+
+            // Update icon
+            if (content.classList.contains('active')) {
+                icon.textContent = '▲';
+            } else {
+                icon.textContent = '▼';
+            }
+        }
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                document.body.classList.remove('mobile-optimized');
+                // Show all sections on desktop
+                document.querySelectorAll('.section').forEach(section => {
+                    section.style.display = 'block';
+                    section.classList.remove('active');
+                });
+                const heroSection = document.querySelector('.hero');
+                if (heroSection) heroSection.style.display = 'flex';
+            } else {
+                initializeMobileUX();
+            }
+        });
+
+        // Update existing smooth scrolling to work with mobile nav
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                const sectionId = this.getAttribute('href').substring(1);
+
+                if (window.innerWidth <= 768) {
+                    // Mobile: use tab navigation
+                    showMobileSection(sectionId);
+
+                    // Update mobile nav if exists
+                    const mobileNavItem = document.querySelector(`[onclick*="${sectionId}"]`);
+                    if (mobileNavItem) {
+                        setActiveNav(mobileNavItem, sectionId);
+                    }
+                } else if (target) {
+                    // Desktop: smooth scroll
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+
+                // Close mobile menu if open
+                const navMenu = document.getElementById('navMenu');
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

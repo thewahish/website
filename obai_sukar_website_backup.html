@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obai Sukar | Syrian-American Media Pioneer & Sound Engineer</title>
+    <style>
+        /* Font Face Declarations */
+        @font-face {
+            font-family: 'Roboto';
+            src: url('./Fonts/Roboto-Light.ttf') format('truetype');
+            font-weight: 300;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Roboto';
+            src: url('./Fonts/Roboto-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Roboto';
+            src: url('./Fonts/Roboto-Medium.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Roboto';
+            src: url('./Fonts/Roboto-Black.ttf') format('truetype');
+            font-weight: 900;
+            font-style: normal;
+        }
+        
+        :root {
+            --deep-indigo: #292663;
+            --warm-gold: #FBB04C;
+            --sky-blue: #00AEEF;
+            --vivid-magenta: #EC008C;
+            --purple-plum: #92278F;
+            --white: #FFFFFF;
+            --light-gray: #F8F9FA;
+            --text-dark: #292663;
+            --text-light: #666666;
+            --border-light: #E8F4FD;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background Elements */
+        .bg-decoration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            background-image: url('./BG/Web/Obai-website_BG_2.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 1;
+            pointer-events: none;
+        }
+        
+        .bg-decoration::after {
+            content: '';
+            position: absolute;
+            top: 100vh;
+            left: 0;
+            width: 100%;
+            height: 300vh;
+            background: var(--white);
+            z-index: -1;
+        }
+
+        .floating-icon {
+            position: absolute;
+            color: var(--deep-indigo);
+            font-size: 2rem;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-light);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 2px 20px rgba(41, 38, 99, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--deep-indigo);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-dark);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(41, 38, 99, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .nav-link:hover::before {
+            left: 100%;
+        }
+
+        .nav-link:hover {
+            background: var(--deep-indigo);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            position: relative;
+            padding: 6rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-logo {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .main-logo {
+            height: 120px;
+            width: auto;
+            filter: drop-shadow(0 4px 8px rgba(255, 255, 255, 0.3));
+        }
+
+        .hero-title {
+            font-family: 'Roboto', Arial, sans-serif;
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 2px;
+        }
+
+        .hero-subtitle {
+            font-family: 'Roboto', Arial, sans-serif;
+            font-size: 2rem;
+            color: var(--white);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-description {
+            font-family: 'Roboto', Arial, sans-serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .cta-buttons a {
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .cta-buttons a:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.05);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--white);
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-family: 'Roboto', Arial, sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--deep-indigo);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--warm-gold);
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--sky-blue), var(--vivid-magenta));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 174, 239, 0.2);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            color: var(--sky-blue);
+            margin-bottom: 1rem;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80px;
+        }
+
+        .card-title {
+            font-family: 'Roboto', Arial, sans-serif;
+            font-size: 1.5rem;
+            color: var(--deep-indigo);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .card-text {
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            margin: 3rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--sky-blue), var(--purple-plum));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 3rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .timeline-content {
+            margin-left: 3rem;
+            text-align: left;
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-light);
+            position: relative;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -30px;
+            width: 0;
+            height: 0;
+            border: 15px solid transparent;
+            border-right-color: var(--white);
+            transform: translateY(-50%);
+        }
+
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--warm-gold);
+            position: absolute;
+            left: 20px;
+            transform: translateX(-50%);
+            z-index: 1;
+            box-shadow: 0 0 0 4px var(--white), 0 0 20px rgba(251, 176, 76, 0.5);
+        }
+
+        .timeline-year {
+            font-size: 1.2rem;
+            color: var(--warm-gold);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-family: 'Roboto', Arial, sans-serif;
+            font-size: 1.3rem;
+            color: var(--deep-indigo);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .timeline-company {
+            font-weight: bold;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .stat-item {
+            padding: 2rem;
+            border-radius: 15px;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            background-image: url('./Squares_/Asset_1.png');
+            background-size: 25% auto;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        
+        .stat-item:nth-child(1) {
+            background-position: 0% center;
+        }
+        
+        .stat-item:nth-child(2) {
+            background-position: 33.33% center;
+        }
+        
+        .stat-item:nth-child(3) {
+            background-position: 66.66% center;
+        }
+        
+        .stat-item:nth-child(4) {
+            background-position: 100% center;
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Projects Showcase */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(46, 134, 193, 0.2);
+        }
+
+        .project-image {
+            height: 200px;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--deep-indigo);
+            font-size: 3rem;
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-title {
+            font-family: 'Roboto', Arial, sans-serif;
+            font-size: 1.4rem;
+            color: var(--deep-indigo);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .project-role {
+            color: var(--warm-gold);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-achievement {
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        /* Awards Section */
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .award-card {
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(251, 176, 76, 0.3);
+        }
+        
+        .award-card:nth-child(1) {
+            background: linear-gradient(135deg, var(--warm-gold), var(--vivid-magenta));
+        }
+        
+        .award-card:nth-child(2) {
+            background: linear-gradient(135deg, var(--sky-blue), var(--purple-plum));
+        }
+        
+        .award-card:nth-child(3) {
+            background: linear-gradient(135deg, var(--deep-indigo), var(--sky-blue));
+        }
+        
+        .award-card:nth-child(4) {
+            background: linear-gradient(135deg, var(--vivid-magenta), var(--warm-gold));
+        }
+
+        .award-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: bounce 2s infinite;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-15px); }
+            60% { transform: translateY(-7px); }
+        }
+
+        .award-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .award-year {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .award-category {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--white);
+            border-radius: 30px;
+            padding: 4rem 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 174, 239, 0.2);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--sky-blue);
+            margin-bottom: 1rem;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60px;
+        }
+
+        .contact-title {
+            font-size: 1.2rem;
+            color: var(--deep-indigo);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .footer {
+            background-image: url('./Footer/Footer@4x.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: var(--white);
+            text-align: center;
+            padding: 3rem 2rem;
+            position: relative;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 0;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--warm-gold);
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 6rem 1rem 2rem;
+                min-height: 100vh;
+            }
+            
+            .main-logo {
+                height: 80px;
+            }
+            
+            .hero-title { 
+                font-size: 2.5rem; 
+                letter-spacing: 1px;
+            }
+            
+            .hero-subtitle { 
+                font-size: 1.4rem; 
+            }
+            
+            .hero-description {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .nav-menu { 
+                flex-direction: column; 
+                gap: 1rem; 
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                padding: 2rem;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+                display: none;
+            }
+            
+            .nav-menu.active { display: flex; }
+            
+            .timeline::before { left: 20px; }
+            .timeline-item { flex-direction: column !important; }
+            .timeline-content { 
+                margin: 0 0 0 3rem !important; 
+                text-align: left !important; 
+            }
+            .timeline-content::before { display: none; }
+            .timeline-dot { left: 20px; }
+            
+            .section-title { font-size: 2rem; }
+            .cards-grid, .projects-grid, .awards-grid { 
+                grid-template-columns: 1fr; 
+            }
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--sky-blue);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+        }
+
+        /* Company Logos/Icons */
+        .company-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--sky-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Decoration -->
+    <div class="bg-decoration"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">Obai Sukar</a>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#journey" class="nav-link">Journey</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#awards" class="nav-link">Awards</a></li>
+                <li><a href="#companies" class="nav-link">Companies</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-logo">
+                <img src="./Logo White/Logo_White.png" alt="Obai Sukar" class="main-logo">
+            </div>
+            <h1 class="hero-title">Obai Sukar</h1>
+            <h2 class="hero-subtitle">Syrian-American Media Pioneer & Sound Engineer</h2>
+            <p class="hero-description">
+                Over two decades of excellence in sound engineering, animation, and humanitarian media. 
+                From award-winning films to educational platforms reaching millions globally.
+            </p>
+            <div class="cta-buttons">
+                <a href="#projects"><img src="./Buttons_/Explore Projects.png" alt="Explore Projects" style="height: 50px; margin-right: 1rem;"></a>
+                <a href="#contact"><img src="./Buttons_/Get In Touch.png" alt="Get In Touch" style="height: 50px;"></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">25+</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">400K+</div>
+                <div class="stat-label">Karazah Subscribers</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">160M+</div>
+                <div class="stat-label">Video Views</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">500K+</div>
+                <div class="stat-label">Radio Listeners</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section fade-in">
+        <div class="section-header">
+            <h2 class="section-title">Executive Summary</h2>
+            <p class="section-subtitle">
+                A distinguished Syrian-American professional whose multifaceted career spans over two decades 
+                in media, technology, and humanitarian sectors.
+            </p>
+        </div>
+        
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon"><img src="./Icons/Executive Summary/Sound Engineering Excellence@4x.png" alt="Sound Engineering" style="width: 60px; height: 60px;"></div>
+                <h3 class="card-title">Sound Engineering Excellence</h3>
+                <p class="card-text">
+                    Silver Award winner at Student Academy Awards for "Cloud Kumo". Over 25 years of experience 
+                    in animation and film audio production with hundreds of credited works.
+                </p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon"><img src="./Icons/Executive Summary/Media Entrepreneurship@4x.png" alt="Media Entrepreneurship" style="width: 60px; height: 60px;"></div>
+                <h3 class="card-title">Media Entrepreneurship</h3>
+                <p class="card-text">
+                    Founder of SS Media Productions - full-service media company specializing in 3D animation, 
+                    visual effects, and bilingual voiceovers serving international clients.
+                </p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon"><img src="./Icons/Executive Summary/Humanitarian Broadcasting@4x.png" alt="Humanitarian Broadcasting" style="width: 60px; height: 60px;"></div>
+                <h3 class="card-title">Humanitarian Broadcasting</h3>
+                <p class="card-text">
+                    Co-founded Radio Alkul during Syrian civil war, reaching 500,000 listeners across seven provinces. 
+                    Continues operations serving Syrian diaspora globally.
+                </p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon"><img src="./Icons/Executive Summary/Educational Innovation@4x.png" alt="Educational Innovation" style="width: 60px; height: 60px;"></div>
+                <h3 class="card-title">Educational Innovation</h3>
+                <p class="card-text">
+                    Co-creator of Karazah Channel - educational platform with 400K+ subscribers and 160M+ views, 
+                    teaching Arabic to children worldwide.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Journey -->
+    <section id="journey" class="section fade-in">
+        <div class="section-header">
+            <h2 class="section-title">Professional Journey</h2>
+            <p class="section-subtitle">
+                From Damascus to Hollywood to Michigan - A career spanning continents and touching millions of lives
+            </p>
+        </div>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">1999-2000</div>
+                    <h3 class="timeline-title">Early Beginnings</h3>
+                    <div class="timeline-company">Spacetoon & Venus Center</div>
+                    <p>Started at age 17 as sound engineer and vocalist. Built first computer in 8th grade, 
+                    recorded first album in 11th grade. Early exposure to animation industry.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2003-2005</div>
+                    <h3 class="timeline-title">Educational Foundation</h3>
+                    <div class="timeline-company">Damascus Institute & Los Angeles Recording School</div>
+                    <p>Graduated from Intermediate Institute for Printing and Publishing (2003). 
+                    Earned diploma in sound engineering from LARS Hollywood (2005).</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2004-2010</div>
+                    <h3 class="timeline-title">Entrepreneurial Launch & Spacetoon Leadership</h3>
+                    <div class="timeline-company">Audio-Blast & Spacetoon Head of Sound</div>
+                    <p>Founded Audio-Blast company (2004). Served as Head of Sound Department at Spacetoon (2006-2010), 
+                    creating audio identity for hundreds of Arabic-dubbed cartoons including Gundam Wing, Detective Conan, Beyblade.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2012-2014</div>
+                    <h3 class="timeline-title">Humanitarian Media</h3>
+                    <div class="timeline-company">Radio Alkul - Istanbul</div>
+                    <p>Co-founded independent Syrian news station during civil war. Served as Program Director and Sound Engineer, 
+                    reaching 500,000 daily listeners across seven Syrian provinces through innovative mobile FM transmission.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2016-Present</div>
+                    <h3 class="timeline-title">Media Empire & Educational Impact</h3>
+                    <div class="timeline-company">SS Media Productions & Karazah Channel</div>
+                    <p>Founded full-service media company in Flint, Michigan. Co-created Karazah Channel reaching 400K+ subscribers 
+                    and 160M+ views, teaching Arabic to children globally with international production team.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2020-Present</div>
+                    <h3 class="timeline-title">Technology Leadership & Continued Innovation</h3>
+                    <div class="timeline-company">Synergy Senior Management & AYA Animations</div>
+                    <p>IT Director overseeing technology for $75M+ senior living operations. Voice Over Supervisor for "Aya and Yusuf" series. 
+                    Continues humanitarian work and educational content creation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notable Projects -->
+    <section id="projects" class="section fade-in">
+        <div class="section-header">
+            <h2 class="section-title">Notable Projects & Achievements</h2>
+            <p class="section-subtitle">
+                From award-winning films to global educational platforms - Projects that have made a lasting impact
+            </p>
+        </div>
+        
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image"><img src="./Logos/Cloud-Kumo.png" alt="Cloud Kumo" style="width: 120px; height: auto; border-radius: 10px;"></div>
+                <div class="project-content">
+                    <h3 class="project-title">Cloud Kumo (2016)</h3>
+                    <div class="project-role">Sound Designer & Mixer</div>
+                    <div class="project-achievement">Silver Award - Student Academy Awards (Alternative Category)</div>
+                    <p>Breakthrough cinematic project showcasing advanced audio engineering in storytelling. 
+                    International recognition for technical excellence in sound design.</p>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image"><img src="./Logos/Karazah-logo.png" alt="Karazah" style="width: 120px; height: auto; border-radius: 10px;"></div>
+                <div class="project-content">
+                    <h3 class="project-title">Karazah Channel</h3>
+                    <div class="project-role">Co-founder & Director</div>
+                    <div class="project-achievement">400K+ Subscribers | 160M+ Views</div>
+                    <p>Educational YouTube platform teaching Arabic fundamentals through engaging content. 
+                    International production team from seven countries creating culturally sensitive content.</p>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image"><img src="./Logos/راديو الكل.png" alt="Radio Alkul" style="width: 120px; height: auto; border-radius: 10px;"></div>
+                <div class="project-content">
+                    <h3 class="project-title">Radio Alkul</h3>
+                    <div class="project-role">Co-founder, Program Director & Sound Engineer</div>
+                    <div class="project-achievement">500K Daily Listeners | 7 Syrian Provinces</div>
+                    <p>Independent Syrian radio station broadcasting uncensored news during civil war. 
+                    Innovative mobile FM transmission reaching conflict zones with critical information.</p>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image"><img src="./Logos/Spacetoon_logo.png" alt="Spacetoon" style="width: 120px; height: auto; border-radius: 10px;"></div>
+                <div class="project-content">
+                    <h3 class="project-title">Spacetoon Audio Legacy</h3>
+                    <div class="project-role">Head of Sound Department (2006-2010)</div>
+                    <div class="project-achievement">Hundreds of Animated Series</div>
+                    <p>Created audio identity for major Arabic-dubbed series including Gundam Wing, Detective Conan, 
+                    Beyblade, Samurai Jack. Established channel's distinctive sound brand.</p>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image"><img src="./Logos/Logo (Horizontal).png" alt="Documentary" style="width: 120px; height: auto; border-radius: 10px;"></div>
+                <div class="project-content">
+                    <h3 class="project-title">Documentary Series</h3>
+                    <div class="project-role">Audio Engineer & Mixer</div>
+                    <div class="project-achievement">"Beyond Survival" & "Her Road to Justice"</div>
+                    <p>Audio engineering for documentaries highlighting Syrian women's resilience and activism. 
+                    Technical expertise supporting humanitarian storytelling and advocacy.</p>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image"><img src="./Logos/SS Media Productions.png" alt="SS Media" style="width: 120px; height: auto; border-radius: 10px;"></div>
+                <div class="project-content">
+                    <h3 class="project-title">SS Media Productions</h3>
+                    <div class="project-role">Founder & Managing Director</div>
+                    <div class="project-achievement">Full-Service Media Company</div>
+                    <p>Michigan-based studio offering 3D animation, VFX, sound design, and bilingual voiceovers. 
+                    International client base spanning Middle East, Europe, and North America.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section id="awards" class="section fade-in">
+        <div class="section-header">
+            <h2 class="section-title">Awards & Recognition</h2>
+            <p class="section-subtitle">
+                International recognition for technical excellence and creative innovation
+            </p>
+        </div>
+        
+        <div class="awards-grid">
+            <div class="award-card">
+                <div class="award-icon"><img src="./Icons/Awards & Recognition/Student Academy Award@4x.png" alt="Academy Award" style="width: 80px; height: 80px;"></div>
+                <div class="award-title">Student Academy Award</div>
+                <div class="award-year">2016 - Silver Award</div>
+                <div class="award-category">Alternative Category - "Cloud Kumo"</div>
+            </div>
+            
+            <div class="award-card">
+                <div class="award-icon"><img src="./Icons/Awards & Recognition/Gulf Film Festival@4x.png" alt="Gulf Film Festival" style="width: 80px; height: 80px;"></div>
+                <div class="award-title">Gulf Film Festival</div>
+                <div class="award-year">2017 - First Prize</div>
+                <div class="award-category">Short Student Films - "Al-Waqi'iyah Al-Afdal"</div>
+            </div>
+            
+            <div class="award-card">
+                <div class="award-icon"><img src="./Icons/Awards & Recognition/Industry Excellence@4x.png" alt="Industry Excellence" style="width: 80px; height: 80px;"></div>
+                <div class="award-title">Industry Excellence</div>
+                <div class="award-year">25+ Years Recognition</div>
+                <div class="award-category">Animation & Sound Engineering Leadership</div>
+            </div>
+            
+            <div class="award-card">
+                <div class="award-icon"><img src="./Icons/Awards & Recognition/Media Innovation@4x.png" alt="Media Innovation" style="width: 80px; height: 80px;"></div>
+                <div class="award-title">Media Innovation</div>
+                <div class="award-year">2024 - Current</div>
+                <div class="award-category">Educational Content & Humanitarian Broadcasting</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Companies Section -->
+    <section id="companies" class="section fade-in">
+        <div class="section-header">
+            <h2 class="section-title">Current Professional Roles</h2>
+            <p class="section-subtitle">
+                Leading multiple organizations across media, technology, and humanitarian sectors
+            </p>
+        </div>
+        
+        <div class="cards-grid">
+            <div class="card">
+                <div class="company-icon">SS</div>
+                <h3 class="card-title">SS Media Productions</h3>
+                <p class="card-text">
+                    <strong>Founder & Managing Director</strong><br>
+                    Full-service media production company in Flint, Michigan. 3D animation, visual effects, 
+                    sound design, and bilingual voiceovers for international clients.
+                </p>
+            </div>
+            
+            <div class="card">
+                <div class="company-icon">SY</div>
+                <h3 class="card-title">Synergy Senior Management</h3>
+                <p class="card-text">
+                    <strong>IT Director</strong><br>
+                    Technology leadership for $75M+ senior living operations. IT security, networking, 
+                    web development, and digital transformation across Michigan communities.
+                </p>
+            </div>
+            
+            <div class="card">
+                <div class="company-icon">AY</div>
+                <h3 class="card-title">AYA Animations</h3>
+                <p class="card-text">
+                    <strong>Voice Over Supervisor</strong><br>
+                    Sound design and voice direction for "Aya and Yusuf" educational series. 
+                    Values-based edutainment content for children aged 2-8.
+                </p>
+            </div>
+            
+            <div class="card">
+                <div class="company-icon">KZ</div>
+                <h3 class="card-title">Karazah Channel</h3>
+                <p class="card-text">
+                    <strong>Co-founder & Director</strong><br>
+                    Educational platform with 400K+ subscribers teaching Arabic to children globally. 
+                    International production team creating culturally sensitive content.
+                </p>
+            </div>
+            
+            <div class="card">
+                <div class="company-icon">RA</div>
+                <h3 class="card-title">Radio Alkul</h3>
+                <p class="card-text">
+                    <strong>Co-founder (Continuing Operations)</strong><br>
+                    Independent Syrian radio station serving diaspora communities. Multi-platform 
+                    distribution with news, analysis, and cultural programming.
+                </p>
+            </div>
+            
+            <div class="card">
+                <div class="company-icon">AB</div>
+                <h3 class="card-title">Audio-Blast Legacy</h3>
+                <p class="card-text">
+                    <strong>Founder (2004)</strong><br>
+                    Original audio production company specializing in sound engineering, music production, 
+                    and professional training. Foundation for current media ventures.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Humanitarian Work -->
+    <section class="section fade-in">
+        <div class="section-header">
+            <h2 class="section-title">Humanitarian & Civil Rights Impact</h2>
+            <p class="section-subtitle">
+                Leveraging media and technology for social good and community support
+            </p>
+        </div>
+        
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon"><img src="./Icons/Humanitarian & Civil Rights Impact/Independent Media Pioneer@4x.png" alt="Independent Media Pioneer" style="width: 60px; height: 60px;"></div>
+                <h3 class="card-title">Independent Media Pioneer</h3>
+                <p class="card-text">
+                    Radio Alkul provided critical uncensored news during Syrian civil war, reaching 500,000 daily listeners. 
+                    Innovative mobile FM transmission technology for conflict zones with limited internet connectivity.
+                </p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon"><img src="./Icons/Humanitarian & Civil Rights Impact/Documentary Advocacy@4x.png" alt="Documentary Advocacy" style="width: 60px; height: 60px;"></div>
+                <h3 class="card-title">Documentary Advocacy</h3>
+                <p class="card-text">
+                    Audio engineering for "Beyond Survival" (Syrian women's earthquake response) and "Her Road to Justice" 
+                    (women activists). Amplifying marginalized voices through technical expertise.
+                </p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon"><img src="./Icons/Humanitarian & Civil Rights Impact/Refugee Community Support@4x.png" alt="Refugee Community Support" style="width: 60px; height: 60px;"></div>
+                <h3 class="card-title">Refugee Community Support</h3>
+                <p class="card-text">
+                    Recognized civil rights activist supporting refugee communities globally. Media as powerful instrument 
+                    for advocacy, information access, and cultural preservation.
+                </p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon"><img src="./Icons/Humanitarian & Civil Rights Impact/Cultural Preservation@4x.png" alt="Cultural Preservation" style="width: 60px; height: 60px;"></div>
+                <h3 class="card-title">Cultural Preservation</h3>
+                <p class="card-text">
+                    Karazah Channel serves Arabic-speaking diaspora globally, preserving language and cultural identity 
+                    among younger generations. Educational content addressing parental concerns about digital safety.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="contact-section">
+            <h2 class="section-title">Professional Contact</h2>
+            <p class="section-subtitle">
+                Based in Michigan, USA | Serving Global Markets | Available for Media Production, 
+                Sound Engineering, and Humanitarian Projects
+            </p>
+            
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-icon">🏢</div>
+                    <h3 class="contact-title">SS Media Productions</h3>
+                    <p>Managing Director & Lead Sound Engineer<br>
+                    Flint, Michigan, USA<br>
+                    <strong>info@ss-prod.com</strong><br>
+                    <strong>+1 810 512 7737</strong></p>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">💻</div>
+                    <h3 class="contact-title">Technology Solutions</h3>
+                    <p>IT Director - Synergy Senior Management<br>
+                    Senior Living Technology<br>
+                    Web Development & AI Solutions</p>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">🎭</div>
+                    <h3 class="contact-title">Animation & Voice Work</h3>
+                    <p>Voice Over Supervisor - AYA Animations<br>
+                    Sound Effects & Production<br>
+                    Children's Educational Content</p>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📚</div>
+                    <h3 class="contact-title">Educational Platform</h3>
+                    <p>Karazah Channel Director<br>
+                    Arabic Language Learning<br>
+                    Cultural Content Creation</p>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📡</div>
+                    <h3 class="contact-title">Broadcasting & Media</h3>
+                    <p>Radio Alkul Co-founder<br>
+                    Humanitarian Broadcasting<br>
+                    Independent Media Advocacy</p>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">🌟</div>
+                    <h3 class="contact-title">Services</h3>
+                    <p>Sound Design & Engineering<br>
+                    3D Animation & Visual Effects<br>
+                    Bilingual Voice-over Production<br>
+                    Media Consultation</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 3rem;">
+                <p style="font-size: 1.2rem; color: var(--deep-indigo); font-weight: 600;">
+                    "Bridging technical excellence with social impact through innovative media solutions"
+                </p>
+                <p style="margin-top: 1rem; color: var(--text-light);">
+                    Available for consulting, collaboration, and media production projects worldwide
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#" class="social-link">📘</a>
+                <a href="#" class="social-link">🐦</a>
+                <a href="#" class="social-link">💼</a>
+                <a href="#" class="social-link">🎵</a>
+                <a href="#" class="social-link">📺</a>
+            </div>
+            <p>&copy; 2025 Obai Sukar. All rights reserved. Syrian-American Media Professional.</p>
+            <p style="margin-top: 1rem; opacity: 0.8;">
+                Sound Engineer | Animation Producer | Humanitarian Broadcaster | Educational Content Creator
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+                
+                // Close mobile menu if open
+                const navMenu = document.getElementById('navMenu');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Counter animation for stats
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.innerText.replace(/\D/g, ''));
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    
+                    if (counter.innerText.includes('K')) {
+                        counter.innerText = Math.floor(current) + 'K+';
+                    } else if (counter.innerText.includes('M')) {
+                        counter.innerText = Math.floor(current) + 'M+';
+                    } else {
+                        counter.innerText = Math.floor(current) + '+';
+                    }
+                }, 16);
+            });
+        }
+
+        // Trigger counter animation when stats section is visible
+        const statsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats-grid');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Add interactive hover effects
+        document.querySelectorAll('.card, .project-card, .award-card, .contact-item').forEach(element => {
+            element.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            element.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Timeline animation
+        const timelineObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateX(0)';
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('.timeline-item').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = index % 2 === 0 ? 'translateX(-50px)' : 'translateX(50px)';
+            item.style.transition = 'all 0.6s ease';
+            timelineObserver.observe(item);
+        });
+
+        // Add loading animation
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
