@@ -45,7 +45,7 @@
       ],
       "award": [
         "Student Academy Award - Silver (2016)",
-        "Mohammed Bin Rashid Arabic Language Award (2019)",
+        "Mohamad Bin Rashid Arabic Language Award (2019)",
         "Gulf Film Festival - First Prize (2017)"
       ],
       "nationality": "Syrian-American",
@@ -98,15 +98,12 @@
         
         :root {
             --deep-indigo: #292663;
-            --warm-gold: #FBB04C;
             --sky-blue: #00AEEF;
-            --vivid-magenta: #EC008C;
-            --purple-plum: #92278F;
             --white: #FFFFFF;
             --light-gray: #F8F9FA;
             --text-dark: #292663;
             --text-light: #666666;
-            --border-light: #E8F4FD;
+            --border-light: #E5E5E5;
         }
 
         * {
@@ -313,20 +310,36 @@
 
         .cta-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
             flex-wrap: wrap;
             justify-content: center;
         }
 
-        .cta-buttons a {
+        /* Hero Buttons */
+        .hero-btn {
+            padding: 0.9rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
             text-decoration: none;
             transition: all 0.3s ease;
             display: inline-block;
+            border: 3px solid white;
+            background: transparent;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
         }
 
-        .cta-buttons a:hover {
+        .hero-btn:hover {
+            background: white;
             transform: translateY(-3px);
-            filter: brightness(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-btn-primary:hover,
+        .hero-btn-secondary:hover {
+            background: white;
+            color: #292663;
         }
 
         /* Sections */
@@ -334,7 +347,7 @@
             padding: 5rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
-            background: var(--white);
+            background: transparent;
             position: relative;
             z-index: 1;
         }
@@ -344,13 +357,70 @@
             margin-bottom: 4rem;
         }
 
+        /* Keyframes for section title animations */
+        @keyframes titleFadeSlide {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes underlineExpand {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 80px;
+            }
+        }
+
+        /* Shimmer effect keyframes */
+        @keyframes shimmer {
+            0% {
+                background-position: -200% center;
+            }
+            100% {
+                background-position: 200% center;
+            }
+        }
+
         .section-title {
             font-family: 'Roboto', Arial, sans-serif;
             font-size: 2.5rem;
             font-weight: 900;
-            color: var(--deep-indigo);
+            color: white;
             margin-bottom: 1rem;
             position: relative;
+            animation: titleFadeSlide 0.8s ease-out forwards;
+            cursor: default;
+            transition: all 0.3s ease;
+            background: white;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: white;
+        }
+
+        .section-title:hover {
+            background: linear-gradient(
+                90deg,
+                white 0%,
+                white 40%,
+                #00AEEF 50%,
+                #EC008C 60%,
+                #FBB04C 70%,
+                white 80%,
+                white 100%
+            );
+            background-size: 200% 100%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 2s linear infinite;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
         }
 
         .section-title::after {
@@ -359,16 +429,33 @@
             bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
+            width: 0;
             height: 3px;
-            background: var(--warm-gold);
+            background: white;
+            animation: underlineExpand 0.6s ease-out 0.4s forwards;
+            transition: all 0.3s ease;
+        }
+
+        .section-title:hover::after {
+            width: 120px;
+            background: linear-gradient(90deg, #00AEEF, #EC008C, #FBB04C);
+            height: 4px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
         }
 
         .section-subtitle {
             font-size: 1.2rem;
-            color: var(--text-light);
+            color: white;
             max-width: 600px;
             margin: 0 auto;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            animation: titleFadeSlide 0.8s ease-out 0.2s backwards;
+        }
+
+        /* Add text shadows for readability on gradient background */
+        .section-title,
+        .section-subtitle {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
         }
 
         /* Cards Grid */
@@ -397,7 +484,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, var(--sky-blue), var(--vivid-magenta));
+            background: var(--sky-blue);
             transform: scaleX(0);
             transition: transform 0.3s ease;
         }
@@ -411,6 +498,25 @@
             box-shadow: 0 15px 35px rgba(0, 174, 239, 0.2);
         }
 
+        /* Colorful card hovers - different color for each card */
+        .card:nth-child(1)::before { background: #00AEEF; }
+        .card:nth-child(1):hover { box-shadow: 0 15px 35px rgba(0, 174, 239, 0.3); }
+
+        .card:nth-child(2)::before { background: #EC008C; }
+        .card:nth-child(2):hover { box-shadow: 0 15px 35px rgba(236, 0, 140, 0.3); }
+
+        .card:nth-child(3)::before { background: #FBB04C; }
+        .card:nth-child(3):hover { box-shadow: 0 15px 35px rgba(251, 176, 76, 0.3); }
+
+        .card:nth-child(4)::before { background: #92278F; }
+        .card:nth-child(4):hover { box-shadow: 0 15px 35px rgba(146, 39, 143, 0.3); }
+
+        .card:nth-child(5)::before { background: #00AEEF; }
+        .card:nth-child(5):hover { box-shadow: 0 15px 35px rgba(0, 174, 239, 0.3); }
+
+        .card:nth-child(6)::before { background: #EC008C; }
+        .card:nth-child(6):hover { box-shadow: 0 15px 35px rgba(236, 0, 140, 0.3); }
+
         .card-icon {
             font-size: 3rem;
             color: var(--sky-blue);
@@ -420,6 +526,19 @@
             justify-content: center;
             align-items: center;
             height: 80px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .card-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .card-icon img {
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .card-icon img {
+            transform: scale(1.1) rotate(-5deg);
         }
 
         .card-title {
@@ -448,7 +567,7 @@
             top: 0;
             bottom: 0;
             width: 3px;
-            background: linear-gradient(180deg, var(--sky-blue), var(--purple-plum));
+            background: var(--border-light);
         }
 
         .timeline-item {
@@ -489,17 +608,17 @@
             width: 20px;
             height: 20px;
             border-radius: 50%;
-            background: var(--warm-gold);
+            background: var(--sky-blue);
             position: absolute;
             left: 20px;
             transform: translateX(-50%);
             z-index: 1;
-            box-shadow: 0 0 0 4px var(--white), 0 0 20px rgba(251, 176, 76, 0.5);
+            box-shadow: 0 0 0 4px var(--white), 0 0 20px rgba(0, 174, 239, 0.3);
         }
 
         .timeline-year {
             font-size: 1.2rem;
-            color: var(--warm-gold);
+            color: var(--sky-blue);
             font-weight: bold;
             margin-bottom: 0.5rem;
         }
@@ -532,42 +651,66 @@
         .stat-item {
             padding: 2rem;
             border-radius: 15px;
-            color: var(--white);
+            background: var(--white);
+            border: 2px solid var(--border-light);
             position: relative;
             overflow: hidden;
             z-index: 10;
+            transition: all 0.3s ease;
         }
 
-        .stat-item:nth-child(1) {
-            background: #292663;
+        .stat-item:hover {
+            border-color: var(--sky-blue);
+            box-shadow: 0 5px 20px rgba(0, 174, 239, 0.2);
+            transform: translateY(-5px);
         }
 
-        .stat-item:nth-child(2) {
-            background: #00AEEF;
+        /* Different color for each stat on hover */
+        .stat-item:nth-child(1):hover {
+            border-color: #00AEEF;
+            box-shadow: 0 5px 20px rgba(0, 174, 239, 0.3);
         }
 
-        .stat-item:nth-child(3) {
-            background: #FBB04C;
+        .stat-item:nth-child(2):hover {
+            border-color: #EC008C;
+            box-shadow: 0 5px 20px rgba(236, 0, 140, 0.3);
         }
 
-        .stat-item:nth-child(4) {
-            background: #EC008C;
+        .stat-item:nth-child(3):hover {
+            border-color: #FBB04C;
+            box-shadow: 0 5px 20px rgba(251, 176, 76, 0.3);
         }
 
-        /* Shimmer animation disabled */
+        .stat-item:nth-child(4):hover {
+            border-color: #92278F;
+            box-shadow: 0 5px 20px rgba(146, 39, 143, 0.3);
+        }
 
         .stat-number {
             font-size: 3rem;
             font-weight: bold;
             margin-bottom: 0.5rem;
-            color: var(--white);
+            color: var(--deep-indigo);
             display: block;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover .stat-number {
+            background: linear-gradient(
+                90deg,
+                #00AEEF 0%,
+                #EC008C 33%,
+                #FBB04C 66%,
+                #92278F 100%
+            );
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .stat-label {
             font-size: 1.1rem;
-            opacity: 0.9;
-            color: var(--white);
+            color: var(--text-light);
             display: block;
         }
 
@@ -637,8 +780,9 @@
             display: inline-block;
             margin-top: 1rem;
             padding: 0.6rem 1.2rem;
-            background: linear-gradient(135deg, var(--sky-blue), var(--deep-indigo));
-            color: var(--white);
+            background: var(--white);
+            color: var(--sky-blue);
+            border: 2px solid var(--sky-blue);
             text-decoration: none;
             border-radius: 25px;
             font-weight: 500;
@@ -648,9 +792,10 @@
 
         .project-link:hover {
             transform: translateY(-2px);
+            background: var(--sky-blue);
+            color: var(--white);
             box-shadow: 0 6px 15px rgba(0, 174, 239, 0.3);
             text-decoration: none;
-            color: var(--white);
         }
 
         /* Media Gallery Section */
@@ -720,26 +865,19 @@
             border-radius: 15px;
             padding: 2rem;
             text-align: center;
-            color: var(--white);
+            background: var(--white);
+            border: 2px solid var(--border-light);
+            color: var(--deep-indigo);
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(251, 176, 76, 0.3);
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
         }
-        
-        .award-card:nth-child(1) {
-            background: linear-gradient(135deg, var(--warm-gold), var(--vivid-magenta));
-        }
-        
-        .award-card:nth-child(2) {
-            background: linear-gradient(135deg, var(--sky-blue), var(--purple-plum));
-        }
-        
-        .award-card:nth-child(3) {
-            background: linear-gradient(135deg, var(--deep-indigo), var(--sky-blue));
-        }
-        
-        .award-card:nth-child(4) {
-            background: linear-gradient(135deg, var(--vivid-magenta), var(--warm-gold));
+
+        .award-card:hover {
+            border-color: var(--sky-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 174, 239, 0.15);
         }
 
         .award-icon {
@@ -750,6 +888,7 @@
             justify-content: center;
             align-items: center;
             height: 100px;
+            color: var(--sky-blue);
         }
 
         /* Bounce animation disabled */
@@ -861,10 +1000,20 @@
             color: var(--white);
             font-size: 1.5rem;
             transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-link svg {
+            width: 28px;
+            height: 28px;
+            fill: currentColor;
+            transition: all 0.3s ease;
         }
 
         .social-link:hover {
-            color: var(--warm-gold);
+            color: var(--sky-blue);
             transform: translateY(-3px);
         }
 
@@ -1032,14 +1181,116 @@
         }
 
         /* Mobile Responsive */
+        /* Mobile Header - Fixed Logo and Hamburger */
+        .mobile-header {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            background: rgba(41, 38, 99, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .mobile-logo {
+            height: 40px;
+        }
+
+        .mobile-hamburger {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .mobile-hamburger span {
+            width: 30px;
+            height: 3px;
+            background: white;
+            margin: 4px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .mobile-hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-8px, 6px);
+        }
+
+        .mobile-hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-8px, -6px);
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(41, 38, 99, 0.98);
+            z-index: 999;
+            padding: 4rem 1.5rem 2rem;
+            overflow-y: auto;
+        }
+
+        .mobile-menu-overlay.active {
+            display: block;
+        }
+
+        .mobile-menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .mobile-menu-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-link:hover,
+        .mobile-menu-link:active {
+            color: var(--warm-gold);
+            background: rgba(255, 255, 255, 0.05);
+            padding-left: 1.75rem;
+        }
+
         @media (max-width: 768px) {
+            /* Hide desktop navbar completely */
+            .navbar {
+                display: none !important;
+            }
+
+            /* Show mobile header */
+            .mobile-header {
+                display: flex !important;
+            }
+
             /* Hide desktop sections and show mobile interface */
             .section:not(.hero):not(.always-visible) {
                 display: none !important;
             }
 
+            /* Hide mobile tab navigation - use hamburger menu instead */
             .mobile-tab-nav {
-                display: block;
+                display: none !important;
             }
 
             .mobile-sections-container {
@@ -1047,7 +1298,7 @@
             }
 
             .hero {
-                padding: 6rem 1rem 2rem;
+                padding: 5rem 1rem 2rem;
                 min-height: 60vh;
             }
 
@@ -1070,13 +1321,18 @@
             }
 
             .cta-buttons {
-                flex-direction: row;
-                justify-content: center;
-                gap: 0.5rem;
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
             }
 
-            .cta-buttons img {
-                height: 40px !important;
+            .hero-btn {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+                width: 100%;
+                max-width: 280px;
+                margin: 0 auto;
+                text-align: center;
             }
 
             .nav-menu {
@@ -1134,6 +1390,294 @@
             .hamburger { display: flex; }
         }
 
+        /* Social Buttons - White with Colorful Hover */
+        .social-btn {
+            background: white;
+            color: white;
+            border: 3px solid white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .social-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Different brand colors for each social button on hover */
+        .social-btn:nth-child(1) { color: #0077B5; } /* LinkedIn */
+        .social-btn:nth-child(1):hover {
+            background: #0077B5;
+            border-color: #0077B5;
+            color: white;
+            box-shadow: 0 6px 20px rgba(0, 119, 181, 0.4);
+        }
+
+        .social-btn:nth-child(2) { color: #FF0000; } /* YouTube */
+        .social-btn:nth-child(2):hover {
+            background: #FF0000;
+            border-color: #FF0000;
+            color: white;
+            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
+        }
+
+        .social-btn:nth-child(3) { color: #1877F2; } /* Facebook */
+        .social-btn:nth-child(3):hover {
+            background: #1877F2;
+            border-color: #1877F2;
+            color: white;
+            box-shadow: 0 6px 20px rgba(24, 119, 242, 0.4);
+        }
+
+        .social-btn:nth-child(4) { color: #E4405F; } /* Instagram */
+        .social-btn:nth-child(4):hover {
+            background: #E4405F;
+            border-color: #E4405F;
+            color: white;
+            box-shadow: 0 6px 20px rgba(228, 64, 95, 0.4);
+        }
+
+        .social-btn:nth-child(5) { color: #292663; } /* Email - Navy */
+        .social-btn:nth-child(5):hover {
+            background: #292663;
+            border-color: #292663;
+            color: white;
+            box-shadow: 0 6px 20px rgba(41, 38, 99, 0.4);
+        }
+
+        /* Press Links - Elegant Transparent Design with Colorful Borders */
+        .press-link {
+            background: transparent;
+            padding: 1.25rem 2rem;
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-left: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            display: block;
+            backdrop-filter: blur(10px);
+        }
+
+        .press-link:hover {
+            transform: translateX(5px);
+            backdrop-filter: blur(20px);
+        }
+
+        /* Different colors for each press link on hover - cycling through brand colors */
+        .press-link:nth-child(1):hover {
+            border-left-color: #00AEEF;
+            border-left-width: 6px;
+            box-shadow: 0 4px 20px rgba(0,174,239,0.3), inset 0 0 20px rgba(0,174,239,0.1);
+            background: rgba(0,174,239,0.1);
+        }
+
+        .press-link:nth-child(2):hover {
+            border-left-color: #EC008C;
+            border-left-width: 6px;
+            box-shadow: 0 4px 20px rgba(236,0,140,0.3), inset 0 0 20px rgba(236,0,140,0.1);
+            background: rgba(236,0,140,0.1);
+        }
+
+        .press-link:nth-child(3):hover {
+            border-left-color: #FBB04C;
+            border-left-width: 6px;
+            box-shadow: 0 4px 20px rgba(251,176,76,0.3), inset 0 0 20px rgba(251,176,76,0.1);
+            background: rgba(251,176,76,0.1);
+        }
+
+        .press-link:nth-child(4):hover {
+            border-left-color: #92278F;
+            border-left-width: 6px;
+            box-shadow: 0 4px 20px rgba(146,39,143,0.3), inset 0 0 20px rgba(146,39,143,0.1);
+            background: rgba(146,39,143,0.1);
+        }
+
+        .press-link:nth-child(5):hover {
+            border-left-color: #00AEEF;
+            border-left-width: 6px;
+            box-shadow: 0 4px 20px rgba(0,174,239,0.3), inset 0 0 20px rgba(0,174,239,0.1);
+            background: rgba(0,174,239,0.1);
+        }
+
+        .press-link:nth-child(6):hover {
+            border-left-color: #EC008C;
+            border-left-width: 6px;
+            box-shadow: 0 4px 20px rgba(236,0,140,0.3), inset 0 0 20px rgba(236,0,140,0.1);
+            background: rgba(236,0,140,0.1);
+        }
+
+        .press-link:nth-child(7):hover {
+            border-left-color: #FBB04C;
+            border-left-width: 6px;
+            box-shadow: 0 4px 20px rgba(251,176,76,0.3), inset 0 0 20px rgba(251,176,76,0.1);
+            background: rgba(251,176,76,0.1);
+        }
+
+        .press-link:nth-child(8):hover {
+            border-left-color: #92278F;
+            border-left-width: 6px;
+            box-shadow: 0 4px 20px rgba(146,39,143,0.3), inset 0 0 20px rgba(146,39,143,0.1);
+            background: rgba(146,39,143,0.1);
+        }
+
+        .press-link:nth-child(9):hover {
+            border-left-color: #00AEEF;
+            border-left-width: 6px;
+            box-shadow: 0 4px 20px rgba(0,174,239,0.3), inset 0 0 20px rgba(0,174,239,0.1);
+            background: rgba(0,174,239,0.1);
+        }
+
+        .press-link:nth-child(10):hover {
+            border-left-color: #EC008C;
+            border-left-width: 6px;
+            box-shadow: 0 4px 20px rgba(236,0,140,0.3), inset 0 0 20px rgba(236,0,140,0.1);
+            background: rgba(236,0,140,0.1);
+        }
+
+        .press-link:nth-child(11):hover {
+            border-left-color: #FBB04C;
+            border-left-width: 6px;
+            box-shadow: 0 4px 20px rgba(251,176,76,0.3), inset 0 0 20px rgba(251,176,76,0.1);
+            background: rgba(251,176,76,0.1);
+        }
+
+        .press-link:nth-child(12):hover {
+            border-left-color: #92278F;
+            border-left-width: 6px;
+            box-shadow: 0 4px 20px rgba(146,39,143,0.3), inset 0 0 20px rgba(146,39,143,0.1);
+            background: rgba(146,39,143,0.1);
+        }
+
+        .press-link:nth-child(13):hover {
+            border-left-color: #00AEEF;
+            border-left-width: 6px;
+            box-shadow: 0 4px 20px rgba(0,174,239,0.3), inset 0 0 20px rgba(0,174,239,0.1);
+            background: rgba(0,174,239,0.1);
+        }
+
+        .press-link:nth-child(14):hover {
+            border-left-color: #EC008C;
+            border-left-width: 6px;
+            box-shadow: 0 4px 20px rgba(236,0,140,0.3), inset 0 0 20px rgba(236,0,140,0.1);
+            background: rgba(236,0,140,0.1);
+        }
+
+        .press-link:nth-child(15):hover {
+            border-left-color: #FBB04C;
+            border-left-width: 6px;
+            box-shadow: 0 4px 20px rgba(251,176,76,0.3), inset 0 0 20px rgba(251,176,76,0.1);
+            background: rgba(251,176,76,0.1);
+        }
+
+        .press-link:nth-child(16):hover {
+            border-left-color: #92278F;
+            border-left-width: 6px;
+            box-shadow: 0 4px 20px rgba(146,39,143,0.3), inset 0 0 20px rgba(146,39,143,0.1);
+            background: rgba(146,39,143,0.1);
+        }
+
+        .press-link:nth-child(17):hover {
+            border-left-color: #00AEEF;
+            border-left-width: 6px;
+            box-shadow: 0 4px 20px rgba(0,174,239,0.3), inset 0 0 20px rgba(0,174,239,0.1);
+            background: rgba(0,174,239,0.1);
+        }
+
+        .press-link:nth-child(18):hover {
+            border-left-color: #EC008C;
+            border-left-width: 6px;
+            box-shadow: 0 4px 20px rgba(236,0,140,0.3), inset 0 0 20px rgba(236,0,140,0.1);
+            background: rgba(236,0,140,0.1);
+        }
+
+        .press-link:nth-child(19):hover {
+            border-left-color: #FBB04C;
+            border-left-width: 6px;
+            box-shadow: 0 4px 20px rgba(251,176,76,0.3), inset 0 0 20px rgba(251,176,76,0.1);
+            background: rgba(251,176,76,0.1);
+        }
+
+        .press-link:nth-child(20):hover {
+            border-left-color: #92278F;
+            border-left-width: 6px;
+            box-shadow: 0 4px 20px rgba(146,39,143,0.3), inset 0 0 20px rgba(146,39,143,0.1);
+            background: rgba(146,39,143,0.1);
+        }
+
+        .press-link:nth-child(21):hover {
+            border-left-color: #00AEEF;
+            border-left-width: 6px;
+            box-shadow: 0 4px 20px rgba(0,174,239,0.3), inset 0 0 20px rgba(0,174,239,0.1);
+            background: rgba(0,174,239,0.1);
+        }
+
+        .press-link:nth-child(22):hover {
+            border-left-color: #EC008C;
+            border-left-width: 6px;
+            box-shadow: 0 4px 20px rgba(236,0,140,0.3), inset 0 0 20px rgba(236,0,140,0.1);
+            background: rgba(236,0,140,0.1);
+        }
+
+        .press-link:nth-child(23):hover {
+            border-left-color: #FBB04C;
+            border-left-width: 6px;
+            box-shadow: 0 4px 20px rgba(251,176,76,0.3), inset 0 0 20px rgba(251,176,76,0.1);
+            background: rgba(251,176,76,0.1);
+        }
+
+        .press-link:nth-child(24):hover {
+            border-left-color: #92278F;
+            border-left-width: 6px;
+            box-shadow: 0 4px 20px rgba(146,39,143,0.3), inset 0 0 20px rgba(146,39,143,0.1);
+            background: rgba(146,39,143,0.1);
+        }
+
+        .press-link:nth-child(25):hover {
+            border-left-color: #00AEEF;
+            border-left-width: 6px;
+            box-shadow: 0 4px 20px rgba(0,174,239,0.3), inset 0 0 20px rgba(0,174,239,0.1);
+            background: rgba(0,174,239,0.1);
+        }
+
+        .press-link:nth-child(26):hover {
+            border-left-color: #EC008C;
+            border-left-width: 6px;
+            box-shadow: 0 4px 20px rgba(236,0,140,0.3), inset 0 0 20px rgba(236,0,140,0.1);
+            background: rgba(236,0,140,0.1);
+        }
+
+        .press-link:nth-child(27):hover {
+            border-left-color: #FBB04C;
+            border-left-width: 6px;
+            box-shadow: 0 4px 20px rgba(251,176,76,0.3), inset 0 0 20px rgba(251,176,76,0.1);
+            background: rgba(251,176,76,0.1);
+        }
+
+        .press-link:nth-child(28):hover {
+            border-left-color: #92278F;
+            border-left-width: 6px;
+            box-shadow: 0 4px 20px rgba(146,39,143,0.3), inset 0 0 20px rgba(146,39,143,0.1);
+            background: rgba(146,39,143,0.1);
+        }
+
         /* Company Logos/Icons */
         .company-icon {
             width: 60px;
@@ -1181,7 +1725,7 @@
             height: 120px;
             border-radius: 50%;
             margin: 0 auto 1.5rem;
-            background: linear-gradient(135deg, var(--sky-blue), var(--vivid-magenta));
+            background: transparent;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1189,7 +1733,6 @@
             font-size: 2rem;
             font-weight: bold;
             object-fit: cover;
-            border: 4px solid var(--white);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
@@ -1264,14 +1807,52 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: var(--border-light);
+            background: rgba(255, 255, 255, 0.3);
             cursor: pointer;
             transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.5);
         }
 
         .carousel-dot.active {
-            background: var(--sky-blue);
-            transform: scale(1.2);
+            transform: scale(1.3);
+            box-shadow: 0 0 15px currentColor;
+        }
+
+        /* Different colors for each dot when active */
+        .carousel-dot:nth-child(1).active {
+            background: #00AEEF;
+            border-color: #00AEEF;
+            color: #00AEEF;
+        }
+
+        .carousel-dot:nth-child(2).active {
+            background: #EC008C;
+            border-color: #EC008C;
+            color: #EC008C;
+        }
+
+        .carousel-dot:nth-child(3).active {
+            background: #FBB04C;
+            border-color: #FBB04C;
+            color: #FBB04C;
+        }
+
+        .carousel-dot:nth-child(4).active {
+            background: #92278F;
+            border-color: #92278F;
+            color: #92278F;
+        }
+
+        .carousel-dot:nth-child(5).active {
+            background: #00AEEF;
+            border-color: #00AEEF;
+            color: #00AEEF;
+        }
+
+        .carousel-dot:nth-child(6).active {
+            background: #EC008C;
+            border-color: #EC008C;
+            color: #EC008C;
         }
 
         /* Section Separators */
@@ -1373,14 +1954,14 @@
         }
 
         .form-submit {
-            background: linear-gradient(135deg, var(--sky-blue), var(--vivid-magenta));
-            color: var(--white);
-            border: none;
-            padding: 1rem 3rem;
+            background: white;
+            color: var(--deep-indigo);
+            border: 3px solid white;
+            padding: 1.25rem 3rem;
             border-radius: 50px;
             font-family: 'Roboto', Arial, sans-serif;
             font-size: 1.1rem;
-            font-weight: 500;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
             display: block;
@@ -1388,8 +1969,11 @@
         }
 
         .form-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 174, 239, 0.3);
+            background: white;
+            color: #292663;
+            border-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(41, 38, 99, 0.4);
         }
 
         @media (max-width: 768px) {
@@ -1403,6 +1987,29 @@
 <body>
     <!-- Background Decoration -->
     <div class="bg-decoration"></div>
+
+    <!-- Mobile Header (Logo + Hamburger) -->
+    <div class="mobile-header">
+        <img src="./Logo White/Logo_White.png" alt="Obai Sukar" class="mobile-logo">
+        <div class="mobile-hamburger" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <div class="mobile-menu-links">
+            <a href="#" class="mobile-menu-link" onclick="scrollToSection('about')">About</a>
+            <a href="#" class="mobile-menu-link" onclick="scrollToSection('experience')">Experience</a>
+            <a href="#" class="mobile-menu-link" onclick="scrollToSection('impact')">Impact</a>
+            <a href="portfolio.html" target="_blank" class="mobile-menu-link">Portfolio</a>
+            <a href="#" class="mobile-menu-link" onclick="scrollToSection('press')">Press</a>
+            <a href="#" class="mobile-menu-link" onclick="scrollToSection('testimonial')">Reviews</a>
+            <a href="#" class="mobile-menu-link" onclick="scrollToSection('contact')">Contact</a>
+        </div>
+    </div>
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
@@ -1443,8 +2050,8 @@
                 Building bridges across cultures through innovative sound engineering, humanitarian broadcasting, and educational platforms reaching millions worldwide—from North America to Middle East.
             </p>
             <div class="cta-buttons">
-                <a href="#about"><img src="./Buttons_/Explore Projects.png" alt="View Excellence" style="height: 50px; margin-right: 1rem;"></a>
-                <a href="#contact"><img src="./Buttons_/Get In Touch.png" alt="Get In Touch" style="height: 50px;"></a>
+                <a href="portfolio.html" target="_blank" class="hero-btn hero-btn-primary">Explore Projects</a>
+                <a href="#contact" class="hero-btn hero-btn-secondary" onclick="handleGetInTouch(event)">Get In Touch</a>
             </div>
         </div>
     </section>
@@ -1452,20 +2059,20 @@
     <!-- Stats Section -->
     <section class="section always-visible">
         <div class="stats-grid">
-            <div class="stat-item">
-                <div class="stat-number">25+</div>
+            <div class="stat-item" onmouseenter="animateCounter(this)" onmouseleave="resetCounter(this)">
+                <div class="stat-number" data-target="25" data-suffix="+">25+</div>
                 <div class="stat-label">Years Experience</div>
             </div>
-            <div class="stat-item">
-                <div class="stat-number">739K+</div>
+            <div class="stat-item" onmouseenter="animateCounter(this)" onmouseleave="resetCounter(this)">
+                <div class="stat-number" data-target="739" data-suffix="K+">739K+</div>
                 <div class="stat-label">YouTube Subscribers</div>
             </div>
-            <div class="stat-item">
-                <div class="stat-number">310M+</div>
+            <div class="stat-item" onmouseenter="animateCounter(this)" onmouseleave="resetCounter(this)">
+                <div class="stat-number" data-target="310" data-suffix="M+">310M+</div>
                 <div class="stat-label">Video Views</div>
             </div>
-            <div class="stat-item">
-                <div class="stat-number">50+</div>
+            <div class="stat-item" onmouseenter="animateCounter(this)" onmouseleave="resetCounter(this)">
+                <div class="stat-number" data-target="50" data-suffix="+">50+</div>
                 <div class="stat-label">International Clients</div>
             </div>
         </div>
@@ -1567,7 +2174,7 @@
             </div>
 
             <div class="mobile-card">
-                <div class="mobile-card-title">🏆 Mohammed Bin Rashid Award</div>
+                <div class="mobile-card-title">🏆 Mohamad Bin Rashid Award</div>
                 <div class="mobile-card-text">
                     <strong>Governor of Dubai Award (2019)</strong> for excellence in Arabic language innovation and cultural preservation through digital media platforms.
                 </div>
@@ -1602,7 +2209,7 @@
                 <div class="mobile-card-text">
                     Explore my complete video portfolio featuring 15+ videos including documentaries, channel highlights, projects, and media appearances across broadcasting, education, and humanitarian work.
                     <br><br>
-                    <a href="portfolio.html" style="display: inline-block; background: var(--sky-blue); color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; margin-top: 1rem;">View Full Portfolio →</a>
+                    <a href="portfolio.html" style="display: inline-block; background: white; color: var(--deep-indigo); border: 3px solid white; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 700; margin-top: 1rem; transition: all 0.3s ease;" onmouseover="this.style.background='white'; this.style.color='#292663'" onmouseout="this.style.background='white'; this.style.color='var(--deep-indigo)'">View Full Portfolio →</a>
                 </div>
             </div>
         </div>
@@ -1637,7 +2244,7 @@
             </div>
 
             <div class="mobile-card">
-                <div class="mobile-card-title">🏆 Mohammed Bin Rashid Award</div>
+                <div class="mobile-card-title">🏆 Mohamad Bin Rashid Award</div>
                 <div class="mobile-card-text">
                     Official recognition page - Governor of Dubai Award (2019)
                     <br><br>
@@ -1645,14 +2252,13 @@
                 </div>
             </div>
 
-            <div class="mobile-card" style="background: linear-gradient(135deg, var(--deep-indigo), var(--sky-blue)); color: white;">
+            <div class="mobile-card" style="background: var(--sky-blue); color: white;">
                 <div class="mobile-card-title" style="color: white;">🔗 Connect With Me</div>
                 <div class="mobile-card-text" style="color: rgba(255,255,255,0.9);">
                     💼 LinkedIn: /in/obaisukar<br>
                     📺 YouTube: @KarazahOfficial<br>
                     📘 Facebook: obai.sukar<br>
                     📷 Instagram: @obaisukar<br>
-                    🐦 Twitter: @obaisukar<br>
                     📧 obai@obaisukar.com
                 </div>
             </div>
@@ -1723,7 +2329,7 @@
                 </div>
 
                 <button type="submit"
-                        style="width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--sky-blue), var(--vivid-magenta)); color: white; border: none; border-radius: 25px; font-size: 1rem; font-weight: 500; cursor: pointer;">
+                        style="width: 100%; padding: 1rem; background: white; color: var(--deep-indigo); border: 3px solid white; border-radius: 50px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.background='#292663'; this.style.color='white'; this.style.borderColor='#292663'" onmouseout="this.style.background='white'; this.style.color='var(--deep-indigo)'; this.style.borderColor='white'">
                     Send Message
                 </button>
             </form>
@@ -1746,6 +2352,16 @@
         </div>
 
         <div class="cards-grid">
+            <!-- Prodigy Card - FIRST -->
+            <div class="card">
+                <div class="card-icon">⭐</div>
+                <h3 class="card-title">Prodigy Since Childhood</h3>
+                <p class="card-text">
+                    <strong>Tech & Media Excellence from Youth</strong><br>
+                    Assembled first computer in 8th grade, mastering technology early. At age 17, became youngest employee at Spacetoon as "Mr. Radio" (2000-2005), leading radio programming while still in high school. Early mastery of both technology and media launched a 25+ year dual-career in IT consulting and broadcasting innovation.
+                </p>
+            </div>
+
             <div class="card">
                 <div class="card-icon"><img src="./Icons/Executive Summary/Sound Engineering Excellence@4x.png" alt="Sound Engineering" style="width: 60px; height: 60px;"></div>
                 <h3 class="card-title">Sound Engineering Excellence</h3>
@@ -1757,10 +2373,10 @@
 
             <div class="card">
                 <div class="card-icon"><img src="./Icons/Executive Summary/Media Entrepreneurship@4x.png" alt="Media Entrepreneurship" style="width: 60px; height: 60px;"></div>
-                <h3 class="card-title">Technology Leadership Since Childhood</h3>
+                <h3 class="card-title">Enterprise IT Leadership</h3>
                 <p class="card-text">
-                    <strong>Assembled first computer in 8th grade</strong><br>
-                    25+ years IT consulting serving international clients across North America and Middle East. Enterprise architecture, cyber security, cloud infrastructure, network administration, HIPAA compliance, system integration. Notable: Led 18+ facilities achieving 99.8% uptime with zero security incidents.
+                    <strong>25+ Years Serving International Clients</strong><br>
+                    IT consulting across North America and Middle East. Enterprise architecture, cyber security, cloud infrastructure, network administration, HIPAA compliance, system integration. Led 18+ facilities achieving 99.8% uptime with zero security incidents. Expert in complex multi-site deployments and mission-critical infrastructure.
                 </p>
             </div>
 
@@ -1807,74 +2423,70 @@
 
             <!-- Karazah Channel -->
             <div class="card">
-                <div class="card-icon">
-                    <img src="./Logos/Karazah-logo.png" alt="Karazah" style="width: 60px; height: 60px; object-fit: contain;">
-                </div>
-                <h3 class="card-title">Karazah Channel</h3>
+                <h3 class="card-title" style="text-align: center;">Karazah Channel</h3>
                 <p class="card-text">
                     <strong>739K+ Subscribers | 310M+ Views</strong><br>
                     Created global Arabic educational platform managing international production teams across 9 countries. Culturally sensitive educational content preserving language and cultural heritage for diaspora communities worldwide.
                     <br><br>
-                    <a href="https://www.youtube.com/@KarazahOfficial" target="_blank" style="color: var(--sky-blue); font-weight: 600;">Visit Channel →</a>
+                    <a href="https://www.youtube.com/@KarazahOfficial" target="_blank" style="color: #FBB04C; font-weight: 600; display: block; text-align: center;">Visit Channel →</a>
                 </p>
             </div>
 
-            <!-- Radio Al-Kul - Humanitarian Broadcasting -->
+            <!-- Radio Al-Kul -->
             <div class="card">
-                <div class="card-icon">
-                    <img src="./Logos/راديو الكل.png" alt="Radio Al-Kul" style="width: 60px; height: 60px; object-fit: contain;">
-                </div>
-                <h3 class="card-title">Radio Al-Kul - Humanitarian Broadcasting</h3>
+                <h3 class="card-title" style="text-align: center;">Radio Al-Kul</h3>
                 <p class="card-text">
                     <strong>500K Daily Listeners | Featured in NPR, Al Jazeera</strong><br>
                     Co-founded independent media station during Syrian civil war. Built broadcast studios from ground up, trained journalist teams, worked as on-the-ground war journalist. Revolutionary mobile FM transmission reaching conflict zones with uncensored news and humanitarian information.
                     <br><br>
-                    <a href="https://www.npr.org/2014/03/16/290615013/radio-pirates-risk-dangers-of-war-to-reach-syrian-people" target="_blank" style="color: var(--sky-blue); font-weight: 600;">NPR Feature →</a> |
-                    <a href="https://www.aljazeera.com/features/2014/4/7/syrias-opposition-radio-makes-waves" target="_blank" style="color: var(--sky-blue); font-weight: 600;">Al Jazeera →</a>
+                    <span style="display: block; text-align: center;">
+                        <a href="https://www.npr.org/2014/03/16/290615013/radio-pirates-risk-dangers-of-war-to-reach-syrian-people" target="_blank" style="color: #FBB04C; font-weight: 600;">NPR Feature →</a> |
+                        <a href="https://www.aljazeera.com/features/2014/4/7/syrias-opposition-radio-makes-waves" target="_blank" style="color: #FBB04C; font-weight: 600;">Al Jazeera →</a>
+                    </span>
                 </p>
             </div>
 
-            <!-- Mohammed Bin Rashid Award -->
+            <!-- Mohamad Bin Rashid Award -->
             <div class="card">
-                <div class="card-icon">🏆</div>
-                <h3 class="card-title">Mohammed Bin Rashid Award (2019)</h3>
+                <h3 class="card-title" style="text-align: center;">Mohamad Bin Rashid Award</h3>
                 <p class="card-text">
                     <strong>Governor of Dubai Recognition</strong><br>
                     Prestigious award for exceptional contributions to Arabic language education and cultural innovation.
                     <br><br>
-                    <a href="https://www.arabicaward.ae/p/award-winners/2019" target="_blank" style="color: var(--sky-blue); font-weight: 600;">View Official Award →</a>
+                    <a href="https://www.arabicaward.ae/p/award-winners/2019" target="_blank" style="color: #FBB04C; font-weight: 600; display: block; text-align: center;">View Official Award →</a>
                 </p>
             </div>
 
             <!-- Cloud Kumo -->
             <div class="card">
-                <div class="card-icon">🎬</div>
-                <h3 class="card-title">Cloud Kumo</h3>
+                <h3 class="card-title" style="text-align: center;">Cloud Kumo</h3>
                 <p class="card-text">
                     <strong>Sound Designer for Academy Award-Winning Film</strong><br>
                     Advanced audio engineering for Student Academy Award Silver winner (2016). International recognition for technical excellence.
+                    <br><br>
+                    <a href="https://www.oscars.org/news/academy-reveals-2016-student-academy-award-winners" target="_blank" style="color: #FBB04C; font-weight: 600; display: block; text-align: center;">View Award Details →</a>
                 </p>
             </div>
 
             <!-- SS Media Productions -->
             <div class="card">
-                <div class="card-icon">🎙️</div>
-                <h3 class="card-title">SS Media Productions</h3>
+                <h3 class="card-title" style="text-align: center;">SS Media Productions</h3>
                 <p class="card-text">
                     <strong>Founded Michigan-based media company</strong><br>
                     Full-service studio offering 3D animation, VFX, sound design, and bilingual voiceovers. Serving 50+ international clients across multiple industries.
+                    <br><br>
+                    <a href="https://ss-prod.com/" target="_blank" style="color: #FBB04C; font-weight: 600; display: block; text-align: center;">Visit Website →</a>
                 </p>
             </div>
 
             <!-- Syria TV Documentary -->
             <div class="card">
-                <div class="card-icon">📺</div>
-                <h3 class="card-title">Syria TV Documentary</h3>
+                <h3 class="card-title" style="text-align: center;">Syria TV Documentary</h3>
                 <p class="card-text">
                     <strong>Featured biographical episode</strong><br>
                     Professional profile covering career journey and achievements with English subtitles.
                     <br><br>
-                    <a href="https://www.youtube.com/watch?v=xbHSJqgyKkc" target="_blank" style="color: var(--sky-blue); font-weight: 600;">Watch Documentary →</a>
+                    <a href="https://www.youtube.com/watch?v=xbHSJqgyKkc" target="_blank" style="color: #FBB04C; font-weight: 600; display: block; text-align: center;">Watch Documentary →</a>
                 </p>
             </div>
 
@@ -1882,7 +2494,7 @@
     </section>
 
     <!-- Recognition & Press Section -->
-    <section id="recognition" class="section fade-in">
+    <section id="recognition" class="section fade-in section-transparent">
         <div class="section-header">
             <h2 class="section-title">Recognition & Press</h2>
             <p class="section-subtitle">
@@ -1890,140 +2502,224 @@
             </p>
         </div>
 
-        <!-- Press Coverage - Clean Text List (2 Per Line) -->
-        <div style="max-width: 900px; margin: 0 auto; background: white; padding: 2.5rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem 3rem; font-size: 1.1rem;">
+        <!-- Press Coverage - Clean List Format -->
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
 
-                <div style="display: flex; align-items: center; padding: 0.75rem 0; border-bottom: 2px solid var(--light-gray);">
-                    <span style="color: var(--deep-indigo); margin-right: 0.75rem; font-size: 1.2rem;">•</span>
-                    <a href="https://www.npr.org/2014/03/16/290615013/radio-pirates-risk-dangers-of-war-to-reach-syrian-people" target="_blank" style="color: var(--deep-indigo); text-decoration: none; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.color='var(--sky-blue)'; this.style.textDecoration='underline'" onmouseout="this.style.color='var(--deep-indigo)'; this.style.textDecoration='none'">NPR</a>
-                </div>
+                <a href="https://www.npr.org/2014/03/16/290615013/radio-pirates-risk-dangers-of-war-to-reach-syrian-people"
+                   target="_blank"
+                   class="press-link" style="text-align: left; padding: 1.5rem;">
+                    <strong>NPR:</strong> Radio Pirates Risk Dangers of War to Reach Syrian People
+                </a>
 
-                <div style="display: flex; align-items: center; padding: 0.75rem 0; border-bottom: 2px solid var(--light-gray);">
-                    <span style="color: var(--deep-indigo); margin-right: 0.75rem; font-size: 1.2rem;">•</span>
-                    <a href="https://www.washingtonpost.com/world/middle_east/syria-diaspora-clubhouse-middle-east/2021/03/09/90a2a55e-7c28-11eb-8c5e-32e47b42b51b_story.html" target="_blank" style="color: var(--deep-indigo); text-decoration: none; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.color='var(--sky-blue)'; this.style.textDecoration='underline'" onmouseout="this.style.color='var(--deep-indigo)'; this.style.textDecoration='none'">Washington Post</a>
-                </div>
+                <a href="https://www.washingtonpost.com/world/middle_east/syria-diaspora-clubhouse-middle-east/2021/03/09/90a2a55e-7c28-11eb-8c5e-32e47b42b51b_story.html"
+                   target="_blank"
+                   class="press-link" style="text-align: left; padding: 1.5rem;">
+                    <strong>Washington Post:</strong> Syria Diaspora Clubhouse Middle East
+                </a>
 
-                <div style="display: flex; align-items: center; padding: 0.75rem 0; border-bottom: 2px solid var(--light-gray);">
-                    <span style="color: var(--deep-indigo); margin-right: 0.75rem; font-size: 1.2rem;">•</span>
-                    <a href="https://www.aljazeera.com/features/2014/4/7/syrias-opposition-radio-makes-waves" target="_blank" style="color: var(--deep-indigo); text-decoration: none; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.color='var(--sky-blue)'; this.style.textDecoration='underline'" onmouseout="this.style.color='var(--deep-indigo)'; this.style.textDecoration='none'">Al Jazeera</a>
-                </div>
+                <a href="https://www.aljazeera.com/features/2014/4/7/syrias-opposition-radio-makes-waves"
+                   target="_blank"
+                   class="press-link" style="text-align: left; padding: 1.5rem;">
+                    <strong>Al Jazeera:</strong> Syria's Opposition Radio Makes Waves
+                </a>
 
-                <div style="display: flex; align-items: center; padding: 0.75rem 0; border-bottom: 2px solid var(--light-gray);">
-                    <span style="color: var(--warm-gold); margin-right: 0.75rem; font-size: 1.2rem;">★</span>
-                    <a href="https://www.arabicaward.ae/p/award-winners/2019" target="_blank" style="color: var(--deep-indigo); text-decoration: none; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.color='var(--sky-blue)'; this.style.textDecoration='underline'" onmouseout="this.style.color='var(--deep-indigo)'; this.style.textDecoration='none'">Dubai Award 2019</a>
-                </div>
+                <a href="https://www.arabicaward.ae/p/award-winners/2019"
+                   target="_blank"
+                   class="press-link" style="text-align: left; padding: 1.5rem;">
+                    <strong>Mohamad Bin Rashid Award:</strong> Governor of Dubai Recognition
+                </a>
 
-                <div style="display: flex; align-items: center; padding: 0.75rem 0; border-bottom: 2px solid var(--light-gray);">
-                    <span style="color: var(--deep-indigo); margin-right: 0.75rem; font-size: 1.2rem;">•</span>
-                    <a href="https://medium.com/war-is-boring/radio-kul-broadcasts-for-a-free-syria-14ee9292b1ae" target="_blank" style="color: var(--deep-indigo); text-decoration: none; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.color='var(--sky-blue)'; this.style.textDecoration='underline'" onmouseout="this.style.color='var(--deep-indigo)'; this.style.textDecoration='none'">Medium</a>
-                </div>
+                <a href="https://medium.com/war-is-boring/radio-kul-broadcasts-for-a-free-syria-14ee9292b1ae"
+                   target="_blank"
+                   class="press-link" style="text-align: left; padding: 1.5rem;">
+                    <strong>Medium:</strong> Radio Kul Broadcasts for a Free Syria
+                </a>
 
-                <div style="display: flex; align-items: center; padding: 0.75rem 0; border-bottom: 2px solid var(--light-gray);">
-                    <span style="color: var(--deep-indigo); margin-right: 0.75rem; font-size: 1.2rem;">•</span>
-                    <a href="https://finance.yahoo.com/news/basement-150-million-views-youtube-120000851.html?fr=sycsrp_catchall" target="_blank" style="color: var(--deep-indigo); text-decoration: none; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.color='var(--sky-blue)'; this.style.textDecoration='underline'" onmouseout="this.style.color='var(--deep-indigo)'; this.style.textDecoration='none'">Yahoo! Finance</a>
-                </div>
+                <a href="https://finance.yahoo.com/news/basement-150-million-views-youtube-120000851.html"
+                   target="_blank"
+                   class="press-link" style="text-align: left; padding: 1.5rem;">
+                    <strong>Yahoo Finance:</strong> How Perseverance Created SS-Media Productions Powerhouse
+                </a>
 
-                <div style="display: flex; align-items: center; padding: 0.75rem 0; border-bottom: 2px solid var(--light-gray);">
-                    <span style="color: var(--deep-indigo); margin-right: 0.75rem; font-size: 1.2rem;">•</span>
-                    <a href="https://markets.businessinsider.com/news/stocks/from-basement-to-150-million-views-on-youtube---how-perseverance-created-ss-media-productions-powerhouse-1031660989" target="_blank" style="color: var(--deep-indigo); text-decoration: none; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.color='var(--sky-blue)'; this.style.textDecoration='underline'" onmouseout="this.style.color='var(--deep-indigo)'; this.style.textDecoration='none'">Business Insider</a>
-                </div>
+                <a href="https://markets.businessinsider.com/news/stocks/from-basement-to-150-million-views-on-youtube---how-perseverance-created-ss-media-productions-powerhouse-1031660989"
+                   target="_blank"
+                   class="press-link" style="text-align: left; padding: 1.5rem;">
+                    <strong>Business Insider:</strong> From Basement To 150 Million Views On YouTube
+                </a>
 
-                <div style="display: flex; align-items: center; padding: 0.75rem 0; border-bottom: 2px solid var(--light-gray);">
-                    <span style="color: var(--deep-indigo); margin-right: 0.75rem; font-size: 1.2rem;">•</span>
-                    <a href="https://www.digitaljournal.com/pr/from-basement-to-150-million-views-on-youtube-how-perseverance-created-ss-media-productions-powerhouse" target="_blank" style="color: var(--deep-indigo); text-decoration: none; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.color='var(--sky-blue)'; this.style.textDecoration='underline'" onmouseout="this.style.color='var(--deep-indigo)'; this.style.textDecoration='none'">Digital Journal</a>
-                </div>
+                <a href="https://www.digitaljournal.com/pr/from-basement-to-150-million-views-on-youtube-how-perseverance-created-ss-media-productions-powerhouse"
+                   target="_blank"
+                   class="press-link" style="text-align: left; padding: 1.5rem;">
+                    <strong>Digital Journal:</strong> From Basement to 150 Million Views on YouTube
+                </a>
 
-                <div style="display: flex; align-items: center; padding: 0.75rem 0; border-bottom: 2px solid var(--light-gray);">
-                    <span style="color: var(--deep-indigo); margin-right: 0.75rem; font-size: 1.2rem;">•</span>
-                    <a href="https://apnews.com/press-release/accesswire/entertainment-middle-east-flint-b9e6b409194938f2da8bb3f55d6ea140" target="_blank" style="color: var(--deep-indigo); text-decoration: none; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.color='var(--sky-blue)'; this.style.textDecoration='underline'" onmouseout="this.style.color='var(--deep-indigo)'; this.style.textDecoration='none'">AP News</a>
-                </div>
+                <a href="https://apnews.com/press-release/accesswire/entertainment-middle-east-flint-b9e6b409194938f2da8bb3f55d6ea140"
+                   target="_blank"
+                   class="press-link" style="text-align: left; padding: 1.5rem;">
+                    <strong>AP News:</strong> SS-Media Productions Press Release
+                </a>
 
-                <div style="display: flex; align-items: center; padding: 0.75rem 0; border-bottom: 2px solid var(--light-gray);">
-                    <span style="color: var(--deep-indigo); margin-right: 0.75rem; font-size: 1.2rem;">•</span>
-                    <a href="https://www.yahoo.com/now/basement-150-million-views-youtube-120000851.html" target="_blank" style="color: var(--deep-indigo); text-decoration: none; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.color='var(--sky-blue)'; this.style.textDecoration='underline'" onmouseout="this.style.color='var(--deep-indigo)'; this.style.textDecoration='none'">Yahoo! News</a>
-                </div>
+                <a href="https://www.yahoo.com/now/basement-150-million-views-youtube-120000851.html"
+                   target="_blank"
+                   class="press-link" style="text-align: left; padding: 1.5rem;">
+                    <strong>Yahoo Now:</strong> How Perseverance Created SS-Media Productions
+                </a>
 
-                <div style="display: flex; align-items: center; padding: 0.75rem 0; border-bottom: 2px solid var(--light-gray);">
-                    <span style="color: var(--deep-indigo); margin-right: 0.75rem; font-size: 1.2rem;">•</span>
-                    <a href="https://markets.financialcontent.com/bostonherald/article/accwirecq-2022-8-8-from-basement-to-150-million-views-on-youtube-how-perseverance-created-ss-media-productions-powerhouse" target="_blank" style="color: var(--deep-indigo); text-decoration: none; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.color='var(--sky-blue)'; this.style.textDecoration='underline'" onmouseout="this.style.color='var(--deep-indigo)'; this.style.textDecoration='none'">Boston Herald</a>
-                </div>
+                <a href="https://alkhaleejonline.net/مجتمع/كرزة-قناة-يوتيوب-بمحتوى-احترافي-تعلِّم-الأطفال-العربية"
+                   target="_blank"
+                   class="press-link" style="text-align: left; padding: 1.5rem;">
+                    <strong>Alkhaleejonline:</strong> Karazah: Professional YouTube Channel Teaching Arabic to Children
+                </a>
 
-                <div style="display: flex; align-items: center; padding: 0.75rem 0; border-bottom: 2px solid var(--light-gray);">
-                    <span style="color: var(--deep-indigo); margin-right: 0.75rem; font-size: 1.2rem;">•</span>
-                    <a href="https://markets.financialcontent.com/ibtimes/article/accwirecq-2022-8-8-from-basement-to-150-million-views-on-youtube-how-perseverance-created-ss-media-productions-powerhouse" target="_blank" style="color: var(--deep-indigo); text-decoration: none; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.color='var(--sky-blue)'; this.style.textDecoration='underline'" onmouseout="this.style.color='var(--deep-indigo)'; this.style.textDecoration='none'">Int'l Business Times</a>
-                </div>
+                <a href="https://www.enabbaladi.net/archives/228080"
+                   target="_blank"
+                   class="press-link" style="text-align: left; padding: 1.5rem;">
+                    <strong>Enab Baladi:</strong> Race to Reach Children - Who Controls the Channels
+                </a>
 
-                <div style="display: flex; align-items: center; padding: 0.75rem 0; border-bottom: 2px solid var(--light-gray);">
-                    <span style="color: var(--deep-indigo); margin-right: 0.75rem; font-size: 1.2rem;">•</span>
-                    <a href="http://stocks.newsok.com/newsok/article/accwirecq-2022-8-8-from-basement-to-150-million-views-on-youtube-how-perseverance-created-ss-media-productions-powerhouse" target="_blank" style="color: var(--deep-indigo); text-decoration: none; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.color='var(--sky-blue)'; this.style.textDecoration='underline'" onmouseout="this.style.color='var(--deep-indigo)'; this.style.textDecoration='none'">NewsOK</a>
-                </div>
+                <a href="http://www.bbc.com/arabic/tv-and-radio-46837067"
+                   target="_blank"
+                   class="press-link" style="text-align: left; padding: 1.5rem;">
+                    <strong>BBC Xtra:</strong> Standard and Colloquial Arabic - Different Dialects
+                </a>
 
-                <div style="display: flex; align-items: center; padding: 0.75rem 0; border-bottom: 2px solid var(--light-gray);">
-                    <span style="color: var(--deep-indigo); margin-right: 0.75rem; font-size: 1.2rem;">•</span>
-                    <a href="https://markets.financialcontent.com/wss/article/accwirecq-2022-8-8-from-basement-to-150-million-views-on-youtube-how-perseverance-created-ss-media-productions-powerhouse" target="_blank" style="color: var(--deep-indigo); text-decoration: none; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.color='var(--sky-blue)'; this.style.textDecoration='underline'" onmouseout="this.style.color='var(--deep-indigo)'; this.style.textDecoration='none'">Wall Street Select</a>
-                </div>
+                <a href="https://youtu.be/WRdlIVAWfFE"
+                   target="_blank"
+                   class="press-link" style="text-align: left; padding: 1.5rem;">
+                    <strong>Al Hurra TV:</strong> Arabic Cartoons for Children
+                </a>
 
-                <div style="display: flex; align-items: center; padding: 0.75rem 0; border-bottom: 2px solid var(--light-gray);">
-                    <span style="color: var(--deep-indigo); margin-right: 0.75rem; font-size: 1.2rem;">•</span>
-                    <a href="http://quotes.fatpitchfinancials.com/fatpitch.financials/article/accwirecq-2022-8-8-from-basement-to-150-million-views-on-youtube-how-perseverance-created-ss-media-productions-powerhouse" target="_blank" style="color: var(--deep-indigo); text-decoration: none; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.color='var(--sky-blue)'; this.style.textDecoration='underline'" onmouseout="this.style.color='var(--deep-indigo)'; this.style.textDecoration='none'">Fat Pitch Financials</a>
-                </div>
+                <a href="https://youtu.be/lO0emVl79PU"
+                   target="_blank"
+                   class="press-link" style="text-align: left; padding: 1.5rem;">
+                    <strong>Orient Net:</strong> Will Arabic Be Lost to Syrian Children in Europe?
+                </a>
 
-                <div style="display: flex; align-items: center; padding: 0.75rem 0; border-bottom: 2px solid var(--light-gray);">
-                    <span style="color: var(--deep-indigo); margin-right: 0.75rem; font-size: 1.2rem;">•</span>
-                    <a href="http://markets.chroniclejournal.com/chroniclejournal/article/accwirecq-2022-8-8-from-basement-to-150-million-views-on-youtube-how-perseverance-created-ss-media-productions-powerhouse" target="_blank" style="color: var(--deep-indigo); text-decoration: none; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.color='var(--sky-blue)'; this.style.textDecoration='underline'" onmouseout="this.style.color='var(--deep-indigo)'; this.style.textDecoration='none'">Chronicle Journal</a>
-                </div>
+                <a href="https://youtu.be/yAgnMQuu1nE"
+                   target="_blank"
+                   class="press-link" style="text-align: left; padding: 1.5rem;">
+                    <strong>Al Hurra TV:</strong> Arabic Language Day - Al Yawm Program
+                </a>
 
-                <div style="display: flex; align-items: center; padding: 0.75rem 0; border-bottom: 2px solid var(--light-gray);">
-                    <span style="color: var(--deep-indigo); margin-right: 0.75rem; font-size: 1.2rem;">•</span>
-                    <a href="http://business.smdailypress.com/smdailypress/article/accwirecq-2022-8-8-from-basement-to-150-million-views-on-youtube-how-perseverance-created-ss-media-productions-powerhouse" target="_blank" style="color: var(--deep-indigo); text-decoration: none; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.color='var(--sky-blue)'; this.style.textDecoration='underline'" onmouseout="this.style.color='var(--deep-indigo)'; this.style.textDecoration='none'">The Daily Press</a>
-                </div>
+                <a href="https://youtu.be/Sr6LwNxNFbk"
+                   target="_blank"
+                   class="press-link" style="text-align: left; padding: 1.5rem;">
+                    <strong>Syria TV:</strong> Karazah Channel - Three Years of Meaningful Content
+                </a>
+
+                <a href="https://youtu.be/OLuw0wV_J0U"
+                   target="_blank"
+                   class="press-link" style="text-align: left; padding: 1.5rem;">
+                    <strong>Arabic German Podcast:</strong> Interview with Karazah Channel Founder
+                </a>
+
+                <a href="https://www.akhbaralaan.net/podcast/saret-ma3i/2021/09/30/%D8%A3%D9%86%D8%A7-%D8%A3%D9%8F%D8%A8%D9%8E%D9%8A%D9%91-%D8%B3%D9%83%D8%B1%D8%8C-%D8%A7%D9%82%D8%AA%D9%86%D8%B9%D8%AA-%D9%85%D8%AA%D8%A3%D8%AE%D8%B1%D8%A7%D9%8B-%D8%A3%D9%86%D9%86%D9%8A-%D9%84%D9%85-%D8%A3%D8%B9%D8%AF-%D8%A7%D9%84%D8%B7%D9%81%D9%84-%D8%A7%D9%84%D9%85%D8%AF%D9%84%D9%84"
+                   target="_blank"
+                   class="press-link" style="text-align: left; padding: 1.5rem;">
+                    <strong>Al Aan FM Podcast:</strong> Saret Ma3i with Maha Fattoum
+                </a>
+
+                <a href="https://youtu.be/5j1xDMYwX_c"
+                   target="_blank"
+                   class="press-link" style="text-align: left; padding: 1.5rem;">
+                    <strong>Qaf TV:</strong> We Rise with Art Hosts Karazah Channel
+                </a>
+
+                <a href="https://fb.watch/8Fn9IBuFTa/"
+                   target="_blank"
+                   class="press-link" style="text-align: left; padding: 1.5rem;">
+                    <strong>Radio Orient:</strong> For Arabic Language Safety - Karazah by Syrian Youth
+                </a>
+
+                <a href="https://fb.watch/ogqze6loEL/"
+                   target="_blank"
+                   class="press-link" style="text-align: left; padding: 1.5rem;">
+                    <strong>TRT Arabic:</strong> Over 80% of Karazah Project Staff are Volunteers
+                </a>
+
+                <a href="https://youtu.be/wzcVfL-bjsA"
+                   target="_blank"
+                   class="press-link" style="text-align: left; padding: 1.5rem;">
+                    <strong>Toq Toq 101:</strong> Obai Sukar with Ammar Daba
+                </a>
+
+                <a href="https://syrianewsagency.net/breaking/40489/"
+                   target="_blank"
+                   class="press-link" style="text-align: left; padding: 1.5rem;">
+                    <strong>Syrian News Agency:</strong> Karazah Founder Receives International Award
+                </a>
+
+                <a href="https://youtu.be/1gDvNX-NTrQ"
+                   target="_blank"
+                   class="press-link" style="text-align: left; padding: 1.5rem;">
+                    <strong>Sabah Al Khair Ya Arab:</strong> Interview After Receiving Sheikh Mohammed bin Rashid Award
+                </a>
+
+                <a href="https://zoom-syria.com/%D9%82%D9%86%D8%A7%D8%A9-%D9%83%D8%B1%D8%B2%D8%A9-%D8%A7%D9%84%D8%AA%D8%B9%D9%84%D9%8A%D9%85%D9%8A%D8%A9-%D8%AA%D9%86%D8%A7%D9%84-%D8%AC%D8%A7%D8%A6%D8%B2%D8%A9-%D8%A7%D9%84%D8%B4%D9%8A%D8%AE-%D9%85/"
+                   target="_blank"
+                   class="press-link" style="text-align: left; padding: 1.5rem;">
+                    <strong>Zoom Syria:</strong> Karazah Wins Sheikh Mohammed bin Rashid Arabic Language Award
+                </a>
+
+                <a href="https://youtu.be/3fjkmbLlU2k"
+                   target="_blank"
+                   class="press-link" style="text-align: left; padding: 1.5rem;">
+                    <strong>Radio Orient:</strong> Karazah Wins Mohammed bin Rashid Arabic Language Award in Dubai
+                </a>
+
+                <a href="https://www.facebook.com/share/v/1HpcR95v4P/"
+                   target="_blank"
+                   class="press-link" style="text-align: left; padding: 1.5rem;">
+                    <strong>Syria TV:</strong> Interview with Obai Sukar - Karazah Channel Founder (Feb 2025)
+                </a>
 
             </div>
         </div>
 
         <!-- Connect With Me Section -->
         <div style="margin-top: 4rem;">
-            <h3 style="text-align: center; color: var(--deep-indigo); font-size: 2rem; margin-bottom: 2rem; font-weight: 700;">Connect With Me</h3>
+            <h2 class="section-title" style="text-align: center;">Connect With Me</h2>
 
-            <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; max-width: 700px; margin: 0 auto;">
+            <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; max-width: 800px; margin: 0 auto;">
 
-                <a href="https://www.linkedin.com/in/obaisukar" target="_blank" style="background: #292663; color: white; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 15px rgba(41, 38, 99, 0.3);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 6px 20px rgba(41, 38, 99, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(41, 38, 99, 0.3)'">
-                    💼 LinkedIn
+                <a href="https://www.linkedin.com/in/obaisukar" target="_blank" class="social-btn">
+                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    LinkedIn
                 </a>
 
-                <a href="https://www.youtube.com/@KarazahOfficial" target="_blank" style="background: #EC008C; color: white; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 15px rgba(236, 0, 140, 0.3);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 6px 20px rgba(236, 0, 140, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(236, 0, 140, 0.3)'">
-                    📺 YouTube
+                <a href="https://www.youtube.com/@KarazahOfficial" target="_blank" class="social-btn">
+                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    YouTube
                 </a>
 
-                <a href="https://www.facebook.com/obai.sukar" target="_blank" style="background: #00AEEF; color: white; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 15px rgba(0, 174, 239, 0.3);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 6px 20px rgba(0, 174, 239, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0, 174, 239, 0.3)'">
-                    📘 Facebook
+                <a href="https://www.facebook.com/obai.sukar" target="_blank" class="social-btn">
+                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    Facebook
                 </a>
 
-                <a href="https://www.instagram.com/obaisukar" target="_blank" style="background: #92278F; color: white; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 15px rgba(146, 39, 143, 0.3);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 6px 20px rgba(146, 39, 143, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(146, 39, 143, 0.3)'">
-                    📷 Instagram
+                <a href="https://www.instagram.com/obaisukar" target="_blank" class="social-btn">
+                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
+                    Instagram
                 </a>
 
-                <a href="https://www.twitter.com/obaisukar" target="_blank" style="background: #FBB04C; color: white; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 15px rgba(251, 176, 76, 0.3);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 6px 20px rgba(251, 176, 76, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(251, 176, 76, 0.3)'">
-                    🐦 Twitter
-                </a>
-
-                <a href="mailto:obai@obaisukar.com" style="background: #292663; color: white; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 15px rgba(41, 38, 99, 0.3);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 6px 20px rgba(41, 38, 99, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(41, 38, 99, 0.3)'">
-                    📧 Email
+                <a href="mailto:obai@obaisukar.com" class="social-btn">
+                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+                    Email
                 </a>
 
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Link Section -->
-    <section class="section fade-in" style="background: linear-gradient(135deg, var(--deep-indigo), var(--sky-blue)); padding: 4rem 2rem; text-align: center;">
+    <!-- Portfolio & Videos Section -->
+    <section class="section fade-in" style="padding: 4rem 2rem; text-align: center;">
         <div style="max-width: 900px; margin: 0 auto;">
-            <h2 style="font-size: 2.5rem; font-weight: 900; color: white; margin-bottom: 1.5rem;">Portfolio & Videos</h2>
-            <p style="font-size: 1.2rem; color: rgba(255, 255, 255, 0.95); line-height: 1.6; margin-bottom: 2.5rem;">
-                Explore my complete video portfolio featuring 15+ videos including Syria TV documentary, Karazah Channel highlights, media appearances, projects, and humanitarian work across global broadcasting and education.
+            <h2 class="section-title" style="text-align: center;">Portfolio & Videos</h2>
+            <p style="font-size: 1.2rem; color: white; line-height: 1.6; margin-bottom: 2.5rem; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);">
+                Explore my complete video portfolio featuring sound design, music production, mixing projects, and professional media work across diverse creative endeavors
             </p>
-            <a href="portfolio.html" style="display: inline-block; background: white; color: var(--deep-indigo); padding: 1.25rem 3rem; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1.1rem; transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 30px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 20px rgba(0,0,0,0.2)'">View Full Portfolio →</a>
+            <a href="portfolio.html" target="_blank" style="display: inline-block; background: white; color: var(--deep-indigo); border: 3px solid white; padding: 1.25rem 3rem; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1.1rem; transition: all 0.3s ease;" onmouseover="this.style.background='white'; this.style.color='#292663'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 30px rgba(41,38,99,0.4)'" onmouseout="this.style.background='white'; this.style.color='var(--deep-indigo)'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">View Full Portfolio →</a>
         </div>
     </section>
 
@@ -2041,14 +2737,30 @@
             <button class="carousel-nav carousel-next" onclick="moveCarousel(1)">›</button>
 
             <div class="testimonials-track" id="testimonials-track">
-                <!-- 1. SINAN HATAHET - FIRST -->
+                <!-- 1. SHAMEL HAYDAR - FIRST -->
                 <div class="testimonial-slide">
                     <div class="testimonial-photo">
-                        <img src="./Testimonials/sinan-hatahet.png"
-                             alt="Sinan Hatahet"
-                             style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid var(--warm-gold);"
+                        <img src="./Testimonials/Shamel.jpeg"
+                             alt="Shamel Haydar"
+                             style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;"
                              onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--deep-indigo), var(--sky-blue)); border-radius: 50%; display: none; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold; border: 3px solid var(--warm-gold);">SH</div>
+                        <div style="width: 80px; height: 80px; background: rgba(255,255,255,0.2); border-radius: 50%; display: none; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold;">SH</div>
+                    </div>
+                    <p class="testimonial-quote">
+                        "Obai's technical expertise and creative vision are unmatched. A true professional who consistently delivers exceptional results."
+                    </p>
+                    <div class="testimonial-author">Shamel Haydar</div>
+                    <div class="testimonial-position">Technology Professional</div>
+                </div>
+
+                <!-- 2. SINAN HATAHET -->
+                <div class="testimonial-slide">
+                    <div class="testimonial-photo">
+                        <img src="./Testimonials/Sinan.jpeg"
+                             alt="Sinan Hatahet"
+                             style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;"
+                             onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div style="width: 80px; height: 80px; background: rgba(255,255,255,0.2); border-radius: 50%; display: none; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold;">SH</div>
                     </div>
                     <p class="testimonial-quote">
                         "He gave the channel its soul. By far one of the best professionals I had the pleasure to partner with."
@@ -2057,14 +2769,14 @@
                     <div class="testimonial-position">Co-Founder, Workiom CRM</div>
                 </div>
 
-                <!-- 2. KAMEL WEISS - SPACETOON -->
+                <!-- 3. KAMEL WEISS - SPACETOON -->
                 <div class="testimonial-slide">
                     <div class="testimonial-photo">
-                        <img src="./Testimonials/kamel-weiss.png"
+                        <img src="./Testimonials/Kamel.jpeg"
                              alt="Kamel Weiss"
-                             style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid var(--warm-gold);"
+                             style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;"
                              onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--deep-indigo), var(--sky-blue)); border-radius: 50%; display: none; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold; border: 3px solid var(--warm-gold);">KW</div>
+                        <div style="width: 80px; height: 80px; background: rgba(255,255,255,0.2); border-radius: 50%; display: none; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold;">KW</div>
                     </div>
                     <p class="testimonial-quote">
                         "Obai was one of the strong sound engineers we had. His creativity and adaptation to new trends were well received."
@@ -2073,14 +2785,14 @@
                     <div class="testimonial-position">GM @ SpacetoonGo, Spacetoon Group</div>
                 </div>
 
-                <!-- 3. MICHAEL SHAGOURY -->
+                <!-- 4. MICHAEL SHAGOURY -->
                 <div class="testimonial-slide">
                     <div class="testimonial-photo">
-                        <img src="./Testimonials/michael-shagoury.png"
+                        <img src="./Testimonials/Michael.jpeg"
                              alt="Michael Shagoury"
-                             style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid var(--warm-gold);"
+                             style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;"
                              onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--deep-indigo), var(--sky-blue)); border-radius: 50%; display: none; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold; border: 3px solid var(--warm-gold);">MS</div>
+                        <div style="width: 80px; height: 80px; background: rgba(255,255,255,0.2); border-radius: 50%; display: none; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold;">MS</div>
                     </div>
                     <p class="testimonial-quote">
                         "When it comes to audio, Obai is a perfectionist and his creativity is unmatched."
@@ -2089,14 +2801,14 @@
                     <div class="testimonial-position">SVP of Audience Development</div>
                 </div>
 
-                <!-- 4. HUSAM AZMA - ORACLE -->
+                <!-- 5. HUSAM AZMA - ORACLE -->
                 <div class="testimonial-slide">
                     <div class="testimonial-photo">
-                        <img src="./Testimonials/husam-azma.png"
+                        <img src="./Testimonials/Husam.jpeg"
                              alt="Husam Azma"
-                             style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid var(--warm-gold);"
+                             style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;"
                              onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--purple-plum), var(--vivid-magenta)); border-radius: 50%; display: none; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold; border: 3px solid var(--warm-gold);">HA</div>
+                        <div style="width: 80px; height: 80px; background: rgba(255,255,255,0.2); border-radius: 50%; display: none; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold;">HA</div>
                     </div>
                     <p class="testimonial-quote">
                         "Obai is a very dedicated person with a very high level of integrity. I would always love to work with him."
@@ -2105,14 +2817,14 @@
                     <div class="testimonial-position">Technical Director, Oracle Consulting</div>
                 </div>
 
-                <!-- 5. KEREM TEKIN - LAST -->
+                <!-- 6. KEREM TEKIN - LAST -->
                 <div class="testimonial-slide">
                     <div class="testimonial-photo">
-                        <img src="./Testimonials/kerem-tekin.png"
+                        <img src="./Testimonials/Kerim.jpeg"
                              alt="Kerem Tekin"
-                             style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid var(--warm-gold);"
+                             style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;"
                              onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--deep-indigo), var(--sky-blue)); border-radius: 50%; display: none; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold; border: 3px solid var(--warm-gold);">KT</div>
+                        <div style="width: 80px; height: 80px; background: rgba(255,255,255,0.2); border-radius: 50%; display: none; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold;">KT</div>
                     </div>
                     <p class="testimonial-quote">
                         "His quick grasp of the software's capabilities and insightful questions made the implementation process smooth and efficient."
@@ -2124,6 +2836,13 @@
         </div>
 
         <div class="carousel-dots" id="carousel-dots"></div>
+
+        <div style="text-align: center; margin-top: 2rem; padding: 1.5rem;">
+            <p style="color: white; font-size: 1.1rem; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);">
+                ...and many others that can be found at:
+                <a href="https://www.linkedin.com/in/obaisukar/details/recommendations/?detailScreenTabIndex=0" target="_blank" style="color: #FBB04C; font-weight: 600; text-decoration: underline;">LinkedIn Recommendations →</a>
+            </p>
+        </div>
     </section>
 
     <!-- Contact Section -->
@@ -2191,12 +2910,21 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="social-links">
-                <a href="https://www.facebook.com/obai.sukar" class="social-link" target="_blank" title="Facebook">📘</a>
-                <a href="https://twitter.com/obaisukar" class="social-link" target="_blank" title="Twitter">🐦</a>
-                <a href="https://www.linkedin.com/in/obaisukar" class="social-link" target="_blank" title="LinkedIn">💼</a>
-                <a href="https://www.youtube.com/@KarazahOfficial" class="social-link" target="_blank" title="YouTube - Karazah Channel">📺</a>
-                <a href="https://www.instagram.com/obaisukar" class="social-link" target="_blank" title="Instagram">📷</a>
-                <a href="mailto:obai@obaisukar.com" class="social-link" title="Email">📧</a>
+                <a href="https://www.facebook.com/obai.sukar" class="social-link" target="_blank" title="Facebook">
+                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/obaisukar" class="social-link" target="_blank" title="LinkedIn">
+                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+                <a href="https://www.youtube.com/@KarazahOfficial" class="social-link" target="_blank" title="YouTube - Karazah Channel">
+                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/obaisukar" class="social-link" target="_blank" title="Instagram">
+                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
+                </a>
+                <a href="mailto:obai@obaisukar.com" class="social-link" title="Email">
+                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+                </a>
             </div>
             <p>&copy; 2025 Obai Sukar. All rights reserved. Syrian-American Media Professional.</p>
             <p style="margin-top: 1rem; opacity: 0.8;">
@@ -2218,8 +2946,97 @@
 
         // Mobile menu toggle
         function toggleMenu() {
-            const navMenu = document.getElementById('navMenu');
-            navMenu.classList.toggle('active');
+            if (window.innerWidth <= 768) {
+                // On mobile: scroll to tab navigation
+                const tabNav = document.querySelector('.mobile-tab-nav');
+                if (tabNav) {
+                    tabNav.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            } else {
+                // On desktop: toggle navigation menu
+                const navMenu = document.getElementById('navMenu');
+                navMenu.classList.toggle('active');
+            }
+        }
+
+        // Toggle mobile hamburger menu
+        function toggleMobileMenu() {
+            const overlay = document.getElementById('mobileMenuOverlay');
+            const hamburger = document.querySelector('.mobile-hamburger');
+
+            overlay.classList.toggle('active');
+            hamburger.classList.toggle('active');
+
+            // Prevent body scroll when menu is open
+            if (overlay.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Scroll to mobile section
+        function scrollToSection(sectionName) {
+            // Close the menu
+            const overlay = document.getElementById('mobileMenuOverlay');
+            const hamburger = document.querySelector('.mobile-hamburger');
+            overlay.classList.remove('active');
+            hamburger.classList.remove('active');
+            document.body.style.overflow = '';
+
+            // Show the mobile section
+            showMobileTab(sectionName);
+
+            // Scroll to the mobile sections container
+            const container = document.querySelector('.mobile-sections-container');
+            if (container) {
+                setTimeout(() => {
+                    container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            }
+        }
+
+        // Stats counter animation
+        function animateCounter(statItem) {
+            const numberEl = statItem.querySelector('.stat-number');
+            const target = parseInt(numberEl.getAttribute('data-target'));
+            const suffix = numberEl.getAttribute('data-suffix');
+
+            // Store original value if not already stored
+            if (!statItem.originalValue) {
+                statItem.originalValue = target + suffix;
+            }
+
+            const duration = 1000; // 1 second
+            const steps = 50;
+            const increment = target / steps;
+            const stepDuration = duration / steps;
+
+            let current = 0;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                numberEl.textContent = Math.floor(current) + suffix;
+            }, stepDuration);
+
+            // Store timer to clear on mouse leave
+            statItem.counterTimer = timer;
+        }
+
+        function resetCounter(statItem) {
+            // Clear any running animation
+            if (statItem.counterTimer) {
+                clearInterval(statItem.counterTimer);
+            }
+
+            // Reset to original value
+            const numberEl = statItem.querySelector('.stat-number');
+            if (statItem.originalValue) {
+                numberEl.textContent = statItem.originalValue;
+            }
         }
 
         // Smooth scrolling for navigation links
@@ -2456,6 +3273,23 @@
             if (container) {
                 container.scrollTop = 0;
             }
+        }
+
+        // Handle Get In Touch button click
+        function handleGetInTouch(event) {
+            if (window.innerWidth <= 768) {
+                // On mobile: show Contact section
+                event.preventDefault();
+                showMobileTab('contact');
+                // Scroll to mobile sections container
+                const container = document.querySelector('.mobile-sections-container');
+                if (container) {
+                    setTimeout(() => {
+                        container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100);
+                }
+            }
+            // On desktop: default link behavior to #contact will work
         }
 
         // Initialize mobile interface on load

@@ -18,7 +18,15 @@
       "WebFetch(domain:obaisukar.com)",
       "Bash(start obai_meta_enhanced.html)",
       "Bash(git init:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Read(//Volumes/Ai/website2.0/**)",
+      "Read(//Volumes/Ai/job-applications/**)",
+      "Bash(start \"/Volumes/Ai/website/obai_sukar_website_final.html\")",
+      "Bash(open:*)",
+      "Read(//Users/obaisukar/Downloads/**)",
+      "Bash(start obai_sukar_website_white.html)",
+      "WebFetch(domain:docs.google.com)",
+      "WebFetch(domain:www.youtube.com)"
     ],
     "deny": [],
     "ask": []

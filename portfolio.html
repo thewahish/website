@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio & Videos - Obai Sukar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --deep-indigo: #292663;
+            --sky-blue: #00AEEF;
+            --white: #FFFFFF;
+            --light-gray: #F8F9FA;
+            --text-dark: #2C3E50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: var(--white);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--deep-indigo);
+            text-decoration: none;
+        }
+
+        .nav-link {
+            color: var(--text-dark);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--sky-blue);
+        }
+
+        /* Header */
+        .header {
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            background: var(--light-gray);
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--deep-indigo);
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Video Grid */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 3rem;
+        }
+
+        .video-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            background: #000;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-info {
+            padding: 1.5rem;
+        }
+
+        .video-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--deep-indigo);
+            margin-bottom: 0.5rem;
+        }
+
+        .video-description {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .video-link {
+            color: var(--sky-blue);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .video-link:hover {
+            color: var(--deep-indigo);
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--light-gray);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer p {
+            color: #666;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="obai_sukar_website_white.html" class="logo">Obai Sukar</a>
+            <a href="obai_sukar_website_white.html" class="nav-link">← Back to Main Site</a>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+        <h1>Portfolio & Videos</h1>
+        <p>Music Production, Mixing, and Sound Design showcase featuring professional audio engineering projects and creative work</p>
+    </header>
+
+    <!-- Video Grid -->
+    <div class="container">
+        <div class="video-grid">
+
+            <!-- Video 1: Syria TV Documentary -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/xbHSJqgyKkc"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Syria TV Documentary</h3>
+                    <p class="video-description">Featured biographical episode covering career journey, achievements, and impact across media innovation and humanitarian work. Includes English subtitles.</p>
+                    <a href="https://www.youtube.com/watch?v=xbHSJqgyKkc" target="_blank" class="video-link">Watch Full Video →</a>
+                </div>
+            </div>
+
+            <!-- Music Production & Mixing Videos -->
+
+            <!-- Video 2: Music Production 1 -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/Z545YrddJAs"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Music Production & Mixing</h3>
+                    <p class="video-description">Professional music production and mixing work showcasing technical expertise and creative sound design.</p>
+                    <a href="https://www.youtube.com/watch?v=Z545YrddJAs" target="_blank" class="video-link">Watch Full Video →</a>
+                </div>
+            </div>
+
+            <!-- Video 3: Music Production 2 -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/vpDZoOshRk0"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Music Production & Mixing</h3>
+                    <p class="video-description">Advanced mixing techniques and production workflow demonstration.</p>
+                    <a href="https://www.youtube.com/watch?v=vpDZoOshRk0" target="_blank" class="video-link">Watch Full Video →</a>
+                </div>
+            </div>
+
+            <!-- Video 4: Music Production 3 -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/CZpy5y2L7Ms"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Music Production & Mixing</h3>
+                    <p class="video-description">Original music composition and production showcase.</p>
+                    <a href="https://www.youtube.com/watch?v=CZpy5y2L7Ms" target="_blank" class="video-link">Watch Full Video →</a>
+                </div>
+            </div>
+
+            <!-- Video 5: Music Production 4 -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/LI6GHzLKSeI"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Music Production & Mixing</h3>
+                    <p class="video-description">Professional audio engineering and mixing demonstration.</p>
+                    <a href="https://www.youtube.com/watch?v=LI6GHzLKSeI" target="_blank" class="video-link">Watch Full Video →</a>
+                </div>
+            </div>
+
+            <!-- Video 6: Music Production 5 -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/2qg-mh0TdX0"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Music Production & Mixing</h3>
+                    <p class="video-description">Creative music production and sound mixing project.</p>
+                    <a href="https://www.youtube.com/watch?v=2qg-mh0TdX0" target="_blank" class="video-link">Watch Full Video →</a>
+                </div>
+            </div>
+
+            <!-- Video 7: Music Production 6 -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/SNkr6MJyfDA"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Music Production & Mixing</h3>
+                    <p class="video-description">Professional mixing and mastering showcase.</p>
+                    <a href="https://www.youtube.com/watch?v=SNkr6MJyfDA" target="_blank" class="video-link">Watch Full Video →</a>
+                </div>
+            </div>
+
+            <!-- Video 8: Music Production 7 -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/xTNUNSmN3jg"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Music Production & Mixing</h3>
+                    <p class="video-description">Audio production and engineering demonstration.</p>
+                    <a href="https://www.youtube.com/watch?v=xTNUNSmN3jg" target="_blank" class="video-link">Watch Full Video →</a>
+                </div>
+            </div>
+
+            <!-- Video 9: Music Production 8 -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/eJxHyMM5qpc"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Music Production & Mixing</h3>
+                    <p class="video-description">Comprehensive music production and mixing project.</p>
+                    <a href="https://www.youtube.com/watch?v=eJxHyMM5qpc" target="_blank" class="video-link">Watch Full Video →</a>
+                </div>
+            </div>
+
+            <!-- Sound Design Videos -->
+
+            <!-- Video 10: Sound Design 1 -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/7o7TOSM9R-k"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Sound Design</h3>
+                    <p class="video-description">Professional sound design and audio engineering showcase.</p>
+                    <a href="https://www.youtube.com/watch?v=7o7TOSM9R-k" target="_blank" class="video-link">Watch Full Video →</a>
+                </div>
+            </div>
+
+            <!-- Video 11: Sound Design 2 -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/dfaNkFexQ_I"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Sound Design</h3>
+                    <p class="video-description">Creative sound design and audio effects demonstration.</p>
+                    <a href="https://www.youtube.com/watch?v=dfaNkFexQ_I" target="_blank" class="video-link">Watch Full Video →</a>
+                </div>
+            </div>
+
+            <!-- Video 12: Sound Design 3 -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/zbGhiRzYGV0"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Sound Design</h3>
+                    <p class="video-description">Advanced sound design techniques and implementation.</p>
+                    <a href="https://www.youtube.com/watch?v=zbGhiRzYGV0" target="_blank" class="video-link">Watch Full Video →</a>
+                </div>
+            </div>
+
+            <!-- Video 13: Sound Design 4 -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/cLafpF2y0S4"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Sound Design</h3>
+                    <p class="video-description">Professional audio design and engineering project.</p>
+                    <a href="https://www.youtube.com/watch?v=cLafpF2y0S4" target="_blank" class="video-link">Watch Full Video →</a>
+                </div>
+            </div>
+
+            <!-- Video 14: Sound Design 5 -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/VmtVZbPKNvc"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Sound Design</h3>
+                    <p class="video-description">Sound design and audio production showcase.</p>
+                    <a href="https://www.youtube.com/watch?v=VmtVZbPKNvc" target="_blank" class="video-link">Watch Full Video →</a>
+                </div>
+            </div>
+
+            <!-- Video 15: Sound Design 6 -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/foVp36TWNh0"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Sound Design</h3>
+                    <p class="video-description">Creative audio design and sound engineering work.</p>
+                    <a href="https://www.youtube.com/watch?v=foVp36TWNh0" target="_blank" class="video-link">Watch Full Video →</a>
+                </div>
+            </div>
+
+            <!-- Video 16: Sound Design 7 -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/3zZ7WCyhg3M"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Sound Design</h3>
+                    <p class="video-description">Professional sound design and audio engineering demonstration.</p>
+                    <a href="https://www.youtube.com/watch?v=3zZ7WCyhg3M" target="_blank" class="video-link">Watch Full Video →</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Obai Sukar. All rights reserved.</p>
+    </footer>
+</body>
+</html>
