@@ -1500,34 +1500,13 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             text-align: center;
         }
 
-        .service-number {
-            background: var(--sky-blue);
-            color: white;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .service-box:nth-child(even) .service-number {
-            background: var(--deep-indigo);
-        }
-
-        .service-box:nth-child(3n) .service-number {
-            background: #FBB04C;
-        }
-
         .service-icon-box img {
-            width: 65px;
-            height: 65px;
+            width: 70px;
+            height: 70px;
             object-fit: contain;
         }
 
@@ -2229,6 +2208,7 @@
     <!-- Mobile Navigation Tabs -->
     <div class="mobile-tab-nav">
         <button class="mobile-tab active" onclick="showMobileTab('about')">About</button>
+        <button class="mobile-tab" onclick="showMobileTab('services')">Services</button>
         <button class="mobile-tab" onclick="showMobileTab('experience')">Experience</button>
         <button class="mobile-tab" onclick="showMobileTab('impact')">Impact</button>
         <button class="mobile-tab" onclick="showMobileTab('portfolio')">Portfolio</button>
@@ -2346,6 +2326,90 @@
                 <div class="mobile-card-title">📺 Syria TV Leadership</div>
                 <div class="mobile-card-text">
                     Media strategy and technical leadership for major broadcasting network. Implemented cutting-edge production workflows and digital transformation.
+                </div>
+            </div>
+        </div>
+
+        <!-- Services Tab -->
+        <div id="mobile-services" class="mobile-section">
+            <div class="mobile-card">
+                <div class="mobile-card-title">🎵 Sound Design & Audio Post-Production</div>
+                <div class="mobile-card-text">
+                    Complete audio post-production for film, television, animation, and interactive media. Student Academy Award-winning expertise in sound design, dialogue editing, ADR, Foley, and Dolby Atmos mixing.
+                    <br><br>
+                    <a href="#contact" style="color: var(--sky-blue); font-weight: 600;">Get Quote →</a>
+                </div>
+            </div>
+
+            <div class="mobile-card">
+                <div class="mobile-card-title">🎹 Music Production & Composition</div>
+                <div class="mobile-card-text">
+                    Original music composition and production across all genres. Full orchestration, arranging, recording, mixing, and mastering services for film, TV, advertising, and recording artists.
+                    <br><br>
+                    <a href="#contact" style="color: var(--sky-blue); font-weight: 600;">Get Quote →</a>
+                </div>
+            </div>
+
+            <div class="mobile-card">
+                <div class="mobile-card-title">🎙️ Dubbing & Voice Direction</div>
+                <div class="mobile-card-text">
+                    Professional dubbing and voice direction services in Arabic and English. Former Head of Dubbing at Spacetoon with expertise in animation, documentary, and commercial voice work.
+                    <br><br>
+                    <a href="#contact" style="color: var(--sky-blue); font-weight: 600;">Get Quote →</a>
+                </div>
+            </div>
+
+            <div class="mobile-card">
+                <div class="mobile-card-title">🎤 Live Sound Engineering</div>
+                <div class="mobile-card-text">
+                    FOH mixing, monitor engineering, and live sound system design for concerts, tours, and events. Currently touring with artists reaching 1.5M+ followers across major venues.
+                    <br><br>
+                    <a href="#contact" style="color: var(--sky-blue); font-weight: 600;">Get Quote →</a>
+                </div>
+            </div>
+
+            <div class="mobile-card">
+                <div class="mobile-card-title">🏗️ Studio Acoustics & Design</div>
+                <div class="mobile-card-text">
+                    Comprehensive acoustics consulting and studio design services. Built professional studios in Damascus, Dubai, and Kuala Lumpur with expertise in room acoustics, soundproofing, and technical infrastructure.
+                    <br><br>
+                    <a href="#contact" style="color: var(--sky-blue); font-weight: 600;">Get Quote →</a>
+                </div>
+            </div>
+
+            <div class="mobile-card">
+                <div class="mobile-card-title">🎧 Recording Services</div>
+                <div class="mobile-card-text">
+                    Professional recording for music, voice-over, podcasts, audiobooks, and spoken word. State-of-the-art facilities with industry-standard equipment and experienced engineering team.
+                    <br><br>
+                    <a href="#contact" style="color: var(--sky-blue); font-weight: 600;">Get Quote →</a>
+                </div>
+            </div>
+
+            <div class="mobile-card">
+                <div class="mobile-card-title">🎬 Media Production & Creative Direction</div>
+                <div class="mobile-card-text">
+                    Full-service media production from concept to delivery. Documentary filmmaking, commercial production, corporate videos, and multimedia content creation with bilingual capabilities.
+                    <br><br>
+                    <a href="#contact" style="color: var(--sky-blue); font-weight: 600;">Get Quote →</a>
+                </div>
+            </div>
+
+            <div class="mobile-card">
+                <div class="mobile-card-title">📡 Broadcast & Production Technology</div>
+                <div class="mobile-card-text">
+                    Broadcast infrastructure design and implementation. Radio station setup, streaming platforms, audio/video routing systems, and production technology consulting for media organizations.
+                    <br><br>
+                    <a href="#contact" style="color: var(--sky-blue); font-weight: 600;">Get Quote →</a>
+                </div>
+            </div>
+
+            <div class="mobile-card">
+                <div class="mobile-card-title">💻 IT & Technology Consulting</div>
+                <div class="mobile-card-text">
+                    Enterprise technology strategy and consulting with 25+ years of experience. System architecture, digital transformation, team building, and technology leadership for organizations worldwide.
+                    <br><br>
+                    <a href="#contact" style="color: var(--sky-blue); font-weight: 600;">Get Quote →</a>
                 </div>
             </div>
         </div>
@@ -2558,7 +2622,7 @@
     </section>
 
     <!-- Services & Expertise Section -->
-    <section id="services" class="section fade-in" style="background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);">
+    <section id="services" class="section fade-in" style="background: transparent;">
         <div class="section-header">
             <h2 class="section-title">Professional Services</h2>
             <p class="section-subtitle">
@@ -2571,7 +2635,6 @@
             <!-- 1. Sound Design & Audio Post-Production -->
             <div class="service-box">
                 <div class="service-icon-box">
-                    <div class="service-number">1</div>
                     <img src="./Icons/New/SOUND ENGINEERING EXCELLENCE.png" alt="Sound Design">
                 </div>
                 <div class="service-content">
@@ -2594,7 +2657,6 @@
             <!-- 2. Music Production & Composition -->
             <div class="service-box">
                 <div class="service-icon-box">
-                    <div class="service-number">2</div>
                     <img src="./Icons/Executive Summary/Sound Engineering Excellence@4x.png" alt="Music Production">
                 </div>
                 <div class="service-content">
@@ -2617,7 +2679,6 @@
             <!-- 3. Dubbing & Voice Direction -->
             <div class="service-box">
                 <div class="service-icon-box">
-                    <div class="service-number">3</div>
                     <img src="./Icons/New/CROSS-CULTURAL BRIDGE BUILDER.png" alt="Dubbing">
                 </div>
                 <div class="service-content">
@@ -2640,7 +2701,6 @@
             <!-- 4. Live Sound Engineering -->
             <div class="service-box">
                 <div class="service-icon-box">
-                    <div class="service-number">4</div>
                     <img src="./Icons/Executive Summary/Media Entrepreneurship@4x.png" alt="Live Sound">
                 </div>
                 <div class="service-content">
@@ -2663,7 +2723,6 @@
             <!-- 5. Studio Acoustics & Design -->
             <div class="service-box">
                 <div class="service-icon-box">
-                    <div class="service-number">5</div>
                     <img src="./Icons/New/HUMANITARIAN INNOVATION.png" alt="Acoustics">
                 </div>
                 <div class="service-content">
@@ -2686,7 +2745,6 @@
             <!-- 6. Recording Services -->
             <div class="service-box">
                 <div class="service-icon-box">
-                    <div class="service-number">6</div>
                     <img src="./Icons/New/SOUND ENGINEERING EXCELLENCE.png" alt="Recording">
                 </div>
                 <div class="service-content">
@@ -2709,7 +2767,6 @@
             <!-- 7. Media Production & Creative Direction -->
             <div class="service-box">
                 <div class="service-icon-box">
-                    <div class="service-number">7</div>
                     <img src="./Icons/New/GLOBAL EDUCATIONAL IMPACT.png" alt="Media Production">
                 </div>
                 <div class="service-content">
@@ -2732,7 +2789,6 @@
             <!-- 8. Broadcast & Production Technology -->
             <div class="service-box">
                 <div class="service-icon-box">
-                    <div class="service-number">8</div>
                     <img src="./Icons/Executive Summary/Educational Innovation@4x.png" alt="Broadcast Tech">
                 </div>
                 <div class="service-content">
@@ -2755,7 +2811,6 @@
             <!-- 9. IT & Technology Consulting -->
             <div class="service-box">
                 <div class="service-icon-box">
-                    <div class="service-number">9</div>
                     <img src="./Icons/New/ENTERPRISE IT LEADERSHIP.png" alt="IT Consulting">
                 </div>
                 <div class="service-content">
@@ -3060,7 +3115,7 @@
         <div style="margin-top: 4rem;">
             <h2 class="section-title" style="text-align: center;">Connect With Me</h2>
 
-            <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; max-width: 800px; margin: 0 auto;">
+            <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; max-width: 800px; margin: 2rem auto 0;">
 
                 <a href="https://www.linkedin.com/in/obaisukar" target="_blank" class="social-btn">
                     <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
