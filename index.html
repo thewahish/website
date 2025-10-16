@@ -1459,6 +1459,152 @@
             box-shadow: 0 6px 20px rgba(41, 38, 99, 0.4);
         }
 
+        /* Services Section - Distinct Horizontal Layout */
+        .service-box {
+            display: grid;
+            grid-template-columns: 100px 1fr auto;
+            gap: 2rem;
+            align-items: start;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,250,252,0.95) 100%);
+            border-left: 5px solid var(--sky-blue);
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .service-box:hover {
+            transform: translateX(8px);
+            box-shadow: 0 8px 30px rgba(0,174,239,0.15);
+            border-left-width: 8px;
+        }
+
+        .service-box:nth-child(even) {
+            border-left-color: var(--deep-indigo);
+        }
+
+        .service-box:nth-child(even):hover {
+            box-shadow: 0 8px 30px rgba(41,38,99,0.15);
+        }
+
+        .service-box:nth-child(3n) {
+            border-left-color: #FBB04C;
+        }
+
+        .service-box:nth-child(3n):hover {
+            box-shadow: 0 8px 30px rgba(251,176,76,0.15);
+        }
+
+        .service-icon-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .service-number {
+            background: var(--sky-blue);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-box:nth-child(even) .service-number {
+            background: var(--deep-indigo);
+        }
+
+        .service-box:nth-child(3n) .service-number {
+            background: #FBB04C;
+        }
+
+        .service-icon-box img {
+            width: 65px;
+            height: 65px;
+            object-fit: contain;
+        }
+
+        .service-content h3 {
+            color: var(--deep-indigo);
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin: 0 0 0.8rem 0;
+        }
+
+        .service-description {
+            color: var(--text-dark);
+            line-height: 1.7;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .service-features {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.5rem;
+        }
+
+        .service-features li {
+            color: var(--text-dark);
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .service-features li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--sky-blue);
+            font-weight: 700;
+        }
+
+        .service-cta {
+            min-width: 150px;
+        }
+
+        .service-cta .hero-btn {
+            white-space: nowrap;
+            display: block;
+            text-align: center;
+        }
+
+        @media (max-width: 900px) {
+            .service-box {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                text-align: center;
+                padding: 2rem 1.5rem;
+            }
+
+            .service-box:hover {
+                transform: translateY(-5px);
+            }
+
+            .service-icon-box {
+                margin: 0 auto;
+            }
+
+            .service-features {
+                grid-template-columns: 1fr;
+                text-align: left;
+            }
+
+            .service-cta {
+                margin: 0 auto;
+            }
+        }
+
         /* Press Links - Elegant Transparent Design with Colorful Borders */
         .press-link {
             background: transparent;
@@ -2412,121 +2558,234 @@
     </section>
 
     <!-- Services & Expertise Section -->
-    <section id="services" class="section fade-in">
+    <section id="services" class="section fade-in" style="background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);">
         <div class="section-header">
-            <h2 class="section-title">Services & Expertise</h2>
+            <h2 class="section-title">Professional Services</h2>
             <p class="section-subtitle">
-                Professional audio, media production, and technology consulting services backed by 25+ years of international experience
+                Comprehensive audio, media, and technology solutions backed by 25+ years of international experience
             </p>
         </div>
 
-        <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+        <div class="services-container">
 
-            <!-- Audio Production & Sound Design -->
-            <div class="card" style="text-align: center;">
-                <div class="card-icon">
-                    <img src="./Icons/New/SOUND ENGINEERING EXCELLENCE.png" alt="Audio Production" style="width: 80px; height: 80px; margin: 0 auto;">
+            <!-- 1. Sound Design & Audio Post-Production -->
+            <div class="service-box">
+                <div class="service-icon-box">
+                    <div class="service-number">1</div>
+                    <img src="./Icons/New/SOUND ENGINEERING EXCELLENCE.png" alt="Sound Design">
                 </div>
-                <h3 class="card-title">Audio Production & Sound Design</h3>
-                <p class="card-text" style="text-align: left;">
-                    <strong>Complete audio post-production services:</strong><br>
-                    • Sound design for film, animation & games<br>
-                    • Dialogue editing & ADR supervision<br>
-                    • Dubbing & voice direction (Arabic/English)<br>
-                    • Foley & SFX creation<br>
-                    • Final mixing & mastering<br>
-                    • Pro Tools, Nuendo, iZotope RX expert
-                </p>
-                <a href="#contact" class="hero-btn hero-btn-primary" style="display: inline-block; margin-top: 1rem;">Get a Quote</a>
-            </div>
-
-            <!-- Live Sound Engineering & Acoustics -->
-            <div class="card" style="text-align: center;">
-                <div class="card-icon">
-                    <img src="./Icons/Executive Summary/Sound Engineering Excellence@4x.png" alt="Live Sound" style="width: 60px; height: 60px; margin: 0 auto;">
+                <div class="service-content">
+                    <h3>Sound Design & Audio Post-Production</h3>
+                    <p class="service-description">Complete audio post-production for film, television, animation, and interactive media. Student Academy Award-winning expertise.</p>
+                    <ul class="service-features">
+                        <li>Sound design for film, TV & games</li>
+                        <li>Dialogue editing & cleanup (iZotope RX)</li>
+                        <li>ADR & Foley production</li>
+                        <li>SFX creation & library management</li>
+                        <li>Final mix & mastering (Pro Tools, Nuendo)</li>
+                        <li>Dolby Atmos & immersive audio</li>
+                    </ul>
                 </div>
-                <h3 class="card-title">Live Sound Engineering & Acoustics</h3>
-                <p class="card-text" style="text-align: left;">
-                    <strong>Professional live sound & studio services:</strong><br>
-                    • Front-of-House (FOH) mixing for concerts/tours<br>
-                    • Touring engineer for international artists<br>
-                    • RF coordination & wireless systems<br>
-                    • <strong>Acoustics study & consultation</strong><br>
-                    • <strong>Studio design & build-out</strong><br>
-                    • Acoustic treatment & optimization<br>
-                    • Live recording & multi-track capture
-                </p>
-                <a href="#contact" class="hero-btn hero-btn-primary" style="display: inline-block; margin-top: 1rem;">Book Consultation</a>
-            </div>
-
-            <!-- Music Production & Composition -->
-            <div class="card" style="text-align: center;">
-                <div class="card-icon">🎵</div>
-                <h3 class="card-title">Music Production & Composition</h3>
-                <p class="card-text" style="text-align: left;">
-                    <strong>Original music & production services:</strong><br>
-                    • Original composition for media projects<br>
-                    • Music production & arrangement<br>
-                    • Professional mixing & mastering<br>
-                    • Orchestral score mixing<br>
-                    • Genre-specific production (Arabic, orchestral, EDM)<br>
-                    • Full production pipeline management
-                </p>
-                <a href="#contact" class="hero-btn hero-btn-primary" style="display: inline-block; margin-top: 1rem;">Start Project</a>
-            </div>
-
-            <!-- Media Production & Creative Direction -->
-            <div class="card" style="text-align: center;">
-                <div class="card-icon">
-                    <img src="./Icons/New/GLOBAL EDUCATIONAL IMPACT.png" alt="Media Production" style="width: 80px; height: 80px; margin: 0 auto;">
+                <div class="service-cta">
+                    <a href="#contact" class="hero-btn hero-btn-primary">Get Quote</a>
                 </div>
-                <h3 class="card-title">Media Production & Creative Direction</h3>
-                <p class="card-text" style="text-align: left;">
-                    <strong>End-to-end content creation services:</strong><br>
-                    • Children's educational content production<br>
-                    • Animation audio supervision<br>
-                    • Creative direction for media projects<br>
-                    • Multi-language dubbing supervision<br>
-                    • International team management (9+ countries)<br>
-                    • YouTube channel development & growth
-                </p>
-                <a href="#contact" class="hero-btn hero-btn-primary" style="display: inline-block; margin-top: 1rem;">Discuss Your Vision</a>
             </div>
 
-            <!-- Technology Consulting -->
-            <div class="card" style="text-align: center;">
-                <div class="card-icon">
-                    <img src="./Icons/New/ENTERPRISE IT LEADERSHIP.png" alt="Technology Consulting" style="width: 80px; height: 80px; margin: 0 auto;">
+            <!-- 2. Music Production & Composition -->
+            <div class="service-box">
+                <div class="service-icon-box">
+                    <div class="service-number">2</div>
+                    <img src="./Icons/Executive Summary/Sound Engineering Excellence@4x.png" alt="Music Production">
                 </div>
-                <h3 class="card-title">Technology Consulting</h3>
-                <p class="card-text" style="text-align: left;">
-                    <strong>Audio/video infrastructure & IT services:</strong><br>
-                    • Broadcast technology setup & integration<br>
-                    • Production workflow optimization<br>
-                    • Audio/video infrastructure design<br>
-                    • Enterprise IT consulting (25+ years)<br>
-                    • Studio technical systems architecture<br>
-                    • Equipment specification & procurement
-                </p>
-                <a href="#contact" class="hero-btn hero-btn-primary" style="display: inline-block; margin-top: 1rem;">Request Consultation</a>
+                <div class="service-content">
+                    <h3>Music Production & Composition</h3>
+                    <p class="service-description">Original music composition, production, and arrangement for media projects. Hundreds of produced tracks across multiple genres.</p>
+                    <ul class="service-features">
+                        <li>Original composition & scoring</li>
+                        <li>Music production & arrangement</li>
+                        <li>Professional mixing & mastering</li>
+                        <li>Orchestral score mixing</li>
+                        <li>Genre specialization (Arabic, orchestral, EDM)</li>
+                        <li>Theme music & jingles</li>
+                    </ul>
+                </div>
+                <div class="service-cta">
+                    <a href="#contact" class="hero-btn hero-btn-primary">Start Project</a>
+                </div>
             </div>
 
-            <!-- Featured Projects Portfolio -->
-            <div class="card" style="text-align: center; background: linear-gradient(135deg, rgba(0, 174, 239, 0.05) 0%, rgba(41, 38, 99, 0.05) 100%); border: 2px solid var(--sky-blue);">
-                <div class="card-icon">🏆</div>
-                <h3 class="card-title">Featured Projects</h3>
-                <p class="card-text" style="text-align: left;">
-                    <strong>Notable work includes:</strong><br>
-                    • <strong>The Eternal Parade</strong> - Audio Director (feature animation)<br>
-                    • <strong>Cloud Kumo</strong> - Lead Sound Designer (Student Academy Award Silver)<br>
-                    • <strong>Karazah Channel</strong> - 739K+ subs, 310M+ views<br>
-                    • <strong>Spacetoon/Tiger</strong> - Audio Dept. Head<br>
-                    • <strong>Radio Al-Kul</strong> - Co-founder & Technical Director
-                </p>
-                <a href="portfolio.html" target="_blank" class="hero-btn hero-btn-secondary" style="display: inline-block; margin-top: 1rem;">View Full Portfolio</a>
+            <!-- 3. Dubbing & Voice Direction -->
+            <div class="service-box">
+                <div class="service-icon-box">
+                    <div class="service-number">3</div>
+                    <img src="./Icons/New/CROSS-CULTURAL BRIDGE BUILDER.png" alt="Dubbing">
+                </div>
+                <div class="service-content">
+                    <h3>Dubbing & Voice Direction</h3>
+                    <p class="service-description">Multi-language dubbing supervision and voice direction. Former Head of Audio at Spacetoon with hundreds of anime titles dubbed.</p>
+                    <ul class="service-features">
+                        <li>Arabic/English dubbing supervision</li>
+                        <li>Voice casting & direction</li>
+                        <li>Anime & animation dubbing</li>
+                        <li>Commercial voiceover production</li>
+                        <li>Multi-language localization</li>
+                        <li>Voice talent management</li>
+                    </ul>
+                </div>
+                <div class="service-cta">
+                    <a href="#contact" class="hero-btn hero-btn-primary">Book Session</a>
+                </div>
+            </div>
+
+            <!-- 4. Live Sound Engineering -->
+            <div class="service-box">
+                <div class="service-icon-box">
+                    <div class="service-number">4</div>
+                    <img src="./Icons/Executive Summary/Media Entrepreneurship@4x.png" alt="Live Sound">
+                </div>
+                <div class="service-content">
+                    <h3>Live Sound Engineering</h3>
+                    <p class="service-description">Professional Front-of-House mixing for concerts, tours, and live events. Currently touring with international artists (1.5M+ followers).</p>
+                    <ul class="service-features">
+                        <li>FOH mixing for concerts & tours</li>
+                        <li>Live event sound engineering</li>
+                        <li>RF coordination & wireless systems</li>
+                        <li>Show advancing & tech coordination</li>
+                        <li>Live multi-track recording</li>
+                        <li>Festival & venue sound</li>
+                    </ul>
+                </div>
+                <div class="service-cta">
+                    <a href="#contact" class="hero-btn hero-btn-primary">Book Engineer</a>
+                </div>
+            </div>
+
+            <!-- 5. Studio Acoustics & Design -->
+            <div class="service-box">
+                <div class="service-icon-box">
+                    <div class="service-number">5</div>
+                    <img src="./Icons/New/HUMANITARIAN INNOVATION.png" alt="Acoustics">
+                </div>
+                <div class="service-content">
+                    <h3>Studio Acoustics & Design</h3>
+                    <p class="service-description">Acoustic consultation, studio design, and build-out services. Built broadcast studios in Damascus, Dubai, and Kuala Lumpur for Spacetoon/Tiger.</p>
+                    <ul class="service-features">
+                        <li>Acoustic analysis & consultation</li>
+                        <li>Studio design & build-out</li>
+                        <li>Acoustic treatment solutions</li>
+                        <li>Equipment specification & procurement</li>
+                        <li>Room calibration & optimization</li>
+                        <li>Soundproofing & isolation</li>
+                    </ul>
+                </div>
+                <div class="service-cta">
+                    <a href="#contact" class="hero-btn hero-btn-primary">Consult Now</a>
+                </div>
+            </div>
+
+            <!-- 6. Recording Services -->
+            <div class="service-box">
+                <div class="service-icon-box">
+                    <div class="service-number">6</div>
+                    <img src="./Icons/New/SOUND ENGINEERING EXCELLENCE.png" alt="Recording">
+                </div>
+                <div class="service-content">
+                    <h3>Recording Services</h3>
+                    <p class="service-description">Professional studio recording for music, voiceover, podcasts, and audio content. State-of-the-art facilities and equipment.</p>
+                    <ul class="service-features">
+                        <li>Music recording sessions</li>
+                        <li>Voice recording & ADR</li>
+                        <li>Podcast production & editing</li>
+                        <li>Audiobook recording</li>
+                        <li>Commercial voiceover</li>
+                        <li>Full production support</li>
+                    </ul>
+                </div>
+                <div class="service-cta">
+                    <a href="#contact" class="hero-btn hero-btn-primary">Book Studio</a>
+                </div>
+            </div>
+
+            <!-- 7. Media Production & Creative Direction -->
+            <div class="service-box">
+                <div class="service-icon-box">
+                    <div class="service-number">7</div>
+                    <img src="./Icons/New/GLOBAL EDUCATIONAL IMPACT.png" alt="Media Production">
+                </div>
+                <div class="service-content">
+                    <h3>Media Production & Creative Direction</h3>
+                    <p class="service-description">End-to-end media content production and creative direction. Founder of Karazah Channel (739K+ subscribers, 310M+ views).</p>
+                    <ul class="service-features">
+                        <li>Documentary & commercial production</li>
+                        <li>Educational media development</li>
+                        <li>Animation audio supervision</li>
+                        <li>Children's content production</li>
+                        <li>YouTube channel development</li>
+                        <li>International team management (9+ countries)</li>
+                    </ul>
+                </div>
+                <div class="service-cta">
+                    <a href="#contact" class="hero-btn hero-btn-primary">Discuss Vision</a>
+                </div>
+            </div>
+
+            <!-- 8. Broadcast & Production Technology -->
+            <div class="service-box">
+                <div class="service-icon-box">
+                    <div class="service-number">8</div>
+                    <img src="./Icons/Executive Summary/Educational Innovation@4x.png" alt="Broadcast Tech">
+                </div>
+                <div class="service-content">
+                    <h3>Broadcast & Production Technology</h3>
+                    <p class="service-description">Broadcast infrastructure design, production workflow optimization, and technical system integration. Co-founded Radio Al-Kul (500K+ listeners).</p>
+                    <ul class="service-features">
+                        <li>Broadcast technology setup</li>
+                        <li>Production workflow optimization</li>
+                        <li>Audio/video infrastructure design</li>
+                        <li>Streaming & distribution systems</li>
+                        <li>Technical training & support</li>
+                        <li>Equipment consultation</li>
+                    </ul>
+                </div>
+                <div class="service-cta">
+                    <a href="#contact" class="hero-btn hero-btn-primary">Get Consultation</a>
+                </div>
+            </div>
+
+            <!-- 9. IT & Technology Consulting -->
+            <div class="service-box">
+                <div class="service-icon-box">
+                    <div class="service-number">9</div>
+                    <img src="./Icons/New/ENTERPRISE IT LEADERSHIP.png" alt="IT Consulting">
+                </div>
+                <div class="service-content">
+                    <h3>IT & Technology Consulting</h3>
+                    <p class="service-description">Enterprise IT consulting and technology strategy. 25+ years serving international clients across North America and Middle East.</p>
+                    <ul class="service-features">
+                        <li>Enterprise IT consulting</li>
+                        <li>Network architecture & security</li>
+                        <li>Cloud infrastructure & migration</li>
+                        <li>HIPAA compliance & data protection</li>
+                        <li>Multi-site deployment</li>
+                        <li>Technology strategy & planning</li>
+                    </ul>
+                </div>
+                <div class="service-cta">
+                    <a href="#contact" class="hero-btn hero-btn-primary">Request Quote</a>
+                </div>
             </div>
 
         </div>
+
+        <!-- Featured Work CTA -->
+        <div style="text-align: center; margin-top: 3rem; padding: 3rem; background: linear-gradient(135deg, rgba(0, 174, 239, 0.08) 0%, rgba(41, 38, 99, 0.08) 100%); border-radius: 15px; border: 2px solid var(--sky-blue);">
+            <h3 style="color: var(--deep-indigo); font-size: 1.8rem; margin-bottom: 1rem;">See These Services in Action</h3>
+            <p style="color: var(--text-dark); font-size: 1.1rem; margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+                From Student Academy Award-winning sound design to building studios for Spacetoon across 3 countries. View featured projects including The Eternal Parade (Audio Director), Karazah Channel (739K+ subs), and Radio Al-Kul (500K+ listeners).
+            </p>
+            <a href="portfolio.html" target="_blank" class="hero-btn hero-btn-secondary" style="display: inline-block;">View Full Portfolio →</a>
+        </div>
+
     </section>
 
     <!-- Impact & Results -->
